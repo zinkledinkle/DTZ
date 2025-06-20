@@ -37,5 +37,13 @@ namespace DTZ.Content.Items
             }
             return true;
         }
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ItemID.GlowingMushroom, 15)
+                .AddIngredient(ItemID.Sickle)
+                .AddTile(TileID.WorkBenches)
+                .Register();
+        }
     }
 }
