@@ -22,8 +22,12 @@ namespace DTZ.Content.Items
             Item.width = 40;
             Item.height = 38;
             Item.damage = 8;
-            Item.useTime = 20;
-            Item.useAnimation = 20;
+            Item.DamageType = DamageClass.Melee;
+            Item.useTime = 10;
+            Item.useAnimation = 10;
+            Item.knockBack = 0.1f;
+            Item.crit = 0;
+            Item.rare = ItemRarityID.Blue;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.value = Item.buyPrice(silver: 10);
         }
