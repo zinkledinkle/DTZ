@@ -1,6 +1,21 @@
 Items: {
 	Mushcythe: {
 		DisplayName: Mushcythe
+		Tooltip: Used to till mud to support special fungal growth
+	}
+
+	Hellcap: {
+		DisplayName: Hellcap
+		Tooltip: ""
+	}
+
+	IceshroomItem: {
+		DisplayName: Icelium
+		Tooltip: ""
+	}
+
+	Toadstool: {
+		DisplayName: Toadstool
 		Tooltip: ""
 	}
 }

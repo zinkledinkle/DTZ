@@ -17,6 +17,11 @@ namespace DTZ.Content.Tiles
     public class Iceshroom : ModTile
     {
         private const int frameWidth = 18;
+        public static readonly int[] validTiles =
+        {
+            TileID.IceBlock,
+            TileID.SnowBlock,
+        };
         public override void SetStaticDefaults()
         {
             Main.tileFrameImportant[Type] = true;
@@ -27,7 +32,7 @@ namespace DTZ.Content.Tiles
             TileID.Sets.ReplaceTileBreakUp[Type] = true;
 
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
-            TileObjectData.newTile.AnchorValidTiles = new int[] { TileID.Ash, TileID.AshGrass, TileID.Hellstone };
+            TileObjectData.newTile.AnchorValidTiles = validTiles;
             TileObjectData.addTile(Type);
 
             HitSound = SoundID.Grass;
@@ -45,7 +50,7 @@ namespace DTZ.Content.Tiles
         }
         public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
         {
-            offsetY = -2;
+            offsetY = 2;
             tileFrameX += (short)((i % 3) * frameWidth);
         }
     }

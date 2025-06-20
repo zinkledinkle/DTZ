@@ -1,4 +1,5 @@
 ﻿using DTZ.Content.Tiles;
+using DTZ.Systems;
 using Microsoft.Xna.Framework;
 using System;
 using System.Text;
@@ -32,6 +33,7 @@ namespace DTZ.Content.Items
         }
         public override bool? UseItem(Player player)
         {
+            ShroomGen.PlaceShrooms(150, 20, 150);
             Point16 tileCoords = Main.MouseWorld.ToTileCoordinates16();
             Tile tile = Framing.GetTileSafely(tileCoords);
             int type = tile.TileType;
