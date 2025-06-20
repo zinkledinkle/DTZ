@@ -1,0 +1,3 @@
+displayName = DocSlueZinkle Jam
+author = Doc, Exslueterra, Zinkle
+version = 0.1
