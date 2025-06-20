@@ -46,6 +46,15 @@ namespace DTZ.Content.Items
                     Dust.NewDust(tileCoords.ToWorldCoordinates(), 16, 1, dustType, vel.X, vel.Y);
                 }
                 NetMessage.SendTileSquare(-1, tileCoords.X, tileCoords.Y);
+
+                for(int h = -1; h <= 1; h++)
+                {
+                    for(int j = -1; j <= 1; j++)
+                    {
+                        var neighborCoords = tileCoords + new Point16(h, j);
+                        WorldGen.Reframe(neighborCoords.X, neighborCoords.Y);
+                    }
+                } 
             }
             return true;
         }
