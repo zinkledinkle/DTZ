@@ -33,7 +33,6 @@ namespace DTZ.Content.Items
         }
         public override bool? UseItem(Player player)
         {
-            ShroomGen.PlaceShrooms(150, 20, 150);
             Point16 tileCoords = Main.MouseWorld.ToTileCoordinates16();
             Tile tile = Framing.GetTileSafely(tileCoords);
             int type = tile.TileType;
