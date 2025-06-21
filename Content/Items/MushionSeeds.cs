@@ -19,7 +19,7 @@ namespace DTZ.Content.Items
             Item.rare = ItemRarityID.Blue;
             Item.maxStack = 9999;
             Item.value = Item.buyPrice(silver: 50);
-            Item.DefaultToPlaceableTile(ModContent.TileEntityType<MushionSeedsGrowth>());
+            Item.DefaultToPlaceableTile(ModContent.TileType<MushionSeedsTile>());
         }
     }
 }

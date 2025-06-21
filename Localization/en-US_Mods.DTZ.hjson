@@ -18,4 +18,9 @@ Items: {
 		DisplayName: Toadstool
 		Tooltip: ""
 	}
+
+	MushionSeeds: {
+		DisplayName: Mushion Seeds
+		Tooltip: ""
+	}
 }
