@@ -40,7 +40,7 @@ namespace DTZ.Content.Tiles
         }
         public override void Update()
         {
-            growth = Math.Min(growth + 5f / 3600, 3); //half a phase an hour
+            growth = Math.Min(growth + 5f / 3600, 3); //half a phase an hour ingame time
             Main.NewText(ID + ", " + growth);
             phase = (int)Math.Floor(growth);
 
@@ -142,7 +142,7 @@ namespace DTZ.Content.Tiles
     {
         private bool CheckColony(int i, int j)
         {
-            return false;
+            return false; //gonna do this later
         }
     }
 }
