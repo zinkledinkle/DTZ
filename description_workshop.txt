@@ -1,1 +1,42 @@
-This description will show up on the steam page, check out https://steamcommunity.com/comment/Guide/formattinghelp.
+- SCOPE -
+
+The main focus of Mycology is to implement vanilla-esque extensions to the nature of mushrooms in the game, as well as offer a unique support-oriented alternative to combat with new glowing mushroom familiars. This mod aims to have taste in general gameplay, but also holds utility and incentives players to pursue more developed mechanics, such as cultivating the aforementioned mushroom familiars, nicknamed “Mushions.”
+
+- CONTENT -
+
+As described under SCOPE, general additions and a unique mechanic will be implemented in regular gameplay in the most vanilla-friendly manner possible. Additions will be thoroughly described, from greatest to smallest addition, as follows:
+
+“Mushion” Cultivation
+Mycology adds a unique farming system that allows new Mushion Seeds to be planted and grown into Mushions, new support-oriented ‘familiars’ which can be interacted with, initiating a lifetime/cooldown for the Mushion as it follows the player, periodically supporting in one of three ways:
+
+The player is granted a small burst of +10 health, cued by a visual being thrown by the mushion.
+The player is granted a minor +3% increase in damage and movement speed.
+ The Mushion hurls a Glowing Sclerotium, a dense fungal mass at the nearest enemy that deals 10 damage, ignoring defense.
+
+>> NOTE that, by default, up to 3 Mushions can follow the player at once, and the effects stack.
+
+*Familiars will be the term to describe a new category of classless summons that aid/benefit the player in combat without ties to specific damage types or weapon attunements.
+
+In order to grow Mushions, the player must plant at least three Mushion Seeds together to form a Mushion Colony. Mushion seeds can be harvested from naturally generating Mushion Colonies, found in mushroom chests, or purchased for 10 silver apiece by the Truffle, and can only be planted on Tilled Mud. In order to till mud, the player must use a new Mushcythe, crafted with 3 Iron/Lead and 15 mushrooms at a workbench. Player-created Mushion Colonies will only begin to grow if the following requirements are met:
+
+There are at least 3 Mushion Seeds planted next to each other (i.e. forming a Mushion Colony).
+Each Mushion Seed is respectively planted atop at least a 1x2 space of Tilled Mud. 
+There is at least 2 blocks high of space above each Mushion Seed.
+There are no light sources (such as torches) within a moderate range.
+
+>> NOTE that, while not required, building/preserving Mushion Colonies in structures is incentivized, as hostile NPCs will trample growing Mushion Seeds. Trampled Mushion Seeds, as well as harvesting growing Mushion Seeds, yields the seeds back, dropping them respective to their prior position.
+
+Mushroom Variants
+Alongside the existing mushrooms in-game, there will be new mushroom variants littered around their respective biomes, such as Hellcaps for the underworld, [NAME] for the Tundra, and [NAME] for the underground. Outside of environmental aesthetics, these mushrooms can be harvested and used for modifying Mushion Colonies as they grow to yield different types of Mushions.
+
+Made for tModJam 0
+
+- THEME -
+
+Mycology
+
+- Developed by -
+
+Zinkle || zinkle_
+Doc || lucidlizard
+Exslueterra || exslueterra
