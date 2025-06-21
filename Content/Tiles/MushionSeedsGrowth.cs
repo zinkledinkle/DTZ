@@ -22,7 +22,7 @@ namespace DTZ.Content.Tiles
         public int growRate = 3600;
         public override bool IsTileValidForEntity(int x, int y)
         {
-            return Framing.GetTileSafely(x, y).TileType == ModContent.TileType<MushionSeedsTile>() && HasMud(x, y);
+            return Framing.GetTileSafely(x, y).TileType == ModContent.TileType<MushionSeedsTile>();
         }
         public static bool HasMud(int i, int j)
         {
@@ -53,9 +53,10 @@ namespace DTZ.Content.Tiles
         {
             if (!MushionColonySystem.IsValidForGrowing(Position.X, Position.Y)) return; //make sure to shift downward since the tilentity is always on the top left and we need to get the mud tiles
 
-            growth = Math.Min(growth + 5f / growRate, 3);
+            growth = Math.Min(growth + 5f / growRate, 4);
         
             phase = (int)Math.Floor(growth);
+            if (growth == 4) growth = 3; //gonna summon the guy later
 
             NetMessage.SendData(MessageID.TileEntitySharing, number: ID); //been told this is important for tileEntities 
         }
@@ -117,7 +118,7 @@ namespace DTZ.Content.Tiles
             int phase = (int)Math.Floor(growth);
             frameY += (short)(phase * frameHeight);
         }
-        private static Point GetTopLeft(int i, int j)
+        public static Point GetTopLeft(int i, int j)
         {
             Tile tile = Framing.GetTileSafely(i, j);
             int left = i - (tile.TileFrameX / 18) % 2;
@@ -170,11 +171,12 @@ namespace DTZ.Content.Tiles
             int count = 0;
             foreach (var point in chunk)
             {
-                if (TileEntity.ByPosition.TryGetValue(new Point16(point.X, point.Y-2), out TileEntity entity) && entity is MushionSeedsGrowth) //possibly inneficient idk
+                if ((TileEntity.ByPosition.TryGetValue(new Point16(point.X, point.Y-2), out TileEntity entity)) && entity is MushionSeedsGrowth)
                 {
                     count++;
                 }
             }
+            if (chunk.Count < 20) return 0;
             return count;
         }
         public static bool IsValidForGrowing(int i, int j) =>
