@@ -1,4 +1,5 @@
-﻿using System;
+using DTZ.Content.Tiles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace DTZ.Content.Items
             Item.rare = ItemRarityID.Blue;
             Item.maxStack = 9999;
             Item.value = Item.buyPrice(silver: 50);
-            Item.DefaultToPlaceableTile<>();
+            Item.DefaultToPlaceableTile(ModContent.TileEntityType<MushionSeedsGrowth>());
         }
     }
 }
