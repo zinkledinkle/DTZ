@@ -34,7 +34,7 @@ namespace DTZ.Content.Tiles
             HitSound = SoundID.Grass;
             DustType = DustID.Torch;
 
-            AddMapEntry(new Color(35, 200, 20), Language.GetText("Iceshroom"));
+            AddMapEntry(new Color(35, 200, 20), Language.GetText("Toadstool"));
         }
         public override void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects)
         {
