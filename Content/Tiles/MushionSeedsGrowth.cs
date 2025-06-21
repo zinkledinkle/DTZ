@@ -69,10 +69,6 @@ namespace DTZ.Content.Tiles
             TileObjectData.newTile.StyleHorizontal = false;
             TileObjectData.newTile.HookPostPlaceMyPlayer = ModContent.GetInstance<MushionSeedsGrowth>().Generic_HookPostPlaceMyPlayer;
 
-            TileObjectData.newAlternate.CopyFrom(TileObjectData.newTile);
-            TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight; //opposite direction
-            TileObjectData.addAlternate(1);
-
             TileObjectData.addTile(Type);
         }
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
