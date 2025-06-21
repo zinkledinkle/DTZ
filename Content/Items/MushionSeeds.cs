@@ -1,4 +1,4 @@
-﻿using DTZ.Content.Tiles;
+using DTZ.Content.Tiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
