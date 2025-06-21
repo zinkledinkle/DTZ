@@ -16,6 +16,7 @@ namespace DTZ.UI
         private float size { get; set; } = 0;
         private Vector2 pos { get; set; } = Vector2.Zero;
         private float progress { get; set; } = 0;
+        private TileEntity lastTileEntity;
         public override void Update(GameTime gameTime)
         {
             Vector2 mouseWorldTransformed = Vector2.TransformNormal(Main.MouseWorld - Main.screenPosition, Main.UIScaleMatrix) + Main.screenPosition;
@@ -27,6 +28,9 @@ namespace DTZ.UI
                 Point topleft = MushionSeedsTile.GetTopLeft(tileCoords.X, tileCoords.Y);
                 if ((TileEntity.TryGet(new Point16(topleft), out TileEntity entity)) && entity is MushionSeedsGrowth mushionEntity)
                 {
+                    if (lastTileEntity != mushionEntity) size = 0;
+                    lastTileEntity = mushionEntity;
+
                     pos = topleft.ToWorldCoordinates();
                     pos += new Vector2(8, 8);
                     size = MathHelper.Lerp(size, 1, 0.25f);
