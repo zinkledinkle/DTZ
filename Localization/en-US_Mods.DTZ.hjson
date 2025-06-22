@@ -28,4 +28,9 @@ Items: {
 		DisplayName: S U P E R M E G A U L T R A D E B U G I T E M9000
 		Tooltip: 'You're stinky...'
 	}
+
+	Devnote: {
+		DisplayName: Dev Note
+		Tooltip: Thanks for playing Mycology, a mod made for the unofficial Tmod Jam! To discover what this mod has to offer, go pay the glowing mushroom biomes a visit! We hope you enjoy.
+	}
 }
