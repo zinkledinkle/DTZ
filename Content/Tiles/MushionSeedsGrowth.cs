@@ -181,7 +181,7 @@ namespace DTZ.Content.Tiles
             int maxY = minY + Main.screenHeight / 16 + 1;
             int Type = ModContent.TileType<MushionSeedsTile>();
             Texture2D tex = ModContent.Request<Texture2D>(Texture).Value; //ignore the file name please
-            Texture2D glowTex = ModContent.Request<Texture2D>(Texture + "_glow-sheet").Value; //ignore the file name please
+            Texture2D glowTex = ModContent.Request<Texture2D>(Texture + "_glow").Value; //ignore the file name please
             for (int x = minX; x < maxX; x++)
             {
                 for (int y = minY; y < maxY; y++)

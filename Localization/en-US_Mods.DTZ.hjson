@@ -26,6 +26,13 @@ Items: {
 
 	SUPERMEGAULTRADEBUGITEM9000: {
 		DisplayName: S U P E R M E G A U L T R A D E B U G I T E M9000
+		Tooltip: use if you dfare....
+	}
+
+	PackedMud_item: {
+		DisplayName: Packed Mud
 		Tooltip: ""
 	}
 }
+
+Biomes.Haven.TownNPCDialogueName: the Mushion Haven
