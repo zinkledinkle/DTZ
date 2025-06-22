@@ -143,19 +143,12 @@ namespace DTZ.Content.Items
                 SoundEngine.PlaySound(SoundID.Grass, Main.MouseWorld);
                 for (int i = 0; i < Main.rand.Next(1, 4); i++) {
                     Vector2 vel = -Main.rand.NextVector2Unit(MathHelper.PiOver4, MathHelper.PiOver2) * 2;
-                    int dustType;
-                    switch (type)
+                    var dustType = type switch
                     {
-                        case TileID.Mud:
-                            dustType = DustID.Mud;
-                            break;
-                        case TileID.MushroomGrass:
-                            dustType = DustID.MushroomSpray;
-                            break;
-                        default:
-                            dustType = DustID.JungleGrass;
-                            break;
-                    }
+                        TileID.Mud => DustID.Mud,
+                        TileID.MushroomGrass => DustID.MushroomSpray,
+                        _ => (int)DustID.JungleGrass,
+                    };
                     Dust.NewDust(tileCoords.ToWorldCoordinates(), 16, 1, dustType, vel.X, vel.Y);
                 }
                 NetMessage.SendTileSquare(-1, tileCoords.X, tileCoords.Y);

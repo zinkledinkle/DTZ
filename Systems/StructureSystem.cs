@@ -52,7 +52,7 @@ namespace DTZ.Systems
         #endregion
         public static Tile TileFromData(TileData data)
         {
-            Tile tile = new Tile
+            Tile tile = new()
             {
                 TileType = data.TileType,
                 WallType = data.WallType,
@@ -87,7 +87,7 @@ namespace DTZ.Systems
         }
         public static TileData DataFromTile(Tile tile)
         {
-            TileData tileData = new TileData
+            TileData tileData = new()
             {
                 TileType = tile.TileType,
                 WallType = tile.WallType,
@@ -131,7 +131,7 @@ namespace DTZ.Systems
         #endregion
         public static TileEntityData DataFromEntity(TileEntity entity, Point16 structurePos)
         {
-            TileEntityData data = new TileEntityData
+            TileEntityData data = new()
             {
                 ID = entity.ID,
                 PositionX = entity.Position.X - structurePos.X,
@@ -154,24 +154,24 @@ namespace DTZ.Systems
     }
     public class ChestData
     {
-        public ItemData[] item { get; set; }
-        public int x { get; set; }
-        public int y { get; set; }
-        public bool bankChest { get; set; }
-        public string name { get; set; }
-        public int frame { get; set; }
-        public int style { get; set; }
+        public ItemData[] Item { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public bool BankChest { get; set; }
+        public string Name { get; set; }
+        public int Frame { get; set; }
+        public int Style { get; set; }
         public static ChestData DataFromChest(Chest chest, Tile chestTile, Point structurePos)
         {
-            ChestData data = new ChestData
+            ChestData data = new()
             {
-                bankChest = chest.bankChest,
-                frame = chest.frame,
-                x = chest.x - structurePos.X,
-                y = chest.y - structurePos.Y,
-                name = chest.name,
-                item = chest.item.Select(ItemData.DataFromItem).ToArray(),
-                style = chestTile.TileFrameX/36
+                BankChest = chest.bankChest,
+                Frame = chest.frame,
+                X = chest.x - structurePos.X,
+                Y = chest.y - structurePos.Y,
+                Name = chest.name,
+                Item = chest.item.Select(ItemData.DataFromItem).ToArray(),
+                Style = chestTile.TileFrameX/36
             };
             return data;
         }
@@ -179,62 +179,62 @@ namespace DTZ.Systems
         {
             if (data == null) return null;
 
-            int index = WorldGen.PlaceChest(x + data.x, y + data.y+1, 21, false, (ushort)data.style);
+            int index = WorldGen.PlaceChest(x + data.X, y + data.Y+1, 21, false, (ushort)data.Style);
             Chest chest = Main.chest[index];
-            for (int i = 0; i < data.item.Length; i++)
+            for (int i = 0; i < data.Item.Length; i++)
             {
-                chest.item[i] = data.item[i]?.ItemFromData();
+                chest.item[i] = data.Item[i]?.ItemFromData();
             }
-            chest.name = data.name;
+            chest.name = data.Name;
             return chest;
         }
         public class ItemData
         {
-            public int type { get; set; }
-            public int prefix { get; set; }
-            public int stack { get; set; }
+            public int Type { get; set; }
+            public int Prefix { get; set; }
+            public int Stack { get; set; }
             public static ItemData DataFromItem(Item item)
             {
                 return new ItemData
                 {
-                    type = item.type,
-                    prefix = item.prefix,
-                    stack = item.stack
+                    Type = item.type,
+                    Prefix = item.prefix,
+                    Stack = item.stack
                 };
             }
-            public Item ItemFromData() => new Item(this.type, this.stack, this.prefix);
+            public Item ItemFromData() => new(this.Type, this.Stack, this.Prefix);
         }
     }
     public class StructureData
     {
         public TileData[][] Tiles { get; set; }
-        public TileEntityData[] tileEntities { get; set; }
-        public ChestData[] chests { get; set; }
+        public TileEntityData[] TileEntities { get; set; }
+        public ChestData[] Chests { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
     }
     public static class StructureSystem
     {
+        private static readonly JsonSerializerOptions options = new()
+        {
+            WriteIndented = true,
+            IncludeFields = true
+        };
         private static void SaveStructure(StructureData structure, string filePath)
         {
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                IncludeFields = true
-            };
             string json = JsonSerializer.Serialize(structure, options);
             File.WriteAllText(filePath, json);
         }
 
         public static void CreateStructure(Rectangle rect, string name)
         {
-            StructureData structure = new StructureData
+            StructureData structure = new()
             {
                 Width = rect.Width,
                 Height = rect.Height,
                 Tiles = new TileData[rect.Width][],
-                tileEntities = [],
-                chests = []
+                TileEntities = [],
+                Chests = []
             };
 
             for (int x = 0; x < rect.Width; x++)
@@ -247,16 +247,16 @@ namespace DTZ.Systems
                     TileData tileData = TileData.DataFromTile(tile);
                     structure.Tiles[x][y] = tileData;
 
-                    if (TileEntity.TryGet(rect.X + x, rect.Y + y, out TileEntity entity) && !structure.tileEntities.Any(e => e.ID == entity.ID))
+                    if (TileEntity.TryGet(rect.X + x, rect.Y + y, out TileEntity entity) && !structure.TileEntities.Any(e => e.ID == entity.ID))
                     {
-                        structure.tileEntities = structure.tileEntities.Append(TileEntityData.DataFromEntity(entity, new Point16(rect.X, rect.Y))).ToArray();
+                        structure.TileEntities = [.. structure.TileEntities, TileEntityData.DataFromEntity(entity, new Point16(rect.X, rect.Y))];
                     }
                     if (Chest.FindChest(worldPos.X, worldPos.Y) is int index && index > -1)
                     {
                         Chest chest = Main.chest[index];
                         ChestData chestData = ChestData.DataFromChest(chest, Framing.GetTileSafely(worldPos), new Point(rect.X, rect.Y));
-                        if (structure.chests.Contains(chestData)) continue;
-                        structure.chests = structure.chests.Append(chestData).ToArray();
+                        if (structure.Chests.Contains(chestData)) continue;
+                        structure.Chests = [.. structure.Chests, chestData];
                     }
                 }
             }
@@ -267,10 +267,6 @@ namespace DTZ.Systems
 
         private static StructureData LoadStructure(string name)
         {
-            var options = new JsonSerializerOptions
-            {
-                IncludeFields = true,
-            };
             string json = File.ReadAllText(Path.Combine(Main.SavePath, name + ".json"));
             return JsonSerializer.Deserialize<StructureData>(json);
         }
@@ -299,13 +295,13 @@ namespace DTZ.Systems
                     WorldGen.Reframe(pos.X + x, pos.Y + y);
                 }
             }
-            if (structure.tileEntities != null && structure.tileEntities.Count() > 0)
+            if (structure.TileEntities != null && structure.TileEntities.Length > 0)
             {
-                foreach (var entity in structure.tileEntities) TileEntityData.SpawnTileEntityFromData(entity, new Point16(pos.X, pos.Y));
+                foreach (var entity in structure.TileEntities) TileEntityData.SpawnTileEntityFromData(entity, new Point16(pos.X, pos.Y));
             }
-            if (structure.chests != null && structure.chests.Count() > 0)
+            if (structure.Chests != null && structure.Chests.Length > 0)
             {
-                foreach (var chest in structure.chests) ChestData.ChestFromData(chest, pos.X, pos.Y);
+                foreach (var chest in structure.Chests) ChestData.ChestFromData(chest, pos.X, pos.Y);
             }
         }
     }
