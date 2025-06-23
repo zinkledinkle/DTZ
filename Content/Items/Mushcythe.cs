@@ -131,6 +131,7 @@ namespace DTZ.Content.Items
             Item.rare = ItemRarityID.Blue;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.value = Item.buyPrice(silver: 10);
+            Item.useTurn = true;
         }
         private static readonly Dictionary<int, int> TillableIDsAndDust = new()
         {

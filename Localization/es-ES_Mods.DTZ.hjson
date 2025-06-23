@@ -1,0 +1,74 @@
+Items: {
+	Mushcythe: {
+		DisplayName: Hoz de Champiñon
+		Tooltip: Usado para cultivar a champiñeros
+	}
+
+	Hellcap: {
+		DisplayName: Tapa Infierna
+		Tooltip: ""
+	}
+
+	IceshroomItem: {
+		DisplayName: Micielo
+		Tooltip: ""
+	}
+
+	Toadstool: {
+		DisplayName: Seta Venenosa
+		Tooltip: ""
+	}
+
+	MushionSeeds: {
+		DisplayName: Semillas de Champiñeros
+		Tooltip: ""
+	}
+
+	SUPERMEGAULTRADEBUGITEM9000: {
+		// DisplayName: S U P E R M E G A U L T R A D E B U G I T E M9000
+		// Tooltip: "'You're stinky...'"
+	}
+
+	Devnote: {
+		// DisplayName: Dev Note
+		// Tooltip: Thanks for playing Mycology, a mod made for the unofficial Tmod Jam! To discover what this mod has to offer, go pay the glowing mushroom biomes a visit! We hope you enjoy.
+	}
+
+	Shiitake: {
+		// DisplayName: Shiitake
+		// Tooltip: "'No, there's no escargot.'"
+	}
+}
+
+Projectiles: {
+	// GlowingMushion.DisplayName: Glowing Mushion
+	// GlowingMushionProj.DisplayName: Glowing Mushion Proj
+	// HellcapMushion.DisplayName: Hellcap Mushion
+	// HellcapMushionProj.DisplayName: Hellcap Mushion Proj
+	// IceliumMushion.DisplayName: Icelium Mushion
+	// IceliumMushionProj.DisplayName: Icelium Mushion Proj
+	// ToadMushion.DisplayName: Toad Mushion
+	// ToadMushionProj.DisplayName: Toad Mushion Proj
+}
+
+Buffs: {
+	GlowingBuff: {
+		// DisplayName: Glowing Buff
+		// Description: Mods.DTZ.Buffs.GlowingBuff.Description
+	}
+
+	HellcapBuff: {
+		// DisplayName: Hellcap Buff
+		// Description: Mods.DTZ.Buffs.HellcapBuff.Description
+	}
+
+	IceliumBuff: {
+		// DisplayName: Icelium Buff
+		// Description: Mods.DTZ.Buffs.IceliumBuff.Description
+	}
+
+	ToadBuff: {
+		// DisplayName: Toad Buff
+		// Description: Mods.DTZ.Buffs.ToadBuff.Description
+	}
+}
