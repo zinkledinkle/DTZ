@@ -12,13 +12,13 @@ namespace DTZ.Systems
 {
     public class ShroomGen : ModSystem
     {
-        private static Dictionary<int, int[]> shroomTileDict = new()
+        private static readonly Dictionary<int, int[]> shroomTileDict = new()
         {
             { ModContent.TileType<HellcapTile>(), HellcapTile.validTiles },
             { ModContent.TileType<ToadstoolTile>(), ToadstoolTile.validTiles },
             { ModContent.TileType<Iceshroom>(), Iceshroom.validTiles },
         };
-        private static int[] shroomTileList = shroomTileDict.Keys.ToArray();
+        private static readonly int[] shroomTileList = [.. shroomTileDict.Keys];
         public override void PostWorldGen()
         {
             PlaceShrooms(30, 75, 50); //feel free to adjust these rates later btw
@@ -32,15 +32,16 @@ namespace DTZ.Systems
         }
         public static void PlaceShrooms(int hellcapChance, int toadstoolChance, int iceliumChance)
         {
-            int[] chances = { hellcapChance, toadstoolChance, iceliumChance };
+            int[] chances = [hellcapChance, toadstoolChance, iceliumChance];
             //int[] amount = { 0, 0, 0 };
             for (int x = 0; x < Main.maxTilesX; x++)
             {
                 for (int y = 0; y < Main.maxTilesY; y++)
                 {
                     Tile tile = Framing.GetTileSafely(x, y);
-                    if (!tile.HasTile || tile.LiquidAmount > 0) continue;
-                    if (Framing.GetTileSafely(x, y - 1).HasTile) continue; //obviously don't spawn if theres already a block occupying it
+                    if (!tile.HasTile) continue;
+                    Tile above = Framing.GetTileSafely(x, y - 1);
+                    if (above.HasTile || above.LiquidAmount > 0) continue; //obviously don't spawn if theres already a block occupying it (or underwater)
 
                     int index = -1;
                     foreach (var shroom in shroomTileDict)
@@ -50,7 +51,7 @@ namespace DTZ.Systems
 
                         int shroomTile = shroom.Key;
                         if (shroomTile == shroomTileList[1] &&
-                            y < Main.rockLayer) continue; //only let toadstools spawn underground!!
+                            y < Main.maxTilesY/3) continue; //only let toadstools spawn underground!!
 
                         int[] validTiles = shroom.Value;
                         if (validTiles.Contains(tile.TileType))

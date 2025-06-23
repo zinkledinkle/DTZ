@@ -10,9 +10,7 @@
 
 	<!-- References -->
 	<ItemGroup>
-	  <None Remove="icon.png" />
-	  <None Remove="icon_small.png" />
-	  <None Remove="Localization\es-ES_Mods.DTZ.hjson" />
+		
 	</ItemGroup>
 
 </Project>

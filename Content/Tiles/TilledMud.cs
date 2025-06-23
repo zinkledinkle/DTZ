@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -27,6 +28,10 @@ namespace DTZ.Content.Tiles
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = fail ? 2 : 5;
+        }
+        public override IEnumerable<Item> GetItemDrops(int i, int j)
+        {
+            yield return new Item(ItemID.MudBlock, 1);
         }
     }
 }
