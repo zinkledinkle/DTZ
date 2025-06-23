@@ -1,4 +1,5 @@
 
+using DTZ.Content.Buffs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -88,7 +90,7 @@ namespace DTZ.Content.Projectiles
         {
             base.AI();
 
-
+            owner.AddBuff(ModContent.BuffType<ToadBuff>(), 2);
 
             //Main.NewText($"AI0: {Projectile.ai[0]} AI1: {Projectile.ai[3]} AI2: {Projectile.ai[4]}");
             /* Vanilla uses of projectile.AI[] || our use
@@ -114,6 +116,7 @@ namespace DTZ.Content.Projectiles
             {
                 Projectile.ai[5] = 0;
                 currentState = States.ability;
+                SoundEngine.PlaySound(new SoundStyle("DTZ/Assets/Sounds/ToadMushion3") with { PitchVariance = .16f }, Projectile.Center);
             }
 
             if (currentState == States.ability)
@@ -151,7 +154,8 @@ namespace DTZ.Content.Projectiles
                 {
                     if (Projectile.ai[4] == 0 && Projectile.ai[3] == 0)
                     {
-                        Projectile.velocity.Y -= 5;
+
+                        SoundEngine.PlaySound(new SoundStyle("DTZ/Assets/Sounds/ToadMushion2") with { PitchVariance = .16f }, Projectile.Center);
                     }
 
                     if (Projectile.ai[3]++ >= 8)
@@ -209,12 +213,13 @@ namespace DTZ.Content.Projectiles
                                 Projectile.ai[6] = 0;
                             }
                         }
-                        else if (Main.rand.NextBool(130) && Projectile.ai[4] == 0)
+                        else if (Main.rand.NextBool(200) && Projectile.ai[4] == 0)
                         {
                             Projectile.ai[4] = 1;
+                            SoundEngine.PlaySound(new SoundStyle("DTZ/Assets/Sounds/ToadMushion1") with { PitchVariance = .16f }, Projectile.Center);
                         }
 
-                        if (Projectile.ai[4] == 1 || Projectile.ai[4] == 2)
+                        if (Projectile.ai[4] == 1 || Projectile.ai[4] == 2 || Projectile.ai[4] == 3 || Projectile.ai[4] == 4)
                         {
                             if (Projectile.ai[3]++ >= 8)
                             {
@@ -287,13 +292,15 @@ namespace DTZ.Content.Projectiles
 
         public override void OnKill(int timeLeft)
         {
-            for(int i = 0; i < 8; i++)
+            SoundEngine.PlaySound(new SoundStyle("DTZ/Assets/Sounds/MushionPerish") with { PitchVariance = .16f }, Projectile.Center);
+
+            for (int i = 0; i < 8; i++)
             {
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Smoke);
             }
             for (int i = 0; i < 8; i++)
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GlowingMushroom);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RuneWizard);
             }
 
             for (int i = 0; i < 3; i++)

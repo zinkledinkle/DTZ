@@ -47,4 +47,28 @@ Projectiles: {
 	HellcapMushionProj.DisplayName: Hellcap Mushion Proj
 	IceliumMushion.DisplayName: Icelium Mushion
 	IceliumMushionProj.DisplayName: Icelium Mushion Proj
+	ToadMushion.DisplayName: Toad Mushion
+	ToadMushionProj.DisplayName: Toad Mushion Proj
+}
+
+Buffs: {
+	GlowingBuff: {
+		DisplayName: Glowing Buff
+		Description: Mods.DTZ.Buffs.GlowingBuff.Description
+	}
+
+	HellcapBuff: {
+		DisplayName: Hellcap Buff
+		Description: Mods.DTZ.Buffs.HellcapBuff.Description
+	}
+
+	IceliumBuff: {
+		DisplayName: Icelium Buff
+		Description: Mods.DTZ.Buffs.IceliumBuff.Description
+	}
+
+	ToadBuff: {
+		DisplayName: Toad Buff
+		Description: Mods.DTZ.Buffs.ToadBuff.Description
+	}
 }

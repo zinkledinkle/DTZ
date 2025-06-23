@@ -10,12 +10,17 @@
 
 	<!-- References -->
 	<ItemGroup>
+	  <None Remove="Content\Buffs\GlowingBuff.png" />
+	  <None Remove="Content\Buffs\HellcapBuff.png" />
+	  <None Remove="Content\Buffs\IceliumBuff.png" />
+	  <None Remove="Content\Buffs\ToadBuff.png" />
 	  <None Remove="Content\Projectiles\HellcapMushion.png" />
 	  <None Remove="Content\Projectiles\HellcapMushionProj.png" />
 	  <None Remove="Content\Projectiles\IceliumMushion.png" />
 	  <None Remove="Content\Projectiles\IceliumMushionProj.png" />
 	  <None Remove="Content\Projectiles\ToadMushion.png" />
 	  <None Remove="Content\Projectiles\ToadMushionProj.png" />
+	  <None Remove="icon_small.png" />
 	</ItemGroup>
 
 </Project>

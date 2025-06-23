@@ -1,4 +1,5 @@
 
+using DTZ.Content.Buffs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -88,7 +90,7 @@ namespace DTZ.Content.Projectiles
         {
             base.AI();
 
-
+            owner.AddBuff(ModContent.BuffType<GlowingBuff>(), 2);
 
             //Main.NewText($"AI0: {Projectile.ai[0]} AI1: {Projectile.ai[3]} AI2: {Projectile.ai[4]}");
             /* Vanilla uses of projectile.AI[] || our use
@@ -114,6 +116,7 @@ namespace DTZ.Content.Projectiles
             {
                 Projectile.ai[5] = 0;
                 currentState = States.ability;
+                SoundEngine.PlaySound(new SoundStyle("DTZ/Assets/Sounds/GlowingMushion3") with { PitchVariance = .16f }, Projectile.Center);
             }
 
             if (currentState == States.ability)
@@ -152,6 +155,7 @@ namespace DTZ.Content.Projectiles
                     if (Projectile.ai[4] == 0 && Projectile.ai[3] == 0)
                     {
                         Projectile.velocity.Y -= 5;
+                        SoundEngine.PlaySound(new SoundStyle("DTZ/Assets/Sounds/GlowingMushion2") with { PitchVariance = .16f }, Projectile.Center);
                     }
 
                     if (Projectile.ai[3]++ >= 8)
@@ -207,11 +211,13 @@ namespace DTZ.Content.Projectiles
                             {
                                 currentState = States.taunt;
                                 Projectile.ai[6] = 0;
+                                
                             }
                         }
-                        else if (Main.rand.NextBool(130) && Projectile.ai[4] == 0)
+                        else if (Main.rand.NextBool(200) && Projectile.ai[4] == 0)
                         {
                             Projectile.ai[4] = 1;
+                            SoundEngine.PlaySound(new SoundStyle("DTZ/Assets/Sounds/GlowingMushion1") with { PitchVariance = .16f }, Projectile.Center);
                         }
 
                         if (Projectile.ai[4] == 1 || Projectile.ai[4] == 2)
@@ -287,6 +293,8 @@ namespace DTZ.Content.Projectiles
 
         public override void OnKill(int timeLeft)
         {
+            SoundEngine.PlaySound(new SoundStyle("DTZ/Assets/Sounds/MushionPerish") with { PitchVariance = .16f }, Projectile.Center);
+
             for(int i = 0; i < 8; i++)
             {
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Smoke);
