@@ -27,8 +27,8 @@ namespace DTZ.Content.Items
 		public override void SetDefaults() {
 
 			Item.DefaultToFood(22, 22, BuffID.WellFed3, 28800);
-			Item.value = Item.buyPrice(0, 3);
-			Item.rare = ItemRarityID.Blue;
+            Item.value = Item.buyPrice(silver: 60);
+            Item.rare = ItemRarityID.Blue;
 		}
 
 		public override void OnConsumeItem(Player player) {
