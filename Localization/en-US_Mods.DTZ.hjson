@@ -74,12 +74,12 @@ Buffs: {
 
 	IceliumBuff: {
 		DisplayName: Freezing Familiar
-		Description: You feel increased defense!
+		Description: You feel increased defense effectivity!
 	}
 
 	ToadBuff: {
 		DisplayName: Croaking Familiar
-		Description: You feel increased agility!
+		Description: You feel increased jump and speed!
 	}
 }
 
