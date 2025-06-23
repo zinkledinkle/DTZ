@@ -43,4 +43,8 @@ Items: {
 Projectiles: {
 	GlowingMushion.DisplayName: Glowing Mushion
 	GlowingMushionProj.DisplayName: Glowing Mushion Proj
+	HellcapMushion.DisplayName: Hellcap Mushion
+	HellcapMushionProj.DisplayName: Hellcap Mushion Proj
+	IceliumMushion.DisplayName: Icelium Mushion
+	IceliumMushionProj.DisplayName: Icelium Mushion Proj
 }
