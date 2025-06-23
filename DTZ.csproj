@@ -10,7 +10,10 @@
 
 	<!-- References -->
 	<ItemGroup>
-		
+	  <None Remove="Content\Projectiles\HellcapMushion.png" />
+	  <None Remove="Content\Projectiles\HellcapMushionProj.png" />
+	  <None Remove="Content\Projectiles\IceliumMushion.png" />
+	  <None Remove="Content\Projectiles\IceliumMushionProj.png" />
 	</ItemGroup>
 
 </Project>
