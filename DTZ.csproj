@@ -27,7 +27,6 @@
 	  <None Remove="HeySiriTurnOnTheFilter\HowMuch.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\MajinPinkmanFried.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\Spudlet.png" />
-	  <None Remove="HeySiriTurnOnTheFilter\TerryMadeMeAddThis.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\WhenSomeoneTellsMeToStopShovingMightybeansUpMyTurdCutter.png" />
 	  <None Remove="icon_small.png" />
 	</ItemGroup>
