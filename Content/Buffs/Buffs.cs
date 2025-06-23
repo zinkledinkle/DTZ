@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DTZ.Content.Projectiles;
+using DTZ.Content.Tiles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +18,13 @@ namespace DTZ.Content.Buffs
         {
             player.lifeRegen += 5;
         }
+        public override bool RightClick(int buffIndex)
+        {
+            Projectile[] mushions = Main.projectile.Where(p => p.type == ModContent.ProjectileType<GlowingMushion>() && p.owner == Main.myPlayer).ToArray();
+            Projectile first = mushions.FirstOrDefault();
+            first?.Kill();
+            return base.RightClick(buffIndex);
+        }
     }
 
     public class HellcapBuff : ModBuff
@@ -24,12 +33,26 @@ namespace DTZ.Content.Buffs
         {
             player.GetCritChance(DamageClass.Generic) += 5;
         }
+        public override bool RightClick(int buffIndex)
+        {
+            Projectile[] mushions = Main.projectile.Where(p => p.type == ModContent.ProjectileType<HellcapMushion>() && p.owner == Main.myPlayer).ToArray();
+            Projectile first = mushions.FirstOrDefault();
+            first?.Kill();
+            return base.RightClick(buffIndex);
+        }
     }
     public class IceliumBuff : ModBuff
     {
         public override void Update(Player player, ref int buffIndex)
         {
             player.DefenseEffectiveness *= .90f; 
+        }
+        public override bool RightClick(int buffIndex)
+        {
+            Projectile[] mushions = Main.projectile.Where(p => p.type == ModContent.ProjectileType<IceliumMushion>() && p.owner == Main.myPlayer).ToArray();
+            Projectile first = mushions.FirstOrDefault();
+            first?.Kill();
+            return base.RightClick(buffIndex);
         }
     }
     public class ToadBuff : ModBuff
@@ -38,6 +61,13 @@ namespace DTZ.Content.Buffs
         {
             player.moveSpeed += .3f;
             player.jumpSpeedBoost += 3;
+        }
+        public override bool RightClick(int buffIndex)
+        {
+            Projectile[] mushions = Main.projectile.Where(p => p.type == ModContent.ProjectileType<ToadMushion>() && p.owner == Main.myPlayer).ToArray();
+            Projectile first = mushions.FirstOrDefault();
+            first?.Kill();
+            return base.RightClick(buffIndex);
         }
     }
 }

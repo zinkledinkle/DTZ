@@ -31,7 +31,7 @@ Items: {
 
 	Devnote: {
 		DisplayName: Dev Note
-		Tooltip: 
+		Tooltip:
 			'''
 			Thanks for playing Mycology, a mod made for the unofficial Tmod Jam! 
 			To discover what this mod has to offer, go pay the glowing mushroom biomes a visit! 
@@ -42,6 +42,26 @@ Items: {
 	Shiitake: {
 		DisplayName: Shiitake
 		Tooltip: "'No, there's no escargot.'"
+	}
+
+	PackedMud_item: {
+		DisplayName: Packed Mud
+		Tooltip: ""
+	}
+
+	HellcapSeeds: {
+		DisplayName: Hellcap Seeds
+		Tooltip: ""
+	}
+
+	IceliumSeeds: {
+		DisplayName: Icelium Seeds
+		Tooltip: ""
+	}
+
+	ToadstoolSeeds: {
+		DisplayName: Toadstool Seeds
+		Tooltip: ""
 	}
 }
 
@@ -79,3 +99,4 @@ Buffs: {
 }
 
 Biomes.Haven.TownNPCDialogueName: the Mushion Haven
+NPCs.LoneMushion.DisplayName: Lone Mushion

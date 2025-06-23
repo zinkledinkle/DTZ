@@ -20,6 +20,15 @@ namespace DTZ.UI
         private Vector2 Pos { get; set; } = Vector2.Zero;
         private float Progress { get; set; } = 0;
         private TileEntity lastTileEntity;
+
+        private static readonly HashSet<ushort> MushionTileTypes = new()
+        {
+            (ushort)ModContent.TileType<MushionSeedsTileHell>(),
+            (ushort)ModContent.TileType<MushionSeedsTileToad>(),
+            (ushort)ModContent.TileType<MushionSeedsTileIce>(),
+            (ushort)ModContent.TileType<MushionSeedsTileGlowing>(),
+        };
+
         public override void Update(GameTime gameTime)
         {
             Vector2 mouseScreen = Main.MouseScreen * Main.UIScale;
@@ -28,10 +37,10 @@ namespace DTZ.UI
 
             Point tileCoords = mouseWorldTransformed.ToTileCoordinates();
             Tile tile = Framing.GetTileSafely(mouseWorldTransformed.ToTileCoordinates());
-            if (tile.HasTile && tile.TileType == ModContent.TileType<MushionSeedsTile>())
+            if (tile.HasTile && MushionTileTypes.Contains(tile.TileType))
             {
-                Point topleft = MushionSeedsTile.GetTopLeft(tileCoords.X, tileCoords.Y);
-                if ((TileEntity.TryGet(new Point16(topleft), out TileEntity entity)) && entity is MushionSeedsGrowth mushionEntity)
+                Point topleft = MushionSeedsTileBase.GetTopLeft(tileCoords.X, tileCoords.Y);
+                if ((TileEntity.TryGet(new Point16(topleft), out TileEntity entity)) && entity is MushionSeedsGrowthBase mushionEntity)
                 {
                     if (lastTileEntity != mushionEntity) Size = 0;
                     lastTileEntity = mushionEntity;
@@ -84,7 +93,7 @@ namespace DTZ.UI
 
             if (PlayerInput.GetPressedKeys().Contains(Microsoft.Xna.Framework.Input.Keys.LeftShift))
             {
-                MushionSeedsGrowth m = lastTileEntity as MushionSeedsGrowth;
+                MushionSeedsGrowthBase m = lastTileEntity as MushionSeedsGrowthBase;
                 string text = String.Concat("ID: ", lastTileEntity.ID, ", Colony ID: ", m.colonyID);
                 Main.spriteBatch.DrawString(FontAssets.MouseText.Value, text, drawPos, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
             }

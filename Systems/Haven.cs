@@ -1,4 +1,5 @@
-﻿using DTZ.Content.Tiles;
+﻿using DTZ.Content.NPCs;
+using DTZ.Content.Tiles;
 using DTZ.Content.Tiles.Ambient;
 using Microsoft.Xna.Framework;
 using System;
@@ -9,11 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent.Personalities;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.IO;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 using Terraria.WorldBuilding;
 
 namespace DTZ.Systems
@@ -38,7 +41,24 @@ namespace DTZ.Systems
     }
     public class HavenSystem : ModSystem
     {
+        public override void SaveWorldData(TagCompound tag)
+        {
+            tag.Add("SpawnPositionForLoneMushion", SpawnPositionForLoneMushion);
+        }
+        public override void LoadWorldData(TagCompound tag)
+        {
+            SpawnPositionForLoneMushion = tag.Get<Vector2>("SpawnPositionForLoneMushion");
+        }
+        public override void OnWorldLoad()
+        {
+            if (!NPC.AnyNPCs(ModContent.NPCType<LoneMushion>()))
+            {
+                NPC.NewNPC(NPC.GetSource_NaturalSpawn(), (int)SpawnPositionForLoneMushion.X, (int)SpawnPositionForLoneMushion.Y, ModContent.NPCType<LoneMushion>());
+            }
+        }
+
         public int MushionGrassCount;
+        public static Vector2 SpawnPositionForLoneMushion;
         public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
         {
             MushionGrassCount = tileCounts[ModContent.TileType<MushionGrass>()];
@@ -49,18 +69,6 @@ namespace DTZ.Systems
             if (mushroomIndex != -1)
             {
                 tasks.Insert(mushroomIndex+1, new HavenGenPass("Mushion Haven pass", 100f));
-            }
-        }
-        public override void PostUpdateInput()
-        {
-            if (PlayerInput.GetPressedKeys().Contains(Microsoft.Xna.Framework.Input.Keys.OemTilde))
-            {
-                HavenGenPass.Generate();
-            }
-            if (PlayerInput.GetPressedKeys().Contains(Microsoft.Xna.Framework.Input.Keys.P))
-            {
-                Point pos = (Main.LocalPlayer.Center + new Vector2(0, 8)).ToTileCoordinates();
-                WorldGen.PlaceTile(pos.X, pos.Y, ModContent.TileType<HavenShroomBig>());
             }
         }
         private static readonly List<(int, int, int, int)> ChestLoot = new()
@@ -81,10 +89,19 @@ namespace DTZ.Systems
             public static void Generate()
             {
                 minibiomes = new();
+                Vector2 center = new(Main.maxTilesX / 2, Main.maxTilesY/6);
                 List<Vector2> biomes = FindMushroomBiomes();
+                Vector2 closest = biomes.OrderBy(biome =>
+                {
+                    float dx = biome.X - center.X;
+                    float dy = biome.Y - center.Y;
+                    return 2 * Math.Abs(dx) + Math.Abs(dy);
+                })
+                .FirstOrDefault();
+
                 foreach (Vector2 biome in biomes)
                 {
-                    if (WorldGen.genRand.NextBool(2, 5)) continue;
+                    if (WorldGen.genRand.NextBool(2, 5) && biome != closest) continue;
 
                     int width = WorldGen.genRand.Next(80, 120);
                     int height = WorldGen.genRand.Next(30, 60);
@@ -97,11 +114,13 @@ namespace DTZ.Systems
                     Smooth((int)start.X, (int)start.Y, width, height); 
                     Reframe((int)start.X, (int)start.Y, width, height);
                     Vegetate((int)start.X, (int)start.Y, width, height);
+
+                    if (biome == closest)
+                    {
+                        Structure((int)start.X, (int)start.Y);
+                    }
                 }
                 grassify(); //do this seperately, not per biome, since it checks all biomes itself
-                Vector2 center = new(Main.maxTilesX / 2, 0);
-                Vector2 firstBiome = minibiomes.Keys.OrderBy(biome => biome.Distance(center)).FirstOrDefault();
-                Structure((int)firstBiome.X, (int)firstBiome.Y);
             }
             public static void Clear(int cX, int cY, int rX, int rY)
             {
@@ -264,11 +283,13 @@ namespace DTZ.Systems
             }
             private static void Structure(int x, int cY)
             {
-                for (int y = cY; y < cY + 100; y++)//fix parameters later, was doing something different before
+                for (int y = cY + 25; y < cY + 100; y++)
                 {
                     Tile tile = Framing.GetTileSafely(x, y);
-                    if (tile.HasTile) {
+                    Tile tile2 = Framing.GetTileSafely(x, y+1);
+                    if (tile.HasTile && tile2.HasTile) {
                         StructureSystem.PlaceStructure("ShroomThing", new Point(x - 14, y - 6), ChestLoot);
+                        SpawnPositionForLoneMushion = new Vector2(x - 4, y - 3);
                         break;
                     }
                 }

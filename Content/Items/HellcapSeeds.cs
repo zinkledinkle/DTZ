@@ -10,16 +10,24 @@ using Terraria.ModLoader;
 
 namespace DTZ.Content.Items
 {
-    public class MushionSeeds : ModItem
+    public class HellcapSeeds : ModItem
     {
         public override void SetDefaults()
         {
             Item.width = 20;
-            Item.height = 24;
+            Item.height = 22;
             Item.rare = ItemRarityID.Blue;
             Item.maxStack = 9999;
             Item.value = Item.buyPrice(gold: 1);
-            Item.DefaultToPlaceableTile(ModContent.TileType<MushionSeedsTileGlowing>());
+            Item.DefaultToPlaceableTile(ModContent.TileType<MushionSeedsTileHell>());
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+                .AddIngredient<MushionSeeds>()
+                .AddIngredient<Hellcap>()
+                .AddTile(TileID.WorkBenches)
+                .Register();
         }
     }
 }

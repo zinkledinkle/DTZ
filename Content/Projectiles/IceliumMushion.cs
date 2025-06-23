@@ -43,8 +43,9 @@ namespace DTZ.Content.Projectiles
         {
             base.OnSpawn(source);
 
+            owner = Main.player[Projectile.owner];
             //For testing purposes. When we get these things spawning from the tiles this wont be neccessary
-            if(owner == null)
+            if (owner == null)
             {
                 owner = Main.LocalPlayer;
             }

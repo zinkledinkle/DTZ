@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using DTZ.Content.Projectiles;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
 using System;
@@ -11,6 +12,7 @@ using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameContent;
 using Terraria.GameContent.UI.States;
+using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -20,7 +22,7 @@ using static System.Net.WebRequestMethods;
 
 namespace DTZ.Content.Tiles
 {
-    public class MushionSeedsGrowth : ModTileEntity
+    public abstract class MushionSeedsGrowthBase : ModTileEntity
     {
         public int phase = 0;
         public float growth = 0;
@@ -29,13 +31,19 @@ namespace DTZ.Content.Tiles
         public int owner;
         public int colonyID = 0;
         public Color glowColor;
-        public MushionSeedsGrowth()
+        protected Color baseColor;
+        public string ownerName;
+
+        protected abstract Color DefaultBaseColor { get; }
+        protected abstract int ProjectileID { get; }
+        public MushionSeedsGrowthBase()
         {
             growRate = Main.rand.Next(3000, 4200);
+            baseColor = DefaultBaseColor;
         }
         public override bool IsTileValidForEntity(int x, int y)
         {
-            return Framing.GetTileSafely(x, y).TileType == ModContent.TileType<MushionSeedsTile>();
+            return Framing.GetTileSafely(x, y).TileType == ModContent.TileType<MushionSeedsTileBase>();
         }
         public static bool HasMud(int i, int j)
         {
@@ -50,7 +58,7 @@ namespace DTZ.Content.Tiles
             int mudTiles = tiles.Where(tile => tile.HasTile && (tile.TileType == tilledMud)).Count();
             return mudTiles == 4;
         }
-        public static bool HasHeadroom(int i, int j) //call from the bottom left corner
+        public bool HasHeadroom(int i, int j) //call from the bottom left corner
         {
             Tile[] tiles =
             [
@@ -62,6 +70,15 @@ namespace DTZ.Content.Tiles
             int airTiles = tiles.Where(tile => !tile.HasTile).Count();
             return airTiles == 4;
         }
+        private bool grown = false;
+        public static readonly int[] projectileTypes = new[]
+        {
+            ModContent.ProjectileType<GlowingMushion>(),
+            ModContent.ProjectileType<IceliumMushion>(),
+            ModContent.ProjectileType<HellcapMushion>(),
+            ModContent.ProjectileType<ToadMushion>(),
+        };
+        private bool clickDebounce = false;
         public override void Update()
         {
             phase = (int)Math.Floor(growth);
@@ -73,19 +90,41 @@ namespace DTZ.Content.Tiles
                 colonyID = colony.Id;
             }
 
-            if (!MushionColonySystem.IsValidForGrowing(Position.X, Position.Y))
+            if (!MushionColonySystem.IsValidForGrowing(Position.X, Position.Y) && growth < 3.999f)
             {
                 growth = Math.Max(growth - 40f / growRate, 0);
                 return;
             }
 
-            growth = Math.Min(growth + 5f / growRate, 3.99f);
+            growth = Math.Min(growth + 5f / growRate, 3.999f);
+            Player plr = Main.player.FirstOrDefault(p => p.name == ownerName);
+
+            if (growth >= 3.999f && !grown)
+            {
+                if (plr == null) return;
+                CombatText.NewText(plr.Hitbox, Color.White, "Your Mushion has grown!", false, false);
+                grown = true;
+            }
+            if (Main.MouseWorld.Distance(Position.ToWorldCoordinates(16, 16)) < 20 && Main.mouseRight && !clickDebounce)
+            {
+                int Mushions = Main.projectile.Where(proj => proj.active && proj.owner == plr.whoAmI && projectileTypes.Contains(proj.type)).Count();
+                if (Mushions < 3)
+                {
+                    Projectile.NewProjectile(plr.GetSource_FromThis(), Position.ToWorldCoordinates(16, 16), new Vector2(0, -5), ProjectileID, 1, 0, plr.whoAmI);
+                    WorldGen.KillTile(Position.X, Position.Y, false, false, true);
+                } else
+                {
+                    CombatText.NewText(plr.Hitbox, Color.White, "You can only have up to 3 mushions at one time!", false, false);
+                }
+                clickDebounce = true;
+            }
+            if (!Main.mouseRight) clickDebounce = false;
 
             NetMessage.SendData(MessageID.TileEntitySharing, number: ID); //been told this is important for tileEntities 
 
-            glowColor = Color.LightSkyBlue;
+            glowColor = baseColor;
             float amount = MathHelper.Lerp(0.25f, 0.75f, growth / 4);
-            amount = MushionSeedsTile.GlowAlpha(amount) * 0.5f;
+            amount = MushionSeedsTileBase.GlowAlpha(amount) * 0.5f;
             glowColor *= colony.GlowModifier * amount;
         }
         public override void SaveData(TagCompound tag)
@@ -93,24 +132,39 @@ namespace DTZ.Content.Tiles
             tag[nameof(growth)] = growth;
             tag[nameof(growRate)] = growRate;
             tag[nameof(owner)] = owner;
+            tag[nameof(ownerName)] = ownerName;
         }
         public override void LoadData(TagCompound tag)
         {
             growth = tag.GetFloat(nameof(growth));
             growRate = tag.GetInt(nameof(growRate));
             owner = tag.GetInt(nameof(owner));
+            ownerName = tag.GetString(nameof(ownerName));
         }
         public override void NetSend(BinaryWriter writer) => writer.Write(growth);
         public override void NetReceive(BinaryReader reader) => growth = reader.ReadSingle();
     }
-    public class MushionSeedsTile : ModTile
+    public abstract class MushionSeedsTileBase : ModTile
     {
         public override void Load()
         {
             On_Main.DrawTiles += DrawGlow;
+            On_Player.PlaceThing_Tiles_PlaceIt += StorePlayer;
         }
-        public override string Texture => "DTZ/Content/Tiles/MushionSeedsGrowth_sheet";
-        public override bool CanPlace(int i, int j) => MushionSeedsGrowth.HasMud(i, j);
+        public override void Unload()
+        {
+            On_Main.DrawTiles -= DrawGlow;
+            On_Player.PlaceThing_Tiles_PlaceIt -= StorePlayer;
+        }
+        protected string OwnerName;
+        private TileObject StorePlayer(On_Player.orig_PlaceThing_Tiles_PlaceIt orig, Player self, bool newObjectType, TileObject data, int tileToCreate)
+        {
+            if (data.type == Type) OwnerName = self.name;
+            return orig(self, newObjectType, data, tileToCreate);
+        }
+
+        public abstract override string Texture { get; }
+        public override bool CanPlace(int i, int j) => MushionSeedsGrowthBase.HasMud(i, j);
         public override void SetStaticDefaults()
         {
             Main.tileFrameImportant[Type] = true;
@@ -121,13 +175,18 @@ namespace DTZ.Content.Tiles
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 
             TileObjectData.newTile.StyleHorizontal = false;
-            TileObjectData.newTile.HookPostPlaceMyPlayer = ModContent.GetInstance<MushionSeedsGrowth>().Generic_HookPostPlaceMyPlayer;
+            TileObjectData.newTile.HookPostPlaceMyPlayer = GetTileEntityInstance().Generic_HookPostPlaceMyPlayer;
 
             TileObjectData.addTile(Type);
         }
+        public override bool CanDrop(int i, int j)
+        {
+            return false;
+        }
+        protected abstract MushionSeedsGrowthBase GetTileEntityInstance();
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            ModContent.GetInstance<MushionSeedsGrowth>().Kill(i, j);
+            GetTileEntityInstance().Kill(i, j);
         }
         public static Point GetTopLeft(int i, int j)
         {
@@ -144,7 +203,7 @@ namespace DTZ.Content.Tiles
 
             return MathHelper.Lerp(modifier / 2, modifier, alpha);
         }
-        private static Color glowColor;
+        protected Color glowColor;
         public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
         {
             offsetY += 4;
@@ -152,23 +211,24 @@ namespace DTZ.Content.Tiles
             int phase = GetPhaseFromCoordinates(i, j);
             GetFrameYOffset(ref tileFrameY, 34, phase);
         }
-        public static void GetFrameYOffset(ref short frameY, int frameHeight, int phase)
+        public void GetFrameYOffset(ref short frameY, int frameHeight, int phase)
         {
             frameY += (short)(phase * frameHeight);
         }
-        public static int GetPhaseFromCoordinates(int x, int y)
+        public int GetPhaseFromCoordinates(int x, int y)
         {
             var topleft = GetTopLeft(x, y);
-            if (TileEntity.TryGet(topleft.X, topleft.Y, out MushionSeedsGrowth entity))
+            if (TileEntity.TryGet(topleft.X, topleft.Y, out MushionSeedsGrowthBase entity))
             {
                 glowColor = entity.glowColor; //just doing this here for convenience
+                if (entity.ownerName is "" or null) entity.ownerName = OwnerName;
                 return entity.phase;
             }
             return 0;
         }
         public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
         {
-            return false;
+            return true;
         }
         private void DrawGlow(On_Main.orig_DrawTiles orig, Main self, bool solidLayer, bool forRenderTargets, bool intoRenderTargets, int waterStyleOverride)
         {
@@ -179,15 +239,17 @@ namespace DTZ.Content.Tiles
             int maxX = minX + Main.screenWidth / 16 + 1;
             int minY = Main.screenPosition.ToPoint().Y / 16 - 1;
             int maxY = minY + Main.screenHeight / 16 + 1;
-            int Type = ModContent.TileType<MushionSeedsTile>();
-            Texture2D tex = ModContent.Request<Texture2D>(Texture).Value; //ignore the file name please
-            Texture2D glowTex = ModContent.Request<Texture2D>(Texture + "_glow").Value; //ignore the file name please
+            int Type = ModContent.TileType<MushionSeedsTileBase>();
+
             for (int x = minX; x < maxX; x++)
             {
                 for (int y = minY; y < maxY; y++)
                 {
                     Tile tile = Framing.GetTileSafely(x, y);
-                    if (tile.TileType != Type || !tile.HasTile) continue;
+                    if (!tile.HasTile) continue;
+
+                    ModTile modTile = TileLoader.GetTile(tile.TileType);
+                    if (modTile is not MushionSeedsTileBase mTile) continue;
 
                     int glowFrameX = tile.TileFrameX / 18;
                     glowFrameX *= 26;
@@ -205,6 +267,10 @@ namespace DTZ.Content.Tiles
                     Rectangle glowSource = new(glowFrameX, glowFrameY, 26, 26);
                     if (glowFrameX == 0) glowPos.X -= 8;
                     if (tile.TileFrameY == 0) glowPos.Y -= 8;
+
+                    Texture2D tex = ModContent.Request<Texture2D>(mTile.Texture).Value;
+                    Texture2D glowTex = ModContent.Request<Texture2D>(mTile.Texture + "_glow").Value;
+
                     Main.spriteBatch.Draw(glowTex, glowPos, glowSource, glowColor, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
                 }
             }
@@ -215,7 +281,11 @@ namespace DTZ.Content.Tiles
                 for (int y = minY; y < maxY; y++)
                 {
                     Tile tile = Framing.GetTileSafely(x, y);
-                    if (tile.TileType != Type || !tile.HasTile) continue;
+                    if (!tile.HasTile) continue;
+
+                    ModTile modTile = TileLoader.GetTile(tile.TileType);
+                    if (modTile is not MushionSeedsTileBase mTile) continue;
+
                     Vector2 zero = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
                     Vector2 drawPos = new Vector2(x * 16, y * 16) - Main.screenPosition + zero;
                     drawPos.Y += 4;
@@ -227,6 +297,9 @@ namespace DTZ.Content.Tiles
                     Rectangle source = new(frameX, frameY, 16, 16);
                     Color color = Lighting.GetColor(x, y);
                     color.MultiplyRGB(new Color(2,2,2));
+
+                    Texture2D tex = ModContent.Request<Texture2D>(mTile.Texture).Value;
+                    Texture2D glowTex = ModContent.Request<Texture2D>(mTile.Texture + "_glow").Value;
                     Main.spriteBatch.Draw(tex, drawPos, source, color, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
                 }
             }
@@ -244,18 +317,24 @@ namespace DTZ.Content.Tiles
         public int Size => Members.Count;
         public Color GlowColor { get; set; }
         public float GlowModifier { get; set; } = 0;
-        public int Leader => Members.OrderBy(m => ((MushionSeedsGrowth)m).growth).FirstOrDefault()?.ID ?? -1; //get highest growth as 'leader'
+        public int Leader => Members.OrderBy(m => ((MushionSeedsGrowthBase)m).growth).FirstOrDefault()?.ID ?? -1; //get highest growth as 'leader'
         public void Update()
         {
             GlowModifier = MathHelper.Lerp(GlowModifier, Members.Count < 3 ? 0 : 0.9f, 0.15f);
             if (Members.Count == 0) return;
+
+            Vector3 colorSum = Vector3.Zero;
+
             foreach (TileEntity member in Members)
             {
-                if (member is MushionSeedsGrowth mushion)
+                if (member is MushionSeedsGrowthBase mushion)
                 {
                     mushion.colonyID = Id;
+                    colorSum += mushion.glowColor.ToVector3();
                 }
             }
+            Vector3 normalizedColor = colorSum / Members.Count;
+            GlowColor = new Color(normalizedColor);
         }
     }
     public class MushionColonySystem : ModSystem
@@ -268,7 +347,7 @@ namespace DTZ.Content.Tiles
         {
             List<Point> chunk = ConnectedTiles(x, y + 2);
             List<TileEntity> entities = ColonyCount(chunk)
-                .Where(e => e is MushionSeedsGrowth)
+                .Where(e => e is MushionSeedsGrowthBase)
                 .ToList();
             int? lowestColonyId = entities
                 .Select(e => Colonies.TryGetValue(e.ID, out var c) ? c.Id : (int?)null)
@@ -285,7 +364,7 @@ namespace DTZ.Content.Tiles
             foreach (var entity in entities)
             {
                 colony.AddMember(entity);
-                if (entity is MushionSeedsGrowth mushion)
+                if (entity is MushionSeedsGrowthBase mushion)
                 {
                     mushion.colonyID = colonyId;
                 }
@@ -403,7 +482,7 @@ namespace DTZ.Content.Tiles
             List<TileEntity> tiles = [];
             foreach (var point in chunk)
             {
-                if ((TileEntity.ByPosition.TryGetValue(new Point16(point.X, point.Y-2), out TileEntity entity)) && entity is MushionSeedsGrowth)
+                if ((TileEntity.ByPosition.TryGetValue(new Point16(point.X, point.Y-2), out TileEntity entity)) && entity is MushionSeedsGrowthBase)
                 {
                     tiles.Add(entity);
                 }
@@ -416,7 +495,7 @@ namespace DTZ.Content.Tiles
             List<TileEntity> tiles = [];
             foreach (var point in chunk)
             {
-                if ((TileEntity.ByPosition.TryGetValue(new Point16(point.X, point.Y - 2), out TileEntity entity)) && entity is MushionSeedsGrowth)
+                if ((TileEntity.ByPosition.TryGetValue(new Point16(point.X, point.Y - 2), out TileEntity entity)) && entity is MushionSeedsGrowthBase)
                 {
                     tiles.Add(entity);
                 }

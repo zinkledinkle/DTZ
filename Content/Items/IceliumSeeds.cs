@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace DTZ.Content.Items
 {
-    public class MushionSeeds : ModItem
+    public class IceliumSeeds : ModItem
     {
         public override void SetDefaults()
         {
@@ -19,7 +19,15 @@ namespace DTZ.Content.Items
             Item.rare = ItemRarityID.Blue;
             Item.maxStack = 9999;
             Item.value = Item.buyPrice(gold: 1);
-            Item.DefaultToPlaceableTile(ModContent.TileType<MushionSeedsTileGlowing>());
+            Item.DefaultToPlaceableTile(ModContent.TileType<MushionSeedsTileIce>());
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+                .AddIngredient<MushionSeeds>()
+                .AddIngredient<IceshroomItem>()
+                .AddTile(TileID.WorkBenches)
+                .Register();
         }
     }
 }

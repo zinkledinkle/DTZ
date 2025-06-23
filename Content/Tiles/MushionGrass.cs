@@ -26,6 +26,8 @@ namespace DTZ.Content.Tiles
             Main.tileBlockLight[Type] = true;
             Main.tileSolid[Type] = true;
             TileID.Sets.Conversion.JungleGrass[Type] = true;
+            Main.tileMerge[Type][ModContent.TileType<TilledMud>()] = true;
+            Main.tileMerge[ModContent.TileType<TilledMud>()][Type] = true;
 
             MineResist = 0.5f;
             HitSound = SoundID.Dig;
