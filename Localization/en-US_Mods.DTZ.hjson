@@ -24,3 +24,8 @@ Items: {
 		Tooltip: ""
 	}
 }
+
+Projectiles: {
+	GlowingMushion.DisplayName: Glowing Mushion
+	GlowingMushionProj.DisplayName: Glowing Mushion Proj
+}

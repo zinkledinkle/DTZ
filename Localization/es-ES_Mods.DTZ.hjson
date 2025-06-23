@@ -1,0 +1,31 @@
+Items: {
+	Mushcythe: {
+		DisplayName: Hoz de Champiñon
+		Tooltip: Usado para cultivar a champiñeros
+	}
+
+	Hellcap: {
+		DisplayName: Tapa Infierna
+		Tooltip: ""
+	}
+
+	IceshroomItem: {
+		DisplayName: Micielo
+		Tooltip: ""
+	}
+
+	Toadstool: {
+		DisplayName: Seta Venenosa
+		Tooltip: ""
+	}
+
+	MushionSeeds: {
+		DisplayName: Semillas de Champiñeros
+		Tooltip: ""
+	}
+}
+
+Projectiles: {
+	// GlowingMushion.DisplayName: Glowing Mushion
+	// GlowingMushionProj.DisplayName: Glowing Mushion Proj
+}
