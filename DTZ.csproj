@@ -20,6 +20,15 @@
 	  <None Remove="Content\Projectiles\IceliumMushionProj.png" />
 	  <None Remove="Content\Projectiles\ToadMushion.png" />
 	  <None Remove="Content\Projectiles\ToadMushionProj.png" />
+	  <None Remove="HeySiriTurnOnTheFilter\ArctanYourTimeIsAlmostUp.png" />
+	  <None Remove="HeySiriTurnOnTheFilter\ExslueterraAfterOneCenturyEgg.png" />
+	  <None Remove="HeySiriTurnOnTheFilter\FeelingCuteToday.png" />
+	  <None Remove="HeySiriTurnOnTheFilter\HerMightyPharoess.png" />
+	  <None Remove="HeySiriTurnOnTheFilter\HowMuch.png" />
+	  <None Remove="HeySiriTurnOnTheFilter\MajinPinkmanFried.png" />
+	  <None Remove="HeySiriTurnOnTheFilter\Spudlet.png" />
+	  <None Remove="HeySiriTurnOnTheFilter\TerryMadeMeAddThis.png" />
+	  <None Remove="HeySiriTurnOnTheFilter\WhenSomeoneTellsMeToStopShovingMightybeansUpMyTurdCutter.png" />
 	  <None Remove="icon_small.png" />
 	</ItemGroup>
 
