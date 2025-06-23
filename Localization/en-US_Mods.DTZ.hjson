@@ -6,22 +6,22 @@ Items: {
 
 	Hellcap: {
 		DisplayName: Hellcap
-		Tooltip: ""
+		Tooltip: 'Hot to the touch'
 	}
 
 	IceshroomItem: {
 		DisplayName: Icelium
-		Tooltip: ""
+		Tooltip: 'This ice cap isn't melting'
 	}
 
 	Toadstool: {
 		DisplayName: Toadstool
-		Tooltip: ""
+		Tooltip: 'Where's the princess?'
 	}
 
 	MushionSeeds: {
 		DisplayName: Mushion Seeds
-		Tooltip: ""
+		Tooltip: Can be planted on tilled mud
 	}
 
 	SUPERMEGAULTRADEBUGITEM9000: {
