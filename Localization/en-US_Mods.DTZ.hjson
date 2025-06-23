@@ -6,17 +6,17 @@ Items: {
 
 	Hellcap: {
 		DisplayName: Hellcap
-		Tooltip: 'Hot to the touch'
+		Tooltip: "'Hot to the touch'"
 	}
 
 	IceshroomItem: {
 		DisplayName: Icelium
-		Tooltip: 'This ice cap isn't melting'
+		Tooltip: "'This ice cap isn't melting'"
 	}
 
 	Toadstool: {
 		DisplayName: Toadstool
-		Tooltip: 'Where's the princess?'
+		Tooltip: "'Where's the princess?'"
 	}
 
 	MushionSeeds: {
@@ -26,7 +26,17 @@ Items: {
 
 	SUPERMEGAULTRADEBUGITEM9000: {
 		DisplayName: S U P E R M E G A U L T R A D E B U G I T E M9000
-		Tooltip: use if you dfare....
+		Tooltip: I AM NOT STINKY
+	}
+
+	Devnote: {
+		DisplayName: Dev Note
+		Tooltip:
+			'''
+			Thanks for playing Mycology, a mod made for the unofficial Tmod Jam! 
+			To discover what this mod has to offer, go pay the glowing mushroom biomes a visit! 
+			We hope you enjoy.
+			'''
 	}
 
 	PackedMud_item: {
