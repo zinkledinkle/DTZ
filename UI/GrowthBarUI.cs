@@ -10,6 +10,7 @@ using Terraria.DataStructures;
 using System;
 using Terraria.ID;
 using ReLogic.Graphics;
+using Terraria.GameInput;
 
 namespace DTZ.UI
 {
@@ -81,9 +82,12 @@ namespace DTZ.UI
             spriteBatch.Draw(TextureAssets.MagicPixel.Value, fade, color * 0.5f);
             spriteBatch.Draw(TextureAssets.MagicPixel.Value, rect, color);
 
-            MushionSeedsGrowth m = lastTileEntity as MushionSeedsGrowth;
-            string text = String.Concat("ID: ", lastTileEntity.ID, ", Colony ID: ", m.colonyID);
-            Main.spriteBatch.DrawString(FontAssets.MouseText.Value, text, drawPos, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
+            if (PlayerInput.GetPressedKeys().Contains(Microsoft.Xna.Framework.Input.Keys.LeftShift))
+            {
+                MushionSeedsGrowth m = lastTileEntity as MushionSeedsGrowth;
+                string text = String.Concat("ID: ", lastTileEntity.ID, ", Colony ID: ", m.colonyID);
+                Main.spriteBatch.DrawString(FontAssets.MouseText.Value, text, drawPos, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
+            }
         }
     }
     public class GrowthBarUISystem : ModSystem

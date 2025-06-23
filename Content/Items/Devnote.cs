@@ -19,5 +19,14 @@ namespace DTZ.Content.Items
             Item.value = Item.buyPrice(silver: 5);
             Item.maxStack = 9999;
         }
+
+        private class DevnoteSpawn : ModPlayer
+        {
+            public override void ModifyStartingInventory(IReadOnlyDictionary<string, List<Item>> itemsByMod, bool mediumCoreDeath)
+            {
+                Item devnoteItem = new Item(ModContent.ItemType<Devnote>());
+                itemsByMod["Mycology"].Add(devnoteItem);
+            }
+        }
     }
 }

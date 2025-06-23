@@ -60,7 +60,7 @@ namespace DTZ.Content.Items
                     //bool flag2 = !Main.tile[x - 1, y - 1].HasTile || !Main.tile[x - 1, y + 1].HasTile || !Main.tile[x + 1, y + 1].HasTile || !Main.tile[x + 1, y - 1].HasTile;
                     //these flags are completely ripped from terraria source to make it consistent, genuinely no idea what they do. best guess is checking for air adjacent blocks rather than ones naturally out of reach
                     //yeah it seems that at the very least the second one is checking topmost/air adjacent tiles, which makes sense for the staff of regrowth but not here
-                    bool isMud = tile.TileType is TileID.Mud or TileID.MushroomGrass or TileID.JungleGrass; //prob shouldve used a list but eh
+                    bool isMud = TillableIDsAndDust.ContainsKey(tile.TileType); //prob shouldve used a list but eh
                     bool hasTree = Framing.GetTileSafely(x, y - 1).TileType == TileID.Trees;
                     if (isMud && (flag || (isMud)) && !hasTree)
                     {
@@ -132,24 +132,27 @@ namespace DTZ.Content.Items
             Item.useStyle = ItemUseStyleID.Swing;
             Item.value = Item.buyPrice(silver: 10);
         }
+        private static readonly Dictionary<int, int> TillableIDsAndDust = new()
+        {
+            { TileID.Mud, DustID.Mud },
+            { TileID.MushroomGrass, DustID.MushroomSpray },
+            { TileID.JungleGrass, DustID.JungleGrass },
+            { ModContent.TileType<PackedMud>(), DustID.Mud },
+            { ModContent.TileType<MushionGrass>(), DustID.MushroomSpray }
+        };
         public override bool? UseItem(Player player)
         {
             Point16 tileCoords = Main.SmartCursorIsUsed ? new Point16(Main.SmartCursorX, Main.SmartCursorY) : Main.MouseWorld.ToTileCoordinates16();
             Tile tile = Framing.GetTileSafely(tileCoords);
             int type = tile.TileType;
-            if (type is TileID.Mud or TileID.MushroomGrass or TileID.JungleGrass)
+            if (TillableIDsAndDust.ContainsKey(type))
             {
                 tile.TileType = (ushort)ModContent.TileType<TilledMud>();
                 SoundEngine.PlaySound(SoundID.Grass, Main.MouseWorld);
                 for (int i = 0; i < Main.rand.Next(1, 4); i++) {
                     Vector2 vel = -Main.rand.NextVector2Unit(MathHelper.PiOver4, MathHelper.PiOver2) * 2;
-                    var dustType = type switch
-                    {
-                        TileID.Mud => DustID.Mud,
-                        TileID.MushroomGrass => DustID.MushroomSpray,
-                        _ => (int)DustID.JungleGrass,
-                    };
-                    Dust.NewDust(tileCoords.ToWorldCoordinates(), 16, 1, dustType, vel.X, vel.Y);
+
+                    Dust.NewDust(tileCoords.ToWorldCoordinates(), 16, 1, TillableIDsAndDust[type], vel.X, vel.Y);
                 }
                 NetMessage.SendTileSquare(-1, tileCoords.X, tileCoords.Y);
 
@@ -162,6 +165,7 @@ namespace DTZ.Content.Items
                     }
                 } 
             }
+
             return true;
         }
         public override void AddRecipes()

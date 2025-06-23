@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace DTZ.Content.Tiles
@@ -24,7 +25,11 @@ namespace DTZ.Content.Tiles
 
             Main.tileMerge[Type][TileID.Stone] = true;
             Main.tileMerge[TileID.Stone][Type] = true;
+            Main.tileMerge[Type][TileID.Mud] = true;
+            Main.tileMerge[TileID.Mud][Type] = true;
             Main.tileMerge[Type][ModContent.TileType<MushionGrass>()] = true;
+
+            AddMapEntry(new Microsoft.Xna.Framework.Color(0.361f, 0.267f, 0.286f), Language.GetText("packedmudmapentry"));
         }
         public override IEnumerable<Item> GetItemDrops(int i, int j)
         {

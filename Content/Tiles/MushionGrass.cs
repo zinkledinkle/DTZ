@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace DTZ.Content.Tiles
@@ -28,6 +29,8 @@ namespace DTZ.Content.Tiles
 
             MineResist = 0.5f;
             HitSound = SoundID.Dig;
+
+            AddMapEntry(new Microsoft.Xna.Framework.Color(0.271f, 0.282f, 0.761f), Language.GetText("mushiongrassmapentry"));
         }
         public override IEnumerable<Item> GetItemDrops(int i, int j)
         {
@@ -35,8 +38,8 @@ namespace DTZ.Content.Tiles
         }
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
-            b += 0.3f;
-            r += 0.1f;
+            b += 0.5f;
+            r += 0.2f;
         }
     }
 }

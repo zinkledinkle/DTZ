@@ -175,16 +175,32 @@ namespace DTZ.Systems
             };
             return data;
         }
-        public static Chest ChestFromData(ChestData data, int x, int y)
+        public static Chest ChestFromData(ChestData data, int x, int y, List<(int,int,int,int)>? chestLoot = null)
         {
             if (data == null) return null;
 
             int index = WorldGen.PlaceChest(x + data.X, y + data.Y+1, 21, false, (ushort)data.Style);
             Chest chest = Main.chest[index];
-            for (int i = 0; i < data.Item.Length; i++)
+                
+            if (chestLoot != null)
             {
-                chest.item[i] = data.Item[i]?.ItemFromData();
+                int slot = 0;
+                foreach (var item in chestLoot)
+                {
+                    if (Main.rand.NextBool(item.Item4))
+                    {
+                        chest.item[slot] = new Item(item.Item1, Main.rand.Next(item.Item2, item.Item3), -1);
+                        slot++;
+                    }
+                }
+            } else
+            {
+                for (int i = 0; i < data.Item.Length; i++)
+                {
+                    chest.item[i] = data.Item[i]?.ItemFromData();
+                }
             }
+
             chest.name = data.Name;
             return chest;
         }
@@ -267,11 +283,13 @@ namespace DTZ.Systems
 
         private static StructureData LoadStructure(string name)
         {
-            string json = File.ReadAllText(Path.Combine(Main.SavePath, name + ".json"));
+            byte[] fileBytes = ModContent.GetFileBytes("DTZ/" + name + ".json");
+            if (fileBytes == null) return null;
+            string json = Encoding.UTF8.GetString(fileBytes);
             return JsonSerializer.Deserialize<StructureData>(json);
         }
 
-        public static void PlaceStructure(string name, Point pos)
+        public static void PlaceStructure(string name, Point pos, List<(int,int,int,int)>? chestLoot = null)
         {
             StructureData structure = LoadStructure(name);
             if (structure == null) return;
@@ -291,8 +309,27 @@ namespace DTZ.Systems
                         WorldGen.Reframe(pos.X + x, pos.Y + y);
                         continue;
                     }
-                    targetTile.CopyFrom(sourceTile);
-                    WorldGen.Reframe(pos.X + x, pos.Y + y);
+                    if (Main.tileFrameImportant[sourceTile.TileType] && sourceTile.TileFrameX == 0 && sourceTile.TileFrameY == 0)
+                    {
+                        WorldGen.PlaceTile(x, y, sourceTile.TileType, true, true);
+                    } else
+                    {
+                        targetTile.CopyFrom(sourceTile);
+                        WorldGen.Reframe(pos.X + x, pos.Y + y);
+                    }
+                }
+            }
+            for (int x = 0; x < structure.Width; x++)
+            {
+                for (int y = 0; y < structure.Height; y++)
+                {
+                    TileData sourceTileData = structure.Tiles[x][y];
+                    Tile sourceTile = TileData.TileFromData(sourceTileData);
+                    if (Main.tileFrameImportant[sourceTile.TileType])// && sourceTile.TileFrameX == 0 && sourceTile.TileFrameY == 0)
+                    {
+                        //WorldGen.PlaceTile(x, y, sourceTile.TileType, true, true);
+                        Framing.GetTileSafely(x, y).WallType = sourceTile.WallType; //anvil is being fucking stupid
+                    }
                 }
             }
             if (structure.TileEntities != null && structure.TileEntities.Length > 0)
@@ -301,7 +338,7 @@ namespace DTZ.Systems
             }
             if (structure.Chests != null && structure.Chests.Length > 0)
             {
-                foreach (var chest in structure.Chests) ChestData.ChestFromData(chest, pos.X, pos.Y);
+                foreach (var chest in structure.Chests) ChestData.ChestFromData(chest, pos.X, pos.Y, chestLoot);
             }
         }
     }
