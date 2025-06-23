@@ -31,12 +31,22 @@ Items: {
 
 	Devnote: {
 		// DisplayName: Dev Note
-		// Tooltip: Thanks for playing Mycology, a mod made for the unofficial Tmod Jam! To discover what this mod has to offer, go pay the glowing mushroom biomes a visit! We hope you enjoy.
+		/* Tooltip:
+			'''
+			Thanks for playing Mycology, a mod made for the unofficial Tmod Jam! 
+			To discover what this mod has to offer, go pay the glowing mushroom biomes a visit! 
+			We hope you enjoy.
+			''' */
 	}
 
 	Shiitake: {
 		// DisplayName: Shiitake
 		// Tooltip: "'No, there's no escargot.'"
+	}
+
+	PackedMud_item: {
+		// DisplayName: Packed Mud_item
+		// Tooltip: ""
 	}
 }
 
@@ -72,3 +82,5 @@ Buffs: {
 		// Description: Mods.DTZ.Buffs.ToadBuff.Description
 	}
 }
+
+// Biomes.Haven.TownNPCDialogueName: the Mushion Haven

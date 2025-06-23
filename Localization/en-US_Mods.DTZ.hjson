@@ -31,7 +31,7 @@ Items: {
 
 	Devnote: {
 		DisplayName: Dev Note
-		Tooltip: 
+		Tooltip:
 			'''
 			Thanks for playing Mycology, a mod made for the unofficial Tmod Jam! 
 			To discover what this mod has to offer, go pay the glowing mushroom biomes a visit! 
@@ -42,6 +42,11 @@ Items: {
 	Shiitake: {
 		DisplayName: Shiitake
 		Tooltip: "'No, there's no escargot.'"
+	}
+
+	PackedMud_item: {
+		DisplayName: Packed Mud_item
+		Tooltip: ""
 	}
 }
 
@@ -58,23 +63,23 @@ Projectiles: {
 
 Buffs: {
 	GlowingBuff: {
-		DisplayName: Glowing Buff
-		Description: Mods.DTZ.Buffs.GlowingBuff.Description
+		DisplayName: Glowing Familiar
+		Description: You feel passive health regeneration!
 	}
 
 	HellcapBuff: {
-		DisplayName: Hellcap Buff
-		Description: Mods.DTZ.Buffs.HellcapBuff.Description
+		DisplayName: Blazing Familiar
+		Description: You feel increased critical strike chance!
 	}
 
 	IceliumBuff: {
-		DisplayName: Icelium Buff
-		Description: Mods.DTZ.Buffs.IceliumBuff.Description
+		DisplayName: Freezing Familiar
+		Description: You feel increased defense!
 	}
 
 	ToadBuff: {
-		DisplayName: Toad Buff
-		Description: Mods.DTZ.Buffs.ToadBuff.Description
+		DisplayName: Croaking Familiar
+		Description: You feel increased agility!
 	}
 }
 
