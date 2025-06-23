@@ -36,6 +36,6 @@ Items: {
 
 	Shiitake: {
 		DisplayName: Shiitake
-		Tooltip: ""
+		Tooltip: "'No, there's no escargot.'"
 	}
 }

@@ -32,7 +32,7 @@ namespace DTZ.Content.Items
 		}
 
 		public override void OnConsumeItem(Player player) {
-			player.AddBuff(BuffID.WellFed, 3600);
+			player.AddBuff(BuffID.WellFed, 8000);
 		}
 	}
 }
