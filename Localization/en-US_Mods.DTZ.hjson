@@ -45,24 +45,28 @@ Items: {
 	}
 
 	PackedMud_item: {
-		DisplayName: Packed Mud_item
+		DisplayName: Packed Mud
 		Tooltip: ""
 	}
-}
 
 	HellcapSeeds: {
 		DisplayName: Hellcap Seeds
-		Tooltip: ""
+		Tooltip: Can be planted on tilled mud
 	}
 
 	IceliumSeeds: {
 		DisplayName: Icelium Seeds
-		Tooltip: ""
+		Tooltip: Can be planted on tilled mud
 	}
 
 	ToadstoolSeeds: {
 		DisplayName: Toadstool Seeds
-		Tooltip: ""
+		Tooltip: Can be planted on tilled mud
+	}
+
+	MoonlordUnderworldBunkFungus: {
+		DisplayName: Moonlords Underworld Bunk Fungus
+		Tooltip: "yeah"
 	}
 }
 
@@ -96,6 +100,11 @@ Buffs: {
 	ToadBuff: {
 		DisplayName: Croaking Familiar
 		Description: You feel increased jump and speed!
+	}
+
+	FungusBuff: {
+		DisplayName: Fungus Buff
+		Description: Mods.DTZ.Buffs.FungusBuff.Description
 	}
 }
 

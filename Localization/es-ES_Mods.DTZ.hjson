@@ -51,22 +51,21 @@ Items: {
 
 	HellcapSeeds: {
 		// DisplayName: Hellcap Seeds
-		// Tooltip: ""
+		// Tooltip: Can be planted on tilled mud
 	}
 
 	IceliumSeeds: {
 		// DisplayName: Icelium Seeds
-		// Tooltip: ""
+		// Tooltip: Can be planted on tilled mud
 	}
-
-	PackedMud_item: {
-		// DisplayName: Packed Mud
-		// Tooltip: ""
-	}
-}
 
 	ToadstoolSeeds: {
 		// DisplayName: Toadstool Seeds
+		// Tooltip: Can be planted on tilled mud
+	}
+
+	MoonlordUnderworldBunkFungus: {
+		// DisplayName: Moonlord Underworld Bunk Fungus
 		// Tooltip: ""
 	}
 }
@@ -95,16 +94,19 @@ Buffs: {
 
 	IceliumBuff: {
 		// DisplayName: Freezing Familiar
-		// Description: You feel increased defense!
+		// Description: You feel increased defense effectivity!
 	}
 
 	ToadBuff: {
 		// DisplayName: Croaking Familiar
-		// Description: You feel increased agility!
+		// Description: You feel increased jump and speed!
+	}
+
+	FungusBuff: {
+		// DisplayName: Fungus Buff
+		// Description: Mods.DTZ.Buffs.FungusBuff.Description
 	}
 }
 
 // Biomes.Haven.TownNPCDialogueName: the Mushion Haven
 // NPCs.LoneMushion.DisplayName: Lone Mushion
-
-// Biomes.Haven.TownNPCDialogueName: the Mushion Haven

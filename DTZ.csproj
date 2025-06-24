@@ -30,5 +30,8 @@
 	  <None Remove="HeySiriTurnOnTheFilter\WhenSomeoneTellsMeToStopShovingMightybeansUpMyTurdCutter.png" />
 	  <None Remove="icon_small.png" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Assets\Effects\" />
+	</ItemGroup>
 
 </Project>
