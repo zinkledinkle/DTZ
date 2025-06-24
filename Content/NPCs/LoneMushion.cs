@@ -82,6 +82,7 @@ namespace DTZ.Content.NPCs
             shop.Add(ItemID.GlowingMushroom);
             shop.Add(ModContent.ItemType<Shiitake>());
             shop.Add(ModContent.ItemType<MushionSeeds>());
+            shop.Add(ModContent.ItemType<MoonlordUnderworldBunkFungus>());
             shop.Register();
         }
         public override bool CanChat() => true;
