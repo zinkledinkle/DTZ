@@ -35,8 +35,6 @@ namespace DTZ.Content.Buffs
                     Filters.Scene.Activate("fungus");
                 }
                 Filters.Scene["fungus"].GetShader().UseIntensity(intensity);
-
-                Main.musicPitch *= Main.rand.NextFloat(-intensity, intensity) * 10;
             } else
             {
                 Filters.Scene.Deactivate("fungus");

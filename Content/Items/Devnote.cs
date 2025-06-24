@@ -22,10 +22,9 @@ namespace DTZ.Content.Items
 
         private class DevnoteSpawn : ModPlayer
         {
-            public override void ModifyStartingInventory(IReadOnlyDictionary<string, List<Item>> itemsByMod, bool mediumCoreDeath)
+            public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
             {
-                Item devnoteItem = new Item(ModContent.ItemType<Devnote>());
-                itemsByMod["Mycology"].Add(devnoteItem);
+                yield return new Item(ModContent.ItemType<Devnote>());
             }
         }
     }
