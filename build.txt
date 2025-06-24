@@ -1,3 +1,4 @@
 displayName = Mycology
 author = Lucid Lizard, Exslueterra, Zinkle
 version = 0.1
+includeSource = true
