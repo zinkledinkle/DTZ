@@ -10,6 +10,7 @@ using Terraria.Utilities;
 using Microsoft.Xna.Framework;
 using DTZ.Systems;
 using Microsoft.Xna.Framework.Graphics;
+using System.Linq;
 
 namespace DTZ.Content.NPCs
 {
@@ -27,7 +28,6 @@ namespace DTZ.Content.NPCs
         public override void SetDefaults()
         {
             NPC.friendly = true;
-            NPC.aiStyle = 7; 
             NPC.width = 46;
             NPC.height = 48;
             NPC.lifeMax = 50;
@@ -67,7 +67,7 @@ namespace DTZ.Content.NPCs
                     {
                         frame = 0;
                         doAnimation = false;
-                        animCooldown = 150;
+                        animCooldown = 300;
                     }
                 }
             }
@@ -168,6 +168,19 @@ namespace DTZ.Content.NPCs
             spriteBatch.Draw(tex, NPC.Center - screenPos + new Vector2(0,2), rect, drawColor, 0, new Vector2(22, 23), 1, SpriteEffects.None, 1f);
 
             return false;
+        }
+        private class SpawnSystem : ModSystem
+        {
+            public override void PreUpdateWorld()
+            {
+                if (!NPC.AnyNPCs(ModContent.NPCType<LoneMushion>()))
+                {
+                    Vector2 spawn = HavenSystem.SpawnPositionForLoneMushion.ToWorldCoordinates();
+                    List<Player> closePlayers = Main.player.Where(p => p.Distance(spawn) < 2000 && p.active).ToList();
+                    if (closePlayers.Count > 0) return;
+                    NPC.NewNPC(NPC.GetSource_NaturalSpawn(), (int)spawn.X, (int)spawn.Y, ModContent.NPCType<LoneMushion>());
+                }
+            }
         }
     }
 }
