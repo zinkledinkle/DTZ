@@ -68,6 +68,11 @@ Items: {
 		DisplayName: Moonlords Underworld Bunk Fungus
 		Tooltip: yeah
 	}
+
+	Mushket: {
+		DisplayName: Mushket
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -79,6 +84,15 @@ Projectiles: {
 	IceliumMushionProj.DisplayName: Icelium Mushion Proj
 	ToadMushion.DisplayName: Toad Mushion
 	ToadMushionProj.DisplayName: Toad Mushion Proj
+	GlowingMushroomShot.DisplayName: Glowing Mushroom Proj
+	MushketProj.DisplayName: Mushket Proj
+	MushroomShot.DisplayName: Surface Mushroom Proj
+	ViciousMushroomShot.DisplayName: Vicious Mushroom Proj
+	VileMushroomShot.DisplayName: Vile Mushroom Proj
+	HellcapShot.DisplayName: Hellcap Shot
+	IceliumShot.DisplayName: Icelium Shot
+	ToadstoolShot.DisplayName: Toadstool Shot
+	VileMushroomShotPiece.DisplayName: Vile Mushroom Shot Piece
 }
 
 Buffs: {
@@ -105,6 +119,11 @@ Buffs: {
 	FungusBuff: {
 		DisplayName: Fungus Buff
 		Description: Mods.DTZ.Buffs.FungusBuff.Description
+	}
+
+	Frozen: {
+		DisplayName: Frozen
+		Description: Mods.DTZ.Buffs.Frozen.Description
 	}
 }
 

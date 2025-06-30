@@ -31,7 +31,7 @@
 	  <None Remove="icon_small.png" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Assets\Effects\" />
+	  <Folder Include="Assets\Effects\Basic\" />
 	</ItemGroup>
 
 </Project>
