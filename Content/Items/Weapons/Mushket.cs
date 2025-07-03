@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using DTZ.Systems;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace DTZ.Content.Items.Weapons
             Item.width = 66;
             Item.height = 40;
 
-            Item.DamageType = DamageClass.Ranged;
+            Item.DamageType = ModContent.GetInstance<ShroomyRanged>();
             Item.damage = 26;
             Item.crit = 5;
             Item.knockBack = 3f;
@@ -52,12 +53,14 @@ namespace DTZ.Content.Items.Weapons
     public class MushketProj : ModProjectile
     {
         public override string Texture => ModContent.GetInstance<Mushket>().Texture;
+        Texture2D muzzleFlashTex;
+        public override void Load() => muzzleFlashTex = ModContent.Request<Texture2D>("DTZ/Assets/Textures/MuzzleFlash").Value;
         public override void SetDefaults()
         {
             Projectile.width = 66;
             Projectile.height = 40;
             Projectile.friendly = false;
-            Projectile.DamageType = DamageClass.Ranged;
+            Projectile.DamageType = ModContent.GetInstance<ShroomyRanged>();
             Projectile.timeLeft = 2;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
@@ -114,24 +117,19 @@ namespace DTZ.Content.Items.Weapons
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D tex = TextureAssets.Projectile[Type].Value;
             Vector2 origin = tex.Size() / 2;
             Vector2 drawpos = Projectile.Center - Main.screenPosition;
             float recoilShake = lerpedRecoil/2;
             drawpos += Main.rand.NextVector2Circular(recoilShake, recoilShake);
             Main.spriteBatch.Draw(tex, drawpos, null, lightColor, Projectile.rotation, origin, Projectile.scale, flip, 1f);
 
-            //Main.spriteBatch.End();
-            //Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.Transform);
-            Texture2D muzzleFlashTex = ModContent.Request<Texture2D>("DTZ/Assets/Textures/MuzzleFlash").Value;
             Vector2 muzzleFlashOrigin = muzzleFlashTex.Size() / 2;
             Vector2 muzzleFlashDrawpos = (Projectile.Center + offset * 26) - Main.screenPosition;
 
             Color muzzleFlashColor = Color.White * muzzleFlashAlpha;
             muzzleFlashColor.A = 0;
             Main.spriteBatch.Draw(muzzleFlashTex, muzzleFlashDrawpos, null, muzzleFlashColor, Projectile.rotation, muzzleFlashOrigin , muzzleFlashAlpha, SpriteEffects.None, 1f);
-            //Main.spriteBatch.End();
-            //Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.Transform);
             return false;
         }
     }
@@ -169,7 +167,7 @@ namespace DTZ.Content.Items.Weapons
         public override bool PreDraw(ref Color lightColor)
         {
             int count = Projectile.oldPos.Length;
-            Texture2D texture = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D texture = TextureAssets.Projectile[Type].Value;
             Vector2 origin = texture.Size() / 2;
             for (int i = 0; i < count; i++)
             {
@@ -213,11 +211,12 @@ namespace DTZ.Content.Items.Weapons
         protected override int TrailLength => 10;
         protected override float RotationSpeed => 0.2f;
         protected override int DustType => DustID.VilePowder;
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        public override void OnKill(int timeLeft)
         {
-            for (int i = 0; i < Main.rand.Next(4,7); i++)
+            base.OnKill(timeLeft);
+            for (int i = 0; i < Main.rand.Next(4, 7); i++)
             {
-                Projectile.NewProjectile(Main.player[Projectile.owner].GetSource_FromThis(), Projectile.Center, Main.rand.NextVector2CircularEdge(5, 5), ModContent.ProjectileType<VileMushroomShotPiece>(), damageDone / 4, 0.1f, Projectile.owner);
+                Projectile.NewProjectile(Main.player[Projectile.owner].GetSource_FromThis(), Projectile.Center, Main.rand.NextVector2CircularEdge(5, 5), ModContent.ProjectileType<VileMushroomShotPiece>(), Projectile.damage / 4, 0.1f, Projectile.owner);
             }
         }
         private class VileMushroomShotPiece : ModProjectile
@@ -253,9 +252,9 @@ namespace DTZ.Content.Items.Weapons
         public override void AI()
         {
             base.AI();
-            if (Projectile.ai[0] % 15 == 0)
+            if (Projectile.ai[0] % 7 == 0)
             {
-                Projectile.NewProjectile(Main.player[Projectile.owner].GetSource_FromThis(), Projectile.Center, new Vector2(0, 7), ProjectileID.BloodRain, Projectile.damage / 3, 0.1f, Projectile.owner);
+                Projectile.NewProjectile(Main.player[Projectile.owner].GetSource_FromThis(), Projectile.Center, new Vector2(0, 7), ProjectileID.BloodRain, Projectile.damage / 4, 0.1f, Projectile.owner);
             }
             Projectile.ai[0]++;
         }
@@ -269,27 +268,27 @@ namespace DTZ.Content.Items.Weapons
             {
                 case ItemID.Mushroom:
                     entity.damage = 14;
-                    entity.DamageType = DamageClass.Ranged;
+                    entity.DamageType = ModContent.GetInstance<ShroomyRanged>();
                     entity.ammo = entity.type;
                     entity.shoot = ModContent.ProjectileType<MushroomShot>();
                     break;
                 case ItemID.GlowingMushroom:
                     entity.damage = 10;
-                    entity.DamageType = DamageClass.Ranged;
+                    entity.DamageType = ModContent.GetInstance<ShroomyRanged>();
                     entity.ammo = ItemID.Mushroom;
                     entity.shoot = ModContent.ProjectileType<GlowingMushroomShot>();
                     entity.shootSpeed = 8;
                     break;
                 case ItemID.VileMushroom:
                     entity.damage = 19;
-                    entity.DamageType = DamageClass.Ranged;
+                    entity.DamageType = ModContent.GetInstance<ShroomyRanged>();
                     entity.ammo = ItemID.Mushroom;
                     entity.shoot = ModContent.ProjectileType<VileMushroomShot>();
                     entity.shootSpeed = -4;
                     break;
                 case ItemID.ViciousMushroom:
-                    entity.damage = 14;
-                    entity.DamageType = DamageClass.Ranged;
+                    entity.damage = 8;
+                    entity.DamageType = ModContent.GetInstance<ShroomyRanged>();
                     entity.ammo = ItemID.Mushroom;
                     entity.shoot = ModContent.ProjectileType<ViciousMushroomShot>();
                     entity.shootSpeed = 3;

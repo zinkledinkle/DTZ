@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework;
 
 namespace DTZ.Content.Tiles
 {
-    public class Iceshroom : ModTile
+    public class IceliumTile : ModTile
     {
         private const int frameWidth = 18;
         public static readonly int[] validTiles =
@@ -38,7 +38,7 @@ namespace DTZ.Content.Tiles
             HitSound = SoundID.Grass;
             DustType = DustID.Torch;
 
-            AddMapEntry(new Color(0, 55, 200), Language.GetText("Iceshroom"));
+            AddMapEntry(new Color(0, 55, 200), Language.GetText("IceliumTile"));
         }
         public override void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects)
         {
@@ -46,7 +46,7 @@ namespace DTZ.Content.Tiles
         }
         public override IEnumerable<Item> GetItemDrops(int i, int j)
         {
-            yield return new Item(ModContent.ItemType<IceshroomItem>(), 1);
+            yield return new Item(ModContent.ItemType<Icelium>(), 1);
         }
         public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
         {

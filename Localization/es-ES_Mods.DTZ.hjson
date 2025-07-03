@@ -9,7 +9,7 @@ Items: {
 		Tooltip: ""
 	}
 
-	IceshroomItem: {
+	Icelium: {
 		DisplayName: Micielo
 		Tooltip: ""
 	}
@@ -73,6 +73,40 @@ Items: {
 		// DisplayName: Mushket
 		// Tooltip: ""
 	}
+
+	GlowingSalve: {
+		// DisplayName: Glowing Salve
+		// Tooltip: Mushions gain an additional 25% effectiveness to their abilities
+	}
+
+	MushroomFieldKit: {
+		// DisplayName: Mushroom Field Kit
+		/* Tooltip:
+			'''
+			Mushions gain an additional 25% effectiveness to their abilities
+			Increases your maximum Mushion count by 1
+			''' */
+	}
+
+	Sporepack: {
+		// DisplayName: Sporepack
+		// Tooltip: Increases your maximum Mushion count by 1
+	}
+
+	Shroombrella: {
+		// DisplayName: Shroombrella
+		// Tooltip: ""
+	}
+
+	MushroomCrate: {
+		// DisplayName: Mushroom Crate
+		// Tooltip: ""
+	}
+
+	MycoRod: {
+		// DisplayName: Myco Rod
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -93,6 +127,8 @@ Projectiles: {
 	// IceliumShot.DisplayName: Icelium Shot
 	// ToadstoolShot.DisplayName: Toadstool Shot
 	// VileMushroomShotPiece.DisplayName: Vile Mushroom Shot Piece
+	// ShroombrellaSpore.DisplayName: Shroombrella Spore
+	// MycoRodBobber.DisplayName: Myco Rod Bobber
 }
 
 Buffs: {
@@ -129,3 +165,12 @@ Buffs: {
 
 // Biomes.Haven.TownNPCDialogueName: the Mushion Haven
 // NPCs.LoneMushion.DisplayName: Lone Mushion
+
+DamageClasses: {
+	// ShroomyMagic.DisplayName: Shroomy Magic
+	// ShroomyMelee.DisplayName: Shroomy Melee
+	// ShroomyRanged.DisplayName: Shroomy Ranged
+	// ShroomySummon.DisplayName: Shroomy Summon
+}
+
+// Tiles.MushroomCrate_Tile.MapEntry: Mushroom Crate_ Tile

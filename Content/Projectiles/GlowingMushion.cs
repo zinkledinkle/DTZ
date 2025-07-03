@@ -45,7 +45,7 @@ namespace DTZ.Content.Projectiles
 
             //For testing purposes. When we get these things spawning from the tiles this wont be neccessary
             owner = Main.player[Projectile.owner];
-            if(owner == null)
+            if (owner == null)
             {
                 owner = Main.LocalPlayer;
             }
@@ -84,7 +84,7 @@ namespace DTZ.Content.Projectiles
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
         {
             fallThrough = false;
-            return true ;
+            return true;
         }
 
         public override void AI()
@@ -212,7 +212,7 @@ namespace DTZ.Content.Projectiles
                             {
                                 currentState = States.taunt;
                                 Projectile.ai[6] = 0;
-                                
+
                             }
                         }
                         else if (Main.rand.NextBool(200) && Projectile.ai[4] == 0)
@@ -288,7 +288,7 @@ namespace DTZ.Content.Projectiles
         {
             var tex = TextureAssets.Projectile[Type].Value;
             var frame = new Rectangle(32 * (int)Projectile.ai[4], 32 * (int)currentState, 32, 32);
-            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, frame, lightColor, Projectile.rotation, new Vector2(16,16), Projectile.scale, Projectile.direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, frame, lightColor, Projectile.rotation, new Vector2(16, 16), Projectile.scale, Projectile.direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
             return false;
         }
 
@@ -296,7 +296,7 @@ namespace DTZ.Content.Projectiles
         {
             SoundEngine.PlaySound(new SoundStyle("DTZ/Assets/Sounds/MushionPerish") with { PitchVariance = .16f }, Projectile.Center);
 
-            for(int i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
             {
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Smoke);
             }

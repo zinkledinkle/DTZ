@@ -1,4 +1,5 @@
 ﻿using DTZ.Content.Items.Weapons;
+using DTZ.Systems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +22,8 @@ namespace DTZ.Content.Items
             Item.maxStack = 9999;
 
             Item.ammo = ItemID.Mushroom;
-            Item.damage = 12;
-            Item.DamageType = DamageClass.Ranged;
+            Item.damage = 23;
+            Item.DamageType = ModContent.GetInstance<ShroomyRanged>();
             Item.shootSpeed = 3;
             Item.shoot = ModContent.ProjectileType<HellcapShot>();
         }

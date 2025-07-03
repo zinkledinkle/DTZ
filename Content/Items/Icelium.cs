@@ -1,4 +1,5 @@
 ﻿using DTZ.Content.Items.Weapons;
+using DTZ.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -14,7 +15,7 @@ using Terraria.ModLoader;
 
 namespace DTZ.Content.Items
 {
-    public class IceshroomItem : ModItem
+    public class Icelium : ModItem
     {
         public override void SetDefaults()
         {
@@ -27,7 +28,7 @@ namespace DTZ.Content.Items
             Item.ammo = ItemID.Mushroom;
             Item.damage = 7;
             Item.knockBack = 4f;
-            Item.DamageType = DamageClass.Ranged;
+            Item.DamageType = ModContent.GetInstance<ShroomyRanged>();
             Item.shootSpeed = 6;
             Item.shoot = ModContent.ProjectileType<IceliumShot>();
         }
@@ -35,7 +36,7 @@ namespace DTZ.Content.Items
     public class IceliumShot : MushroomShotBase
     {
         protected override float Weight => 0.25f;
-        public override string Texture => ModContent.GetInstance<IceshroomItem>().Texture;
+        public override string Texture => ModContent.GetInstance<Icelium>().Texture;
         protected override float RotationSpeed => 0.25f;
         protected override int DustType => DustID.IceTorch;
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -65,8 +66,10 @@ namespace DTZ.Content.Items
                 public NPC.HitInfo hitInfo;
                 public Player player;
             }
+            private float ShatterColor = 0;
             public override void ResetEffects(NPC npc)
             {
+                ShatterColor = MathHelper.Lerp(ShatterColor, 0, 0.3f);
                 for (int i = 0; i < Hits.Count; i++)
                 {
                     Hits[i].time -= 1;
@@ -81,6 +84,7 @@ namespace DTZ.Content.Items
                         for (int d = 0; d < Main.rand.Next(5, 10); d++)
                             Dust.NewDust(npc.position, npc.width, npc.height, DustID.Ice, Main.rand.NextFloat(-4, 4), Main.rand.NextFloat(-4, 4));
                         iceHit.player.addDPS(dmg);
+                        ShatterColor = 1;
                     }
                 }
                 Hits.RemoveAll(h => h.time <= 0);
@@ -107,6 +111,7 @@ namespace DTZ.Content.Items
                 {
                     drawColor = drawColor.MultiplyRGB(Color.LightBlue).MultiplyRGB(Color.LightBlue);
                 }
+                drawColor = Color.Lerp(drawColor, drawColor.MultiplyRGBA(Color.Violet), ShatterColor);
             }
         }
     }

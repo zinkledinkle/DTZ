@@ -1,4 +1,5 @@
-﻿using DTZ.Content.Projectiles;
+﻿using DTZ.Content.Items.Accessories;
+using DTZ.Content.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
@@ -33,7 +34,6 @@ namespace DTZ.Content.Tiles
         public Color glowColor;
         protected Color baseColor;
         public string ownerName;
-
         protected abstract Color DefaultBaseColor { get; }
         protected abstract int ProjectileID { get; }
         public MushionSeedsGrowthBase()
@@ -71,13 +71,7 @@ namespace DTZ.Content.Tiles
             return airTiles == 4;
         }
         private bool grown = false;
-        public static readonly int[] projectileTypes = new[]
-        {
-            ModContent.ProjectileType<GlowingMushion>(),
-            ModContent.ProjectileType<IceliumMushion>(),
-            ModContent.ProjectileType<HellcapMushion>(),
-            ModContent.ProjectileType<ToadMushion>(),
-        };
+
         private bool clickDebounce = false;
         public override void Update()
         {
@@ -107,14 +101,24 @@ namespace DTZ.Content.Tiles
             }
             if (Main.MouseWorld.Distance(Position.ToWorldCoordinates(16, 16)) < 20 && Main.mouseRight && !clickDebounce)
             {
-                int Mushions = Main.projectile.Where(proj => proj.active && proj.owner == plr.whoAmI && projectileTypes.Contains(proj.type)).Count();
-                if (Mushions < 3)
+                int Mushions = Main.projectile.Where(proj => proj.active && proj.owner == plr.whoAmI && MycologyPlayer.projectileTypes.Contains(proj.type)).Count();
+
+                int max = plr.GetModPlayer<MycologyPlayer>().MaxMushions;
+
+                if (Mushions < max)
                 {
                     Projectile.NewProjectile(plr.GetSource_FromThis(), Position.ToWorldCoordinates(16, 16), new Vector2(0, -5), ProjectileID, 1, 0, plr.whoAmI);
+                    if (Main.rand.NextBool(10))
+                    {
+                        Point worldPos = Position.ToWorldCoordinates(0, 0).ToPoint();
+                        Item.NewItem(Item.GetSource_NaturalSpawn(),
+                            new Rectangle(worldPos.X, worldPos.Y, 32, 32),
+                            new Item(ModContent.ItemType<Sporepack>(), 1, -1));
+                    }
                     WorldGen.KillTile(Position.X, Position.Y, false, false, true);
                 } else
                 {
-                    CombatText.NewText(plr.Hitbox, Color.White, "You can only have up to 3 mushions at one time!", false, false);
+                    CombatText.NewText(plr.Hitbox, Color.White, "You can only have up to " + max + " mushions at one time!", false, false);
                 }
                 clickDebounce = true;
             }
@@ -150,6 +154,7 @@ namespace DTZ.Content.Tiles
         {
             On_Main.DrawTiles += DrawGlow;
             On_Player.PlaceThing_Tiles_PlaceIt += StorePlayer;
+            TextureAssets.GlowMask[Type] = ModContent.Request<Texture2D>(Texture + "_glow");
         }
         public override void Unload()
         {
@@ -241,6 +246,7 @@ namespace DTZ.Content.Tiles
             int maxY = minY + Main.screenHeight / 16 + 1;
             int Type = ModContent.TileType<MushionSeedsTileBase>();
 
+
             for (int x = minX; x < maxX; x++)
             {
                 for (int y = minY; y < maxY; y++)
@@ -268,9 +274,7 @@ namespace DTZ.Content.Tiles
                     if (glowFrameX == 0) glowPos.X -= 8;
                     if (tile.TileFrameY == 0) glowPos.Y -= 8;
 
-                    Texture2D tex = ModContent.Request<Texture2D>(mTile.Texture).Value;
-                    Texture2D glowTex = ModContent.Request<Texture2D>(mTile.Texture + "_glow").Value;
-
+                    Texture2D glowTex = TextureAssets.GlowMask[mTile.Type].Value;
                     Main.spriteBatch.Draw(glowTex, glowPos, glowSource, glowColor, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
                 }
             }
@@ -298,8 +302,7 @@ namespace DTZ.Content.Tiles
                     Color color = Lighting.GetColor(x, y);
                     color.MultiplyRGB(new Color(2,2,2));
 
-                    Texture2D tex = ModContent.Request<Texture2D>(mTile.Texture).Value;
-                    Texture2D glowTex = ModContent.Request<Texture2D>(mTile.Texture + "_glow").Value;
+                    Texture2D tex = TextureAssets.Tile[mTile.Type].Value;
                     Main.spriteBatch.Draw(tex, drawPos, source, color, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
                 }
             }
@@ -339,7 +342,12 @@ namespace DTZ.Content.Tiles
     }
     public class MushionColonySystem : ModSystem
     {
-        public override void Load() => On_Main.DrawTiles += GlowMud;
+        Texture2D tileGlow;
+        public override void Load()
+        {
+            tileGlow = ModContent.Request<Texture2D>("DTZ/Assets/Textures/glowTile").Value;
+            On_Main.DrawTiles += GlowMud;
+        }
 
         public static Dictionary<int, MushionColony> Colonies { get; private set; } = [];
         public static MushionColony ColonyFromID(int ID) => Colonies.TryGetValue(ID, out MushionColony colony) ? colony : null;
@@ -425,11 +433,10 @@ namespace DTZ.Content.Tiles
                     {
                         Tile above = Framing.GetTileSafely(cTile.X, cTile.Y - 1);
                         if (above.HasTile && Main.tileSolid[above.TileType]) continue;
-                        Texture2D tex = ModContent.Request<Texture2D>("DTZ/Assets/Textures/glowTile").Value;
 
                         Vector2 zero = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
                         Vector2 drawPos = new Vector2(cTile.X * 16, cTile.Y * 16 - 12) - Main.screenPosition + zero;
-                        Main.spriteBatch.Draw(tex, drawPos, null, colony.GlowColor * colony.GlowModifier, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
+                        Main.spriteBatch.Draw(tileGlow, drawPos, null, colony.GlowColor * colony.GlowModifier, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
                     }
                 }
             }

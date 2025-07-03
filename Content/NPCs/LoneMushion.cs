@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework;
 using DTZ.Systems;
 using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
+using DTZ.Content.Items.Accessories;
 
 namespace DTZ.Content.NPCs
 {
@@ -82,6 +83,7 @@ namespace DTZ.Content.NPCs
             shop.Add(ItemID.GlowingMushroom);
             shop.Add(ModContent.ItemType<Shiitake>());
             shop.Add(ModContent.ItemType<MushionSeeds>());
+            shop.Add(ModContent.ItemType<GlowingSalve>());
             shop.Add(ModContent.ItemType<MoonlordUnderworldBunkFungus>());
             shop.Register();
         }

@@ -25,7 +25,7 @@ namespace DTZ.Content.Items
         {
             CreateRecipe(1)
                 .AddIngredient<MushionSeeds>()
-                .AddIngredient<IceshroomItem>()
+                .AddIngredient<Icelium>()
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }

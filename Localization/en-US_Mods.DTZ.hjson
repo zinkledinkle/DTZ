@@ -9,7 +9,7 @@ Items: {
 		Tooltip: "'Hot to the touch'"
 	}
 
-	IceshroomItem: {
+	Icelium: {
 		DisplayName: Icelium
 		Tooltip: "'This ice cap isn't melting'"
 	}
@@ -71,7 +71,51 @@ Items: {
 
 	Mushket: {
 		DisplayName: Mushket
+		Tooltip:
+			'''
+			Fires mushrooms
+			Different mushrooms have different effects
+			5% chance to consume ammo
+			'''
+	}
+
+	GlowingSalve: {
+		DisplayName: Glowing Salve
+		Tooltip: Mushions gain an additional 25% effectiveness to their abilities
+	}
+
+	MushroomFieldKit: {
+		DisplayName: Mushroom Field Kit
+		Tooltip:
+			'''
+			Mushions gain an additional 25% effectiveness to their abilities
+			Increases your maximum Mushion count by 1
+			'''
+	}
+
+	Sporepack: {
+		DisplayName: Sporepack
+		Tooltip: Increases your maximum Mushion count by 1
+	}
+
+	Shroombrella: {
+		DisplayName: Shroombrella
 		Tooltip: ""
+	}
+
+	MushroomCrate: {
+		DisplayName: Mushroom Crate
+		Tooltip: "Right click to open"
+	}
+
+	MycoRod: {
+		DisplayName: MycoRod
+		Tooltip: 
+			'''
+			Higher chance of catching crates
+			Higher chance to consume bait
+			'High risk, high reward'
+			'''
 	}
 }
 
@@ -93,6 +137,8 @@ Projectiles: {
 	IceliumShot.DisplayName: Icelium Shot
 	ToadstoolShot.DisplayName: Toadstool Shot
 	VileMushroomShotPiece.DisplayName: Vile Mushroom Shot Piece
+	ShroombrellaSpore.DisplayName: Shroombrella Spore
+	MycoRodBobber.DisplayName: Myco Rod Bobber
 }
 
 Buffs: {
@@ -129,3 +175,12 @@ Buffs: {
 
 Biomes.Haven.TownNPCDialogueName: the Mushion Haven
 NPCs.LoneMushion.DisplayName: Lone Mushion
+
+DamageClasses: {
+	ShroomyMagic.DisplayName: Shroomy Magic Damage
+	ShroomyMelee.DisplayName: Shroomy Melee Damage
+	ShroomyRanged.DisplayName: Shroomy Ranged Damage
+	ShroomySummon.DisplayName: Shroomy Summon Damage
+}
+
+Tiles.MushroomCrate_Tile.MapEntry: Mushroom Crate_ Tile

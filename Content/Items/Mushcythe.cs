@@ -146,6 +146,7 @@ namespace DTZ.Content.Items
             Point16 tileCoords = Main.SmartCursorIsUsed ? new Point16(Main.SmartCursorX, Main.SmartCursorY) : Main.MouseWorld.ToTileCoordinates16();
             Tile tile = Framing.GetTileSafely(tileCoords);
             int type = tile.TileType;
+            if (!player.IsInTileInteractionRange(tileCoords.X, tileCoords.Y, TileReachCheckSettings.Simple)) return true;
             if (TillableIDsAndDust.ContainsKey(type))
             {
                 tile.TileType = (ushort)ModContent.TileType<TilledMud>();

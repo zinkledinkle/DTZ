@@ -16,7 +16,7 @@ namespace DTZ.Systems
         {
             { ModContent.TileType<HellcapTile>(), HellcapTile.validTiles },
             { ModContent.TileType<ToadstoolTile>(), ToadstoolTile.validTiles },
-            { ModContent.TileType<Iceshroom>(), Iceshroom.validTiles },
+            { ModContent.TileType<IceliumTile>(), IceliumTile.validTiles },
         };
         private static readonly int[] shroomTileList = [.. shroomTileDict.Keys];
         public override void PostWorldGen()
