@@ -71,7 +71,12 @@ Items: {
 
 	Mushket: {
 		// DisplayName: Mushket
-		// Tooltip: ""
+		/* Tooltip:
+			'''
+			Fires mushrooms
+			Different mushrooms have different effects
+			5% chance to consume ammo
+			''' */
 	}
 
 	GlowingSalve: {
@@ -100,12 +105,17 @@ Items: {
 
 	MushroomCrate: {
 		// DisplayName: Mushroom Crate
-		// Tooltip: ""
+		// Tooltip: Right click to open
 	}
 
 	MycoRod: {
-		// DisplayName: Myco Rod
-		// Tooltip: ""
+		// DisplayName: MycoRod
+		/* Tooltip:
+			'''
+			Higher chance of catching crates
+			Higher chance to consume bait
+			'High risk, high reward'
+			''' */
 	}
 }
 
@@ -128,7 +138,7 @@ Projectiles: {
 	// ToadstoolShot.DisplayName: Toadstool Shot
 	// VileMushroomShotPiece.DisplayName: Vile Mushroom Shot Piece
 	// ShroombrellaSpore.DisplayName: Shroombrella Spore
-	// MycoRodBobber.DisplayName: Myco Rod Bobber
+	// MycoRodBobber.DisplayName: Shroom Bobber
 }
 
 Buffs: {
@@ -167,10 +177,10 @@ Buffs: {
 // NPCs.LoneMushion.DisplayName: Lone Mushion
 
 DamageClasses: {
-	// ShroomyMagic.DisplayName: Shroomy Magic
-	// ShroomyMelee.DisplayName: Shroomy Melee
-	// ShroomyRanged.DisplayName: Shroomy Ranged
-	// ShroomySummon.DisplayName: Shroomy Summon
+	// ShroomyMagic.DisplayName: Shroomy Magic Damage
+	// ShroomyMelee.DisplayName: Shroomy Melee Damage
+	// ShroomyRanged.DisplayName: Shroomy Ranged Damage
+	// ShroomySummon.DisplayName: Shroomy Summon Damage
 }
 
 // Tiles.MushroomCrate_Tile.MapEntry: Mushroom Crate_ Tile

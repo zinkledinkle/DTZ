@@ -11,7 +11,7 @@ namespace DTZ.Systems
     public abstract class ShroomyDamage : DamageClass
     {
         protected virtual DamageClass ParentClass { get; }
-        public override LocalizedText DisplayName => Language.GetOrRegister("Shroomy" + ParentClass.Name, () => "[c/12bfff:Shroomy ]" + ParentClass.DisplayName);
+        public override LocalizedText DisplayName => Language.GetOrRegister("Shroomy" + ParentClass.Name, () => "[c/12bfff:Shroomy]" + ParentClass.DisplayName);
         public override StatInheritanceData GetModifierInheritance(DamageClass damageClass)
         {
             if (damageClass == ParentClass) return StatInheritanceData.Full;

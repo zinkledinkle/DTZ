@@ -105,12 +105,12 @@ Items: {
 
 	MushroomCrate: {
 		DisplayName: Mushroom Crate
-		Tooltip: "Right click to open"
+		Tooltip: Right click to open
 	}
 
 	MycoRod: {
 		DisplayName: MycoRod
-		Tooltip: 
+		Tooltip:
 			'''
 			Higher chance of catching crates
 			Higher chance to consume bait
@@ -138,7 +138,7 @@ Projectiles: {
 	ToadstoolShot.DisplayName: Toadstool Shot
 	VileMushroomShotPiece.DisplayName: Vile Mushroom Shot Piece
 	ShroombrellaSpore.DisplayName: Shroombrella Spore
-	MycoRodBobber.DisplayName: Myco Rod Bobber
+	MycoRodBobber.DisplayName: Shroom Bobber
 }
 
 Buffs: {

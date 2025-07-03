@@ -26,6 +26,7 @@ namespace DTZ.Content.Fishing
             Item.height = 34;
             Item.shootSpeed = 15;
             Item.fishingPole = 25;
+            Item.rare = ItemRarityID.Blue;
             Item.shoot = ModContent.ProjectileType<MycoRodBobber>();
         }
         public override void HoldItem(Player player)
