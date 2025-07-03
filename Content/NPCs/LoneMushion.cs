@@ -165,7 +165,7 @@ namespace DTZ.Content.NPCs
             int frameX = animType == 0 ? 0 : width;
 
             Rectangle rect = new Rectangle(frameX, height * frame, width, height);
-            Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D tex = TextureAssets.Npc[Type].Value;
             NPC.frame = rect;
             spriteBatch.Draw(tex, NPC.Center - screenPos + new Vector2(0,2), rect, drawColor, 0, new Vector2(22, 23), 1, SpriteEffects.None, 1f);
 

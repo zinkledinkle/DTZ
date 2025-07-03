@@ -20,6 +20,7 @@ namespace DTZ.UI
         private Vector2 Pos { get; set; } = Vector2.Zero;
         private float Progress { get; set; } = 0;
         private TileEntity lastTileEntity;
+        Texture2D tex;
 
         private static readonly HashSet<ushort> MushionTileTypes = new()
         {
@@ -28,7 +29,10 @@ namespace DTZ.UI
             (ushort)ModContent.TileType<MushionSeedsTileIce>(),
             (ushort)ModContent.TileType<MushionSeedsTileGlowing>(),
         };
-
+        public override void OnInitialize()
+        {
+            tex = ModContent.Request<Texture2D>("DTZ/UI/GrowthBar").Value;
+        }
         public override void Update(GameTime gameTime)
         {
             Vector2 mouseScreen = Main.MouseScreen * Main.UIScale;
@@ -58,7 +62,6 @@ namespace DTZ.UI
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (Size < 0.01f) return;
-            Texture2D tex = ModContent.Request<Texture2D>("DTZ/UI/GrowthBar").Value;
             Vector2 worldDrawPos = Pos + new Vector2(0, -50 * Size);
             Vector2 drawPos = (worldDrawPos - Main.screenPosition);
             drawPos /= Main.UIScale;
