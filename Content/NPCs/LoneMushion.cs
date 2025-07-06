@@ -106,15 +106,15 @@ namespace DTZ.Content.NPCs
         int chatIndex = 0;
         private static readonly LocalizedText[] chats = new[]
         {
-            Language.GetOrRegister("Mods/DTZ/LoneMushionSpecialDialogue1", () =>
+            Language.GetOrRegister("Mods.DTZ.LoneMushionSpecialDialogue1", () =>
             "If you happen to find any mushion seeds, till some mud and plant them."),
-            Language.GetOrRegister("Mods/DTZ/LoneMushionSpecialDialogue2", () =>
+            Language.GetOrRegister("Mods.DTZ.LoneMushionSpecialDialogue2", () =>
             "Glowing mushrooms make tools too, you know?"),
-            Language.GetOrRegister("Mods/DTZ/LoneMushionSpecialDialogue3", () =>
+            Language.GetOrRegister("Mods.DTZ.LoneMushionSpecialDialogue3", () =>
             "If you grow any mushions, keep it away from light. They're quite fragile when developing."),
-            Language.GetOrRegister("Mods/DTZ/LoneMushionSpecialDialogue4", () =>
+            Language.GetOrRegister("Mods.DTZ.LoneMushionSpecialDialogue4", () =>
             "Mushion seeds only grow in groups of three or more, we don't grow lonely."),
-            Language.GetOrRegister("Mods/DTZ/LoneMushionSpecialDialogue5", () =>
+            Language.GetOrRegister("Mods.DTZ.LoneMushionSpecialDialogue5", () =>
             "We're not a glowing mushroom species. Actually, we come in ice, fire, and... toad variants."),
         };
         public override string GetChat()
@@ -127,19 +127,19 @@ namespace DTZ.Content.NPCs
                 return result;
             }
             WeightedRandom<string> chat = new WeightedRandom<string>();
-            chat.Add(Language.GetOrRegister("Mods/DTZ/LoneMushionDialogue1", () => "If you come across a walking Truffle, tell him to stop composting my babies.").Value);
-            chat.Add(Language.GetOrRegister("Mods/DTZ/LoneMushionDialogue2", () => "Just because we decompose doesn't give you reason to compost us!").Value);
-            chat.Add(Language.GetOrRegister("Mods/DTZ/LoneMushionDialogue3", () => "We call this spot a haven. Oh, that? That's a little lab of mine.").Value);
-            chat.Add(Language.GetOrRegister("Mods/DTZ/LoneMushionDialogue4", () => "Shoes off, please.").Value);
-            chat.Add(Language.GetOrRegister("Mods/DTZ/LoneMushionDialogue5", () => "We're white on blue, not blue on white. We're foreign to glowing mushrooms.").Value);
-            chat.Add(Language.GetOrRegister("Mods/DTZ/LoneMushionDialogue6", () => "I've seen The Goonies, don't ask.").Value);
+            chat.Add(Language.GetOrRegister("Mods.DTZ.LoneMushionDialogue1", () => "If you come across a walking Truffle, tell him to stop composting my babies.").Value);
+            chat.Add(Language.GetOrRegister("Mods.DTZ.LoneMushionDialogue2", () => "Just because we decompose doesn't give you reason to compost us!").Value);
+            chat.Add(Language.GetOrRegister("Mods.DTZ.LoneMushionDialogue3", () => "We call this spot a haven. Oh, that? That's a little lab of mine.").Value);
+            chat.Add(Language.GetOrRegister("Mods.DTZ.LoneMushionDialogue4", () => "Shoes off, please.").Value);
+            chat.Add(Language.GetOrRegister("Mods.DTZ.LoneMushionDialogue5", () => "We're white on blue, not blue on white. We're foreign to glowing mushrooms.").Value);
+            chat.Add(Language.GetOrRegister("Mods.DTZ.LoneMushionDialogue6", () => "I've seen The Goonies, don't ask.").Value);
             return chat;
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
             button = Language.GetTextValue("LegacyInterface.28");
-            button2 = Language.GetOrRegister("Mods/DTZ/LoneMushionChatButton1", () => "Chat").Value;
+            button2 = Language.GetOrRegister("Mods.DTZ.LoneMushionChatButton1", () => "Chat").Value;
         }
         private string currentChatMessage = null;
         public override void OnChatButtonClicked(bool firstButton, ref string shop)

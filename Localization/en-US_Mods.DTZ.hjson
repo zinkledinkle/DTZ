@@ -117,6 +117,26 @@ Items: {
 			'High risk, high reward'
 			'''
 	}
+
+	ZinkleBody: {
+		DisplayName: Zinkle's Chassis
+		Tooltip: " 'Great for impersonating [c/989898:(Mycology)] devs!' "
+	}
+
+	ZinkleHead: {
+		DisplayName: Zinkle Head
+		Tooltip: " 'Great for impersonating [c/989898:(Mycology)] devs!' "
+	}
+
+	ZinkleLegs: {
+		DisplayName: Zinkle Legs
+		Tooltip: " 'Great for impersonating [c/989898:(Mycology)] devs!' "
+	}
+
+	ZinkleHat: {
+		DisplayName: Zinkle Hat
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -184,3 +204,12 @@ DamageClasses: {
 }
 
 Tiles.MushroomCrate_Tile.MapEntry: Mushroom Crate_ Tile
+ShroomyMagicDamageClass: "[c/12bfff:Shroomy] magic damage"
+ShroomyMeleeDamageClass: "[c/12bfff:Shroomy] melee damage"
+ShroomyRangedDamageClass: "[c/12bfff:Shroomy] ranged damage"
+ShroomySummonDamageClass: "[c/12bfff:Shroomy] summon damage"
+LoneMushionSpecialDialogue1: If you happen to find any mushion seeds, till some mud and plant them.
+LoneMushionSpecialDialogue2: Glowing mushrooms make tools too, you know?
+LoneMushionSpecialDialogue3: If you grow any mushions, keep it away from light. They're quite fragile when developing.
+LoneMushionSpecialDialogue4: Mushion seeds only grow in groups of three or more, we don't grow lonely.
+LoneMushionSpecialDialogue5: We're not a glowing mushroom species. Actually, we come in ice, fire, and... toad variants.

@@ -54,7 +54,7 @@ namespace DTZ.Content.Items.Weapons
     {
         public override string Texture => ModContent.GetInstance<Mushket>().Texture;
         Texture2D muzzleFlashTex;
-        public override void Load() => muzzleFlashTex = ModContent.Request<Texture2D>("DTZ/Assets/Textures/MuzzleFlash").Value;
+        public override void Load() { if (!Main.dedServ) muzzleFlashTex = ModContent.Request<Texture2D>("DTZ/Assets/Textures/MuzzleFlash").Value; }
         public override void SetDefaults()
         {
             Projectile.width = 66;
@@ -111,17 +111,15 @@ namespace DTZ.Content.Items.Weapons
                 }
 
                 Projectile.ai[0] += Projectile.ai[0] <= maxTime ? 1 : -maxTime -1;
-                Main.NewText(Projectile.ai[0]);
             }
             else Projectile.Kill();
         }
         public override bool PreDraw(ref Color lightColor)
         {
+            muzzleFlashTex ??= ModContent.Request<Texture2D>("DTZ/Assets/Textures/MuzzleFlash").Value;
             Texture2D tex = TextureAssets.Projectile[Type].Value;
             Vector2 origin = tex.Size() / 2;
             Vector2 drawpos = Projectile.Center - Main.screenPosition;
-            float recoilShake = lerpedRecoil/2;
-            drawpos += Main.rand.NextVector2Circular(recoilShake, recoilShake);
             Main.spriteBatch.Draw(tex, drawpos, null, lightColor, Projectile.rotation, origin, Projectile.scale, flip, 1f);
 
             Vector2 muzzleFlashOrigin = muzzleFlashTex.Size() / 2;
