@@ -54,4 +54,14 @@ namespace DTZ.Content.Buffs
         }
         protected override int ProjectileType => ModContent.ProjectileType<ToadMushion>();
     }
+    public class NormieBuff : MushionBuff
+    {
+        public override void Update(Player player, ref int buffIndex)
+        {
+            base.Update(player, ref buffIndex);
+            player.lifeStatMax2 += 30 * player.ownedProjectileCounts[ProjectileType];
+        }
+        protected override int ProjectileType => ModContent.ProjectileType<NormieMushion>();
+    }
+
 }
