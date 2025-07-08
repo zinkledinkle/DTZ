@@ -91,7 +91,7 @@ namespace DTZ.Content.Projectiles
         {
             base.AI();
 
-            owner.AddBuff(ModContent.BuffType<GlowingBuff>(), 2);
+            owner.AddBuff(ModContent.BuffType<NormieBuff>(), 2);
 
             //Main.NewText($"AI0: {Projectile.ai[0]} AI1: {Projectile.ai[3]} AI2: {Projectile.ai[4]}");
             /* Vanilla uses of projectile.AI[] || our use
