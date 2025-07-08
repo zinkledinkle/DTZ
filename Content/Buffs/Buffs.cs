@@ -59,7 +59,7 @@ namespace DTZ.Content.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             base.Update(player, ref buffIndex);
-            player.lifeStatMax2 += 30 * player.ownedProjectileCounts[ProjectileType];
+            player.StatlifeMax2 += 30 * player.ownedProjectileCounts[ProjectileType];
         }
         protected override int ProjectileType => ModContent.ProjectileType<NormieMushion>();
     }
