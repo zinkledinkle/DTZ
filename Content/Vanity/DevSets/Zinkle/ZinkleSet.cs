@@ -1,5 +1,4 @@
-﻿//using static DTZ.Systems.Drawing.Particles.Particle;
-using DTZ.Systems.Drawing.Particles;
+﻿using DTZ.Systems.Drawing.Particles;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;

@@ -100,7 +100,7 @@ namespace DTZ.Content.Vanity.DevSets.Zinkle
         {
             if (Main.netMode != NetmodeID.Server)
             {
-                Texture = ModContent.Request<Texture2D>(ModContent.GetInstance<ZinkleHat>().Texture + "_Wings").Value;
+                Texture = ModContent.Request<Texture2D>(ModContent.GetInstance<ZinkleHat>().Texture + "_Wings", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
             }
         }
         public override bool IsHeadLayer => true;
@@ -130,10 +130,10 @@ namespace DTZ.Content.Vanity.DevSets.Zinkle
         {
             if (!HasVanityWings(drawInfo.drawPlayer)) PlayerDrawLayers.Wings.Hide();
 
-            if (Texture == null || Texture.Width <= 1)
+            /*if (Texture == null || Texture.Width <= 1)
             {
                 Texture = ModContent.Request<Texture2D>(ModContent.GetInstance<ZinkleHat>().Texture + "_Wings").Value; //why does it do this.
-            }
+            }*/
 
             Vector2 position = (drawInfo.Center + new Vector2(-4, -19)) - Main.screenPosition;
             if (drawInfo.drawPlayer.direction == -1) position.X += 8;

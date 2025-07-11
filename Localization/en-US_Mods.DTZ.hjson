@@ -124,18 +124,32 @@ Items: {
 	}
 
 	ZinkleHead: {
-		DisplayName: Zinkle Head
+		DisplayName: Zinkle's Head
 		Tooltip: " 'Great for impersonating [c/989898:(Mycology)] devs!' "
 	}
 
 	ZinkleLegs: {
-		DisplayName: Zinkle Legs
+		DisplayName: Zinkle's Legs
 		Tooltip: " 'Great for impersonating [c/989898:(Mycology)] devs!' "
 	}
 
 	ZinkleHat: {
-		DisplayName: Zinkle Hat
-		Tooltip: ""
+		DisplayName: Zinkle's Jet-Powered Hat
+		Tooltip: 
+			'''
+			'Great for impersonating [c/989898:(Mycology)] devs!'
+			Allows flight and slow fall
+			'''
+	}
+
+	CodeSoda: {
+		DisplayName: Code Soda
+		Tooltip:
+			'''
+			Transforms you into a lucid lizard
+			'I stubbed my tooth'
+			'Great for impersonating [c/989898:(Mycology)] devs!'
+			'''
 	}
 }
 
@@ -159,6 +173,8 @@ Projectiles: {
 	VileMushroomShotPiece.DisplayName: Vile Mushroom Shot Piece
 	ShroombrellaSpore.DisplayName: Shroombrella Spore
 	MycoRodBobber.DisplayName: Shroom Bobber
+	NormieMushion.DisplayName: Normie Mushion
+	NormieMushionProj.DisplayName: Normie Mushion Proj
 }
 
 Buffs: {
@@ -190,6 +206,11 @@ Buffs: {
 	Frozen: {
 		DisplayName: Frozen
 		Description: Mods.DTZ.Buffs.Frozen.Description
+	}
+
+	NormieBuff: {
+		DisplayName: Normie Buff
+		Description: Mods.DTZ.Buffs.NormieBuff.Description
 	}
 }
 

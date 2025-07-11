@@ -137,6 +137,16 @@ Items: {
 		// DisplayName: Zinkle Hat
 		// Tooltip: ""
 	}
+
+	CodeSoda: {
+		// DisplayName: Code Soda
+		/* Tooltip:
+			'''
+			Transforms you into a lucid lizard
+			'I stubbed my tooth'
+			'Great for impersonating [c/989898:(Mycology)] devs!'
+			''' */
+	}
 }
 
 Projectiles: {
@@ -159,6 +169,8 @@ Projectiles: {
 	// VileMushroomShotPiece.DisplayName: Vile Mushroom Shot Piece
 	// ShroombrellaSpore.DisplayName: Shroombrella Spore
 	// MycoRodBobber.DisplayName: Shroom Bobber
+	// NormieMushion.DisplayName: Normie Mushion
+	// NormieMushionProj.DisplayName: Normie Mushion Proj
 }
 
 Buffs: {
@@ -190,6 +202,11 @@ Buffs: {
 	Frozen: {
 		// DisplayName: Frozen
 		// Description: Mods.DTZ.Buffs.Frozen.Description
+	}
+
+	NormieBuff: {
+		// DisplayName: Normie Buff
+		// Description: Mods.DTZ.Buffs.NormieBuff.Description
 	}
 }
 

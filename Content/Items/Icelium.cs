@@ -15,6 +15,7 @@ using Terraria.ModLoader;
 
 namespace DTZ.Content.Items
 {
+    [LegacyName("IceshroomItem")]
     public class Icelium : ModItem
     {
         public override void SetDefaults()
