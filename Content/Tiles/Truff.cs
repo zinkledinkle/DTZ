@@ -17,8 +17,8 @@ namespace DTZ.Content.Tiles
             Main.tileMerge[TileID.Mud][Type] = true;
             Main.tileMergeDirt[Type] = false;
             Main.tileBlockLight[Type] = true;
-            VanillaFallbackOnModDeletion = TileID.Mud;
-            MineResist = 0.6f;
+            VanillaFallbackOnModDeletion = TileID.Stone;
+            MineResist = 2f;
             HitSound = SoundID.Dig;
 
             DustType = DustID.Mud;

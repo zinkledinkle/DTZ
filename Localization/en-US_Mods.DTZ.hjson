@@ -135,7 +135,7 @@ Items: {
 
 	ZinkleHat: {
 		DisplayName: Zinkle's Jet-Powered Hat
-		Tooltip: 
+		Tooltip:
 			'''
 			'Great for impersonating [c/989898:(Mycology)] devs!'
 			Allows flight and slow fall

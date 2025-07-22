@@ -124,18 +124,22 @@ Items: {
 	}
 
 	ZinkleHead: {
-		// DisplayName: Zinkle Head
+		// DisplayName: Zinkle's Head
 		// Tooltip: " 'Great for impersonating [c/989898:(Mycology)] devs!' "
 	}
 
 	ZinkleLegs: {
-		// DisplayName: Zinkle Legs
+		// DisplayName: Zinkle's Legs
 		// Tooltip: " 'Great for impersonating [c/989898:(Mycology)] devs!' "
 	}
 
 	ZinkleHat: {
-		// DisplayName: Zinkle Hat
-		// Tooltip: ""
+		// DisplayName: Zinkle's Jet-Powered Hat
+		/* Tooltip:
+			'''
+			'Great for impersonating [c/989898:(Mycology)] devs!'
+			Allows flight and slow fall
+			''' */
 	}
 
 	CodeSoda: {
