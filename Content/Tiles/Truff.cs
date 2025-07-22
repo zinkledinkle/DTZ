@@ -21,7 +21,7 @@ namespace DTZ.Content.Tiles
             MineResist = 2f;
             HitSound = SoundID.Dig;
 
-            DustType = DustID.Mud;
+            DustType = DustID.Stone;
 
             AddMapEntry(new Color(314, 247, 271), Language.GetText("Truff"));
         }
@@ -31,7 +31,7 @@ namespace DTZ.Content.Tiles
         }
         public override IEnumerable<Item> GetItemDrops(int i, int j)
         {
-            yield return new Item(ItemID.Mud, 1);
+            yield return new Item(ItemID.StoneBlock, 1);
         }
     }
 }
