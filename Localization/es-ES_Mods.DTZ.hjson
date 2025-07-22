@@ -153,8 +153,8 @@ Items: {
 	}
 
 	Truff_item: {
-		// DisplayName: Truff_item
-		// Tooltip: ""
+		// DisplayName: Truff
+		// Tooltip: " 'Mushroom-rooted stone' "
 	}
 }
 

@@ -16,6 +16,7 @@
 	  <None Remove="Content\Buffs\NormieBuff.png" />
 	  <None Remove="Content\Buffs\ToadBuff.png" />
 	  <None Remove="Content\Items\Truff_Item.png" />
+	  <None Remove="Content\NPCs\LoneMushion.png" />
 	  <None Remove="Content\Projectiles\HellcapMushion.png" />
 	  <None Remove="Content\Projectiles\HellcapMushionProj.png" />
 	  <None Remove="Content\Projectiles\IceliumMushion.png" />
