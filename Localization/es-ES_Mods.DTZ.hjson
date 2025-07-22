@@ -151,6 +151,11 @@ Items: {
 			'Great for impersonating [c/989898:(Mycology)] devs!'
 			''' */
 	}
+
+	Truff_item: {
+		// DisplayName: Truff_item
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
