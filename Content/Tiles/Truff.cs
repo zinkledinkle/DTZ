@@ -31,7 +31,7 @@ namespace DTZ.Content.Tiles
         }
         public override IEnumerable<Item> GetItemDrops(int i, int j)
         {
-            yield return new Item(ItemID.Stone, 1);
+            yield return new Item(ItemID.Mud, 1);
         }
     }
 }
