@@ -24,12 +24,17 @@ namespace DTZ.Content.Tiles
             HitSound = SoundID.Dig;
 
             Main.tileMerge[Type][TileID.Stone] = true;
+            Main.tileMerge[Type][TileID.Dirt] = true;
+            Main.tileMerge[TileID.Dirt][Type] = true;
             Main.tileMerge[TileID.Stone][Type] = true;
             Main.tileMerge[Type][TileID.Mud] = true;
             Main.tileMerge[TileID.Mud][Type] = true;
             Main.tileMerge[Type][ModContent.TileType<TilledMud>()] = true;
             Main.tileMerge[ModContent.TileType<TilledMud>()][Type] = true;
+            Main.tileMerge[Type][ModContent.TileType<Truff>()] = true;
+            Main.tileMerge[ModContent.TileType<Truff>()][Type] = true;
             Main.tileMerge[Type][ModContent.TileType<MushionGrass>()] = true;
+            Main.tileMerge[ModContent.TileType<MushionGrass>()][Type] = true;
 
             AddMapEntry(new Microsoft.Xna.Framework.Color(0.361f, 0.267f, 0.286f), Language.GetText("packedmudmapentry"));
         }
