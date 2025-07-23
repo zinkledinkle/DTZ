@@ -25,6 +25,7 @@
 	  <None Remove="Content\Projectiles\NormieMushionProj.png" />
 	  <None Remove="Content\Projectiles\ToadMushion.png" />
 	  <None Remove="Content\Projectiles\ToadMushionProj.png" />
+	  <None Remove="Content\Tiles\PackedMud.png" />
 	  <None Remove="Content\Tiles\Truff.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\ArctanYourTimeIsAlmostUp.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\ExslueterraAfterOneCenturyEgg.png" />
