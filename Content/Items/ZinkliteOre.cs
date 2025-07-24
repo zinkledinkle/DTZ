@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace DTZ.Content.Items
 {
-    public class ZinliteOre : ModItem
+    public class ZinkliteOre : ModItem
     {
         public override void SetDefaults()
         {

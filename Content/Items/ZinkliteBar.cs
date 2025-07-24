@@ -37,7 +37,7 @@ namespace DTZ.Content.Items
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient<ExampleOre>(5)
+                .AddIngredient<ZinkliteOre>(5)
                 .AddIngredient<SoulofSpite>()
                 .AddTile(TileID.Furnaces)
                 .Register();
