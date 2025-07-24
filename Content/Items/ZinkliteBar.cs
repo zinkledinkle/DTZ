@@ -30,8 +30,8 @@ namespace DTZ.Content.Items
             Item.useTime = 10;
             Item.autoReuse = true;
             Item.consumable = true;
-            // Item.createTile = ModContent.TileType<Tiles.ExampleBar>();
-            // Item.placeStyle = 0;
+            Item.createTile = ModContent.TileType<Tiles.ZinkliteBarTile>();
+            Item.placeStyle = 0;
         }
         // Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
         public override void AddRecipes()

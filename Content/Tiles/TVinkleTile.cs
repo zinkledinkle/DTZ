@@ -8,7 +8,7 @@ using Terraria.ObjectData;
 
 namespace DTZ.Content.Tiles
 {
-    public class TVinkle : ModTile
+    public class TVinkleTile : ModTile
     {
         public override void SetStaticDefaults()
         {

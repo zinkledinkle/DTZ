@@ -40,12 +40,12 @@ namespace DTZ.Content.Items
             Lighting.AddLight(Item.Center, Color.WhiteSmoke.ToVector3() * 0.55f * Main.essScale);
         }
 
-        public override void AddRecipes()
-        {
-            CreateRecipe()
-                .AddIngredient<ExampleItem>()
-                .AddTile(TileId.Anvils)
-                .Register();
-        }
+        //public override void AddRecipes();
+        //{
+            //CreateRecipe()
+                //.AddIngredient<Item>()
+                //.AddTile(TileId.Anvils)
+                //.Register();
+        //}
     }
 }

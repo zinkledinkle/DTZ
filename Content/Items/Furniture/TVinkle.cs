@@ -14,7 +14,7 @@ namespace DTZ.Content.Items.Furniture
     {
         public override void SetDefaults()
         {
-            Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.TVinkle>());
+            Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.TVinkleTile>());
             Item.value = 150;
             Item.maxStack = 99;
             Item.width = 68;

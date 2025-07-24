@@ -154,7 +154,27 @@ Items: {
 
 	Truff_item: {
 		// DisplayName: Truff
-		// Tooltip: " 'Mushroom-rooted stone' "
+		// Tooltip: "'Mushroom-rooted stone'"
+	}
+
+	TVinkle: {
+		// DisplayName: TVinkle
+		// Tooltip: "'My Zinkle TV is defective, all it does is eat rocks'"
+	}
+
+	ZinkliteBar: {
+		// DisplayName: Zinklite Bar
+		// Tooltip: "'Refined silly'"
+	}
+
+	SoulofSpite: {
+		// DisplayName: Soul of Spite
+		// Tooltip: "'The embodiment of pure spite, in a hypercritical state'"
+	}
+
+	ZinkliteOre: {
+		// DisplayName: Zinklite Ore
+		// Tooltip: "'How did you get this?'"
 	}
 }
 
