@@ -154,7 +154,17 @@ Items: {
 
 	Truff_item: {
 		DisplayName: Truff
-		Tooltip: " 'Mushroom-rooted stone' "
+		Tooltip: "'Mushroom-rooted stone'"
+	}
+
+	TVinkle: {
+		DisplayName: TVinkle
+		Tooltip: "'My Zinkle TV is defective, all it does is eat rocks'"
+	}
+
+	ZinkliteBar: {
+		DisplayName: Zinklite Bar
+		Tooltip: "'Percent composition: 10% evil pink demon essence, 90% silly'"
 	}
 }
 
