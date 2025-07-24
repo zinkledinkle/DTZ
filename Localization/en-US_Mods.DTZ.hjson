@@ -166,6 +166,16 @@ Items: {
 		DisplayName: Zinklite Bar
 		Tooltip: "'Percent composition: 10% evil pink demon essence, 90% silly'"
 	}
+
+	ZinkliteBar: {
+		DisplayName: Zinklite Ore
+		Tooltip: "'How did you get this?'"
+	}
+
+	SoulofSpite: {
+		DisplayName: Soul of Spite
+		Tooltip: "'The embodiment of pure spite, in a hypercritical state'"
+	}
 }
 
 Projectiles: {
