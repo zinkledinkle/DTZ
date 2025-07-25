@@ -66,7 +66,7 @@ Items: {
 
 	MoonlordUnderworldBunkFungus: {
 		DisplayName: Moonlords Underworld Bunk Fungus
-		Tooltip: "Got the bunk?"
+		Tooltip: Got the bunk?
 	}
 
 	Mushket: {
@@ -100,7 +100,7 @@ Items: {
 
 	Shroombrella: {
 		DisplayName: Shroombrella
-		Tooltip: "Releases damaging spores during slow fall"
+		Tooltip: Releases damaging spores during slow fall
 	}
 
 	MushroomCrate: {
