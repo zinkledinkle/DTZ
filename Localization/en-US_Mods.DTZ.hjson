@@ -41,7 +41,7 @@ Items: {
 
 	Shiitake: {
 		DisplayName: Shiitake
-		Tooltip: "'No, there's no escargot.'"
+		Tooltip: "'No, there's no escargot'"
 	}
 
 	PackedMud_item: {
@@ -66,7 +66,7 @@ Items: {
 
 	MoonlordUnderworldBunkFungus: {
 		DisplayName: Moonlords Underworld Bunk Fungus
-		Tooltip: yeah
+		Tooltip: "Got the bunk?"
 	}
 
 	Mushket: {
@@ -100,7 +100,7 @@ Items: {
 
 	Shroombrella: {
 		DisplayName: Shroombrella
-		Tooltip: ""
+		Tooltip: "Releases damaging spores during slow fall"
 	}
 
 	MushroomCrate: {
@@ -224,8 +224,8 @@ Buffs: {
 	}
 
 	FungusBuff: {
-		DisplayName: Fungus Buff
-		Description: Mods.DTZ.Buffs.FungusBuff.Description
+		DisplayName: FUNgus
+		Description: Like... major bunkage, bro...
 	}
 
 	Frozen: {
@@ -234,8 +234,8 @@ Buffs: {
 	}
 
 	NormieBuff: {
-		DisplayName: Normie Buff
-		Description: Mods.DTZ.Buffs.NormieBuff.Description
+		DisplayName: Familiar Familiar
+		Description: You feel increased health capacity!
 	}
 }
 
