@@ -1,4 +1,4 @@
-﻿using DTZ.Content.Tiles;
+﻿using Mycology.Content.Tiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Items
+namespace Mycology.Content.Items
 {
     public class Truff_item : ModItem
     {

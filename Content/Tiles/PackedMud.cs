@@ -1,4 +1,5 @@
-﻿using Mycology.Content.Items;
+﻿using Mycology.Content.Tiles;
+using Mycology.Content.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -7,8 +7,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
+using Mycology.Content.Items;
 
-namespace DTZ.Content.Items
+namespace Mycology.Content.Items
 {
     public class ZinkliteBar : ModItem
     {

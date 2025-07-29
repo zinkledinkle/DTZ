@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace DTZ.Content.Tiles
+namespace Mycology.Content.Tiles
 {
     public class TVinkleTile : ModTile
     {

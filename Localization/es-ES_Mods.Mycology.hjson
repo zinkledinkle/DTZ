@@ -152,10 +152,51 @@ Items: {
 			''' */
 	}
 
+	GUNKstool: {
+		// DisplayName: GUNKstool
+		// Tooltip: who up gunkin it rn
+	}
+
+	Sporeglide: {
+		// DisplayName: Sporeglide
+		/* Tooltip:
+			'''
+			Use while grounded to launch yourself up in the air, releasing spores below you
+			You will hang to the Sporeglide until you hit the ground or press your mount hotkey
+			Using items will not interrupt the Sporeglide
+			''' */
+	}
+
 	Truff_item: {
 		// DisplayName: Truff
 		// Tooltip: "'Mushroom-rooted stone'"
 	}
+
+	TVinkle: {
+		// DisplayName: TVinkle
+		// Tooltip: "'My Zinkle TV is defective, all it does is eat rocks'"
+	}
+
+	ZinkliteBar: {
+		// DisplayName: Zinklite Bar
+		// Tooltip: "'Refined silly'"
+	}
+
+	SoulofSpite: {
+		// DisplayName: Soul of Spite
+		// Tooltip: "'The embodiment of pure spite, in a hypercritical state'"
+	}
+
+	ZinkliteOre: {
+		// DisplayName: Zinklite Ore
+		// Tooltip: "'How did you get this?'"
+	}
+
+	Weirdshroom: {
+		// DisplayName: Weirdshroom
+		// Tooltip: ""
+	}
+}
 
 Projectiles: {
 	// GlowingMushion.DisplayName: Glowing Mushion
@@ -218,6 +259,11 @@ Buffs: {
 	NormieBuff: {
 		// DisplayName: Normie Buff
 		// Description: Mods.DTZ.Buffs.NormieBuff.Description
+	}
+
+	WeirdshroomBuff: {
+		// DisplayName: Weirdshroom Buff
+		// Description: Mods.Mycology.Buffs.WeirdshroomBuff.Description
 	}
 }
 
