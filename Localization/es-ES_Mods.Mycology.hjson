@@ -41,7 +41,7 @@ Items: {
 
 	Shiitake: {
 		// DisplayName: Shiitake
-		// Tooltip: "'No, there's no escargot.'"
+		// Tooltip: "'No, there's no escargot'"
 	}
 
 	PackedMud_item: {
@@ -66,7 +66,7 @@ Items: {
 
 	MoonlordUnderworldBunkFungus: {
 		// DisplayName: Moonlords Underworld Bunk Fungus
-		// Tooltip: yeah
+		// Tooltip: Got the bunk?
 	}
 
 	Mushket: {
@@ -100,7 +100,7 @@ Items: {
 
 	Shroombrella: {
 		// DisplayName: Shroombrella
-		// Tooltip: ""
+		// Tooltip: Releases damaging spores during slow fall
 	}
 
 	MushroomCrate: {
@@ -152,26 +152,10 @@ Items: {
 			''' */
 	}
 
-	GUNKstool: {
-		// DisplayName: GUNKstool
-		// Tooltip: who up gunkin it rn
+	Truff_item: {
+		// DisplayName: Truff
+		// Tooltip: "'Mushroom-rooted stone'"
 	}
-
-	Sporeglide: {
-		// DisplayName: Sporeglide
-		/* Tooltip:
-			'''
-			Use while grounded to launch yourself up in the air, releasing spores below you
-			You will hang to the Sporeglide until you hit the ground or press your mount hotkey
-			Using items will not interrupt the Sporeglide
-			''' */
-	}
-
-	Weirdshroom: {
-		// DisplayName: Weirdshroom
-		// Tooltip: this smells awful
-	}
-}
 
 Projectiles: {
 	// GlowingMushion.DisplayName: Glowing Mushion
@@ -223,7 +207,7 @@ Buffs: {
 
 	FungusBuff: {
 		// DisplayName: Fungus Buff
-		// Description: Mods.Mycology.Buffs.FungusBuff.Description
+		// Description: Mods.DTZ.Buffs.FungusBuff.Description
 	}
 
 	Frozen: {
@@ -233,12 +217,7 @@ Buffs: {
 
 	NormieBuff: {
 		// DisplayName: Normie Buff
-		// Description: Mods.Mycology.Buffs.NormieBuff.Description
-	}
-
-	WeirdshroomBuff: {
-		// DisplayName: Weirdshroom Buff
-		// Description: Mods.Mycology.Buffs.WeirdshroomBuff.Description
+		// Description: Mods.DTZ.Buffs.NormieBuff.Description
 	}
 }
 

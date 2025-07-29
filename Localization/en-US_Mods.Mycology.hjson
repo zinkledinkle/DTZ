@@ -41,7 +41,7 @@ Items: {
 
 	Shiitake: {
 		DisplayName: Shiitake
-		Tooltip: "'No, there's no escargot.'"
+		Tooltip: "'No, there's no escargot'"
 	}
 
 	PackedMud_item: {
@@ -66,7 +66,7 @@ Items: {
 
 	MoonlordUnderworldBunkFungus: {
 		DisplayName: Moonlords Underworld Bunk Fungus
-		Tooltip: yeah
+		Tooltip: Got the bunk?
 	}
 
 	Mushket: {
@@ -100,7 +100,7 @@ Items: {
 
 	Shroombrella: {
 		DisplayName: Shroombrella
-		Tooltip: ""
+		Tooltip: Releases damaging spores during slow fall
 	}
 
 	MushroomCrate: {
@@ -166,10 +166,29 @@ Items: {
 			Using items will not interrupt the Sporeglide
 			'''
 	}
+	Truff_item: {
+		DisplayName: Truff
+		Tooltip: "'Mushroom-rooted stone'"
+	}
 
-	Weirdshroom: {
-		DisplayName: Weirdshroom
-		Tooltip: this smells awful
+	TVinkle: {
+		DisplayName: TVinkle
+		Tooltip: "'My Zinkle TV is defective, all it does is eat rocks'"
+	}
+
+	ZinkliteBar: {
+		DisplayName: Zinklite Bar
+		Tooltip: "'Refined silly'"
+	}
+
+	SoulofSpite: {
+		DisplayName: Soul of Spite
+		Tooltip: "'The embodiment of pure spite, in a hypercritical state'"
+	}
+
+	ZinkliteOre: {
+		DisplayName: Zinklite Ore
+		Tooltip: "'How did you get this?'"
 	}
 }
 
@@ -223,7 +242,7 @@ Buffs: {
 
 	FungusBuff: {
 		DisplayName: Fungus Buff
-		Description: Mods.Mycology.Buffs.FungusBuff.Description
+		Description: Mods.DTZ.Buffs.FungusBuff.Description
 	}
 
 	Frozen: {
@@ -233,12 +252,7 @@ Buffs: {
 
 	NormieBuff: {
 		DisplayName: Normie Buff
-		Description: Mods.Mycology.Buffs.NormieBuff.Description
-	}
-
-	WeirdshroomBuff: {
-		DisplayName: Weirdshroom Buff
-		Description: Mods.Mycology.Buffs.WeirdshroomBuff.Description
+		Description: Mods.DTZ.Buffs.NormieBuff.Description
 	}
 }
 

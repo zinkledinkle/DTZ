@@ -15,6 +15,12 @@
 	  <None Remove="Content\Buffs\IceliumBuff.png" />
 	  <None Remove="Content\Buffs\NormieBuff.png" />
 	  <None Remove="Content\Buffs\ToadBuff.png" />
+	  <None Remove="Content\Items\Furniture\TVinkle.png" />
+	  <None Remove="Content\Items\SoulofSpite.png" />
+	  <None Remove="Content\Items\Truff_Item.png" />
+	  <None Remove="Content\Items\ZinkliteBar.png" />
+	  <None Remove="Content\Items\ZinkliteOre.png" />
+	  <None Remove="Content\NPCs\LoneMushion.png" />
 	  <None Remove="Content\Projectiles\HellcapMushion.png" />
 	  <None Remove="Content\Projectiles\HellcapMushionProj.png" />
 	  <None Remove="Content\Projectiles\IceliumMushion.png" />
@@ -23,6 +29,10 @@
 	  <None Remove="Content\Projectiles\NormieMushionProj.png" />
 	  <None Remove="Content\Projectiles\ToadMushion.png" />
 	  <None Remove="Content\Projectiles\ToadMushionProj.png" />
+	  <None Remove="Content\Tiles\PackedMud.png" />
+	  <None Remove="Content\Tiles\Truff.png" />
+	  <None Remove="Content\Tiles\TVinkleTile.png" />
+	  <None Remove="Content\Tiles\ZinkliteBarTile.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\ArctanYourTimeIsAlmostUp.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\ExslueterraAfterOneCenturyEgg.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\FeelingCuteToday.png" />
