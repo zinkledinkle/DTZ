@@ -1,4 +1,4 @@
-﻿using DTZ.Content.Buffs;
+﻿using Mycology.Content.Buffs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Items
+namespace Mycology.Content.Items
 {
     public class MoonlordUnderworldBunkFungus : ModItem
     {

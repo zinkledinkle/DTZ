@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Fishing
+namespace Mycology.Content.Fishing
 {
     public class MycologyFishingPlayer : ModPlayer
     {

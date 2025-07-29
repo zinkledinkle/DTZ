@@ -1,5 +1,5 @@
-﻿using DTZ.Content.Items.Weapons;
-using DTZ.Systems;
+﻿using Mycology.Content.Items.Weapons;
+using Mycology.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -13,7 +13,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Items
+namespace Mycology.Content.Items
 {
     [LegacyName("IceshroomItem")]
     public class Icelium : ModItem
@@ -102,8 +102,8 @@ namespace DTZ.Content.Items
             {
                 if (!Main.dedServ)
                 {
-                    Tint = ModContent.Request<Effect>("DTZ/Assets/Effects/Basic/Tint", AssetRequestMode.ImmediateLoad).Value;
-                    Ice = ModContent.Request<Texture2D>("DTZ/Assets/Textures/IceNoise").Value;
+                    Tint = ModContent.Request<Effect>("Mycology/Assets/Effects/Basic/Tint", AssetRequestMode.ImmediateLoad).Value;
+                    Ice = ModContent.Request<Texture2D>("Mycology/Assets/Textures/IceNoise").Value;
                 }
             }*/
             public override void DrawEffects(NPC npc, ref Color drawColor)

@@ -1,4 +1,4 @@
-﻿using DTZ.Content.Vanity.DevSets.Zinkle;
+﻿using Mycology.Content.Vanity.DevSets.Zinkle;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Vanity.DevSets.Lucid
+namespace Mycology.Content.Vanity.DevSets.Lucid
 {
     public class CodeSoda : ModItem
     {
@@ -16,9 +16,9 @@ namespace DTZ.Content.Vanity.DevSets.Lucid
         {
             if (!Main.dedServ)
             {
-                EquipLoader.AddEquipTexture(Mod, "DTZ/Content/Vanity/DevSets/Lucid/CodeSoda_Head", EquipType.Head, this);
-                EquipLoader.AddEquipTexture(Mod, "DTZ/Content/Vanity/DevSets/Lucid/CodeSoda_Body", EquipType.Body, this);
-                EquipLoader.AddEquipTexture(Mod, "DTZ/Content/Vanity/DevSets/Lucid/CodeSoda_Legs", EquipType.Legs, this);
+                EquipLoader.AddEquipTexture(Mod, "Mycology/Content/Vanity/DevSets/Lucid/CodeSoda_Head", EquipType.Head, this);
+                EquipLoader.AddEquipTexture(Mod, "Mycology/Content/Vanity/DevSets/Lucid/CodeSoda_Body", EquipType.Body, this);
+                EquipLoader.AddEquipTexture(Mod, "Mycology/Content/Vanity/DevSets/Lucid/CodeSoda_Legs", EquipType.Legs, this);
             }
         }
         public override void SetDefaults()

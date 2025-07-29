@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace DTZ.Systems
+namespace Mycology.Systems
 {
     public abstract class ShroomyDamage : DamageClass
     {
         protected virtual DamageClass ParentClass { get; }
-        public override LocalizedText DisplayName => Language.GetOrRegister("Mods.DTZ.Shroomy" + ParentClass.Name, () => "[c/12bfff:Shroomy]" + ParentClass.DisplayName);
+        public override LocalizedText DisplayName => Language.GetOrRegister("Mods.Mycology.Shroomy" + ParentClass.Name, () => "[c/12bfff:Shroomy]" + ParentClass.DisplayName);
         public override StatInheritanceData GetModifierInheritance(DamageClass damageClass)
         {
             if (damageClass == ParentClass) return StatInheritanceData.Full;
@@ -24,4 +24,5 @@ namespace DTZ.Systems
     public class ShroomyRanged : ShroomyDamage { protected override DamageClass ParentClass => Ranged; }
     public class ShroomyMagic : ShroomyDamage { protected override DamageClass ParentClass => Magic; }
     public class ShroomySummon : ShroomyDamage { protected override DamageClass ParentClass => Summon; }
+    public class PureShroomyDamage : ShroomyDamage { protected override DamageClass ParentClass => Generic; }
 }

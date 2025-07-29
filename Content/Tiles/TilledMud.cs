@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Tiles
+namespace Mycology.Content.Tiles
 {
     public class TilledMud : ModTile
     {

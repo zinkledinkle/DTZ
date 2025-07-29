@@ -124,18 +124,22 @@ Items: {
 	}
 
 	ZinkleHead: {
-		// DisplayName: Zinkle Head
+		// DisplayName: Zinkle's Head
 		// Tooltip: " 'Great for impersonating [c/989898:(Mycology)] devs!' "
 	}
 
 	ZinkleLegs: {
-		// DisplayName: Zinkle Legs
+		// DisplayName: Zinkle's Legs
 		// Tooltip: " 'Great for impersonating [c/989898:(Mycology)] devs!' "
 	}
 
 	ZinkleHat: {
-		// DisplayName: Zinkle Hat
-		// Tooltip: ""
+		// DisplayName: Zinkle's Jet-Powered Hat
+		/* Tooltip:
+			'''
+			'Great for impersonating [c/989898:(Mycology)] devs!'
+			Allows flight and slow fall
+			''' */
 	}
 
 	CodeSoda: {
@@ -146,6 +150,26 @@ Items: {
 			'I stubbed my tooth'
 			'Great for impersonating [c/989898:(Mycology)] devs!'
 			''' */
+	}
+
+	GUNKstool: {
+		// DisplayName: GUNKstool
+		// Tooltip: who up gunkin it rn
+	}
+
+	Sporeglide: {
+		// DisplayName: Sporeglide
+		/* Tooltip:
+			'''
+			Use while grounded to launch yourself up in the air, releasing spores below you
+			You will hang to the Sporeglide until you hit the ground or press your mount hotkey
+			Using items will not interrupt the Sporeglide
+			''' */
+	}
+
+	Weirdshroom: {
+		// DisplayName: Weirdshroom
+		// Tooltip: this smells awful
 	}
 }
 
@@ -171,6 +195,9 @@ Projectiles: {
 	// MycoRodBobber.DisplayName: Shroom Bobber
 	// NormieMushion.DisplayName: Normie Mushion
 	// NormieMushionProj.DisplayName: Normie Mushion Proj
+	// GUNKstoolShot.DisplayName: G U N Kstool Shot
+	// ShroombrellaProj.DisplayName: Shroombrella Proj
+	// SporeglideProj.DisplayName: Sporeglide Proj
 }
 
 Buffs: {
@@ -196,17 +223,22 @@ Buffs: {
 
 	FungusBuff: {
 		// DisplayName: Fungus Buff
-		// Description: Mods.DTZ.Buffs.FungusBuff.Description
+		// Description: Mods.Mycology.Buffs.FungusBuff.Description
 	}
 
 	Frozen: {
 		// DisplayName: Frozen
-		// Description: Mods.DTZ.Buffs.Frozen.Description
+		// Description: Mods.Mycology.Buffs.Frozen.Description
 	}
 
 	NormieBuff: {
 		// DisplayName: Normie Buff
-		// Description: Mods.DTZ.Buffs.NormieBuff.Description
+		// Description: Mods.Mycology.Buffs.NormieBuff.Description
+	}
+
+	WeirdshroomBuff: {
+		// DisplayName: Weirdshroom Buff
+		// Description: Mods.Mycology.Buffs.WeirdshroomBuff.Description
 	}
 }
 
@@ -230,3 +262,4 @@ DamageClasses: {
 // LoneMushionSpecialDialogue3: If you grow any mushions, keep it away from light. They're quite fragile when developing.
 // LoneMushionSpecialDialogue4: Mushion seeds only grow in groups of three or more, we don't grow lonely.
 // LoneMushionSpecialDialogue5: We're not a glowing mushroom species. Actually, we come in ice, fire, and... toad variants.
+// ShroomyGenericDamageClass: "[c/12bfff:Shroomy] damage"

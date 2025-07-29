@@ -1,4 +1,4 @@
-﻿using DTZ.Content.Items;
+﻿using Mycology.Content.Items;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Terraria.ID;
@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
 
-namespace DTZ.Content.Tiles
+namespace Mycology.Content.Tiles
 {
     public class ToadstoolTile : ModTile
     {

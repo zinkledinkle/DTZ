@@ -5,7 +5,7 @@ using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Items
+namespace Mycology.Content.Items
 {
 	public class Shiitake : ModItem
 	{

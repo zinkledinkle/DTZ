@@ -1,5 +1,7 @@
-﻿using DTZ.Content.Projectiles;
-using DTZ.Content.Tiles;
+﻿using Mycology.Content.Items;
+using Mycology.Content.Items.Weapons;
+using Mycology.Content.Projectiles;
+using Mycology.Content.Tiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace DTZ
+namespace Mycology
 {
     public class MycologyPlayer : ModPlayer //general all use player for most generic mycology things, feel free to use if the use case doesn't necessitate its own class
     {
@@ -28,6 +30,17 @@ namespace DTZ
             ModContent.ProjectileType<HellcapMushion>(),
             ModContent.ProjectileType<ToadMushion>(),
         };
+        public override void PreUpdate()
+        {
+            bool shroomBrellaFloat = Player.HeldItem.ModItem is Shroombrella shroombrella && shroombrella.floaty;
+            bool sporeglideFloat = Player.ownedProjectileCounts[ModContent.ProjectileType<SporeglideProj>()] > 0 &&
+                Main.projectile.Where(p => p.owner == Player.whoAmI && p.type == ModContent.ProjectileType<SporeglideProj>()).FirstOrDefault().ModProjectile is SporeglideProj sg && !sg.closing
+                && !Player.controlDown;
+            if (shroomBrellaFloat || sporeglideFloat)
+            {
+                Player.maxFallSpeed /= 5f;
+            }
+        }
         public override void ResetEffects()
         {
             if (MushionCount > MaxMushions)

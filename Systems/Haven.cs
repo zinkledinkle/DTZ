@@ -1,6 +1,6 @@
-﻿using DTZ.Content.NPCs;
-using DTZ.Content.Tiles;
-using DTZ.Content.Tiles.Ambient;
+﻿using Mycology.Content.NPCs;
+using Mycology.Content.Tiles;
+using Mycology.Content.Tiles.Ambient;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.WorldBuilding;
 
-namespace DTZ.Systems
+namespace Mycology.Systems
 {
     public class Haven : ModBiome
     {
@@ -37,7 +37,7 @@ namespace DTZ.Systems
         {
             if (isActive) Main.undergroundBackground = 8;
         }
-        public override int Music => MusicLoader.GetMusicSlot("DTZ/Music/Haven");
+        public override int Music => MusicLoader.GetMusicSlot("Mycology/Music/Haven");
     }
     public class HavenSystem : ModSystem
     {

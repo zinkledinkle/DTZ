@@ -6,11 +6,11 @@ using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace DTZ.Systems.Drawing.Particles
+namespace Mycology.Systems.Drawing.Particles
 {
     public abstract class Particle(Vector2 position, Vector2 velocity, Color? color = null, float rotation = 0, float scale = 1, float alpha = 1)
     {
-        public virtual string Texture { get; }
+        public virtual string Texture => GetType().FullName.Replace(".", "/");
         protected virtual Texture2D TextureData => ParticleTextureAssets.Get(Texture);
         public Vector2 Position { get; set; } = position;
         public Vector2 Velocity { get; set; } = velocity;
@@ -38,6 +38,7 @@ namespace DTZ.Systems.Drawing.Particles
             Particle particle = type switch
             {
                 ParticleID.Spark => new SparkParticle(position, velocity, color, rotation, scale),
+                ParticleID.Wind => new WindParticle(position, velocity, color, rotation, scale),
                 _ => throw new ArgumentException("Invalid particle ID idiot"),
             };
             ParticleManager.particle.Add(particle);
@@ -46,6 +47,7 @@ namespace DTZ.Systems.Drawing.Particles
         public enum ParticleID
         {
             Spark = 0,
+            Wind = 1,
         }
     }
     public class ParticleManager : ModSystem
@@ -59,14 +61,15 @@ namespace DTZ.Systems.Drawing.Particles
             foreach (var type in types)
             {
                 Particle particle = (Particle)Activator.CreateInstance(type, Vector2.Zero, Vector2.Zero, Color.White, 0f, 1f);
-                ParticleTextureAssets.Textures.Add(particle.Texture, ModContent.Request<Texture2D>(particle.Texture).Value);
+                ParticleTextureAssets.Textures.Add(particle.Texture, ModContent.Request<Texture2D>(particle.Texture, ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             }
         }
         public override void PreUpdateDusts()
         {
-            foreach (var particle in particle)
+            for (int i = 0; i < particle.Count; i++)
             {
-                particle.Update();
+                Particle p = particle[i];
+                p?.Update();
             }
         }
         private void Draw(On_Main.orig_DrawNPCs orig, Main self, bool behindTiles)

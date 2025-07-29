@@ -6,9 +6,9 @@ using Terraria.ObjectData;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Localization;
 using Microsoft.Xna.Framework;
-using DTZ.Content.Items;
+using Mycology.Content.Items;
 
-namespace DTZ.Content.Tiles
+namespace Mycology.Content.Tiles
 {
     public class HellcapTile : ModTile
     {

@@ -1,4 +1,4 @@
-﻿using DTZ.Content.Items;
+﻿using Mycology.Content.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Tiles
+namespace Mycology.Content.Tiles
 {
     public class MushionGrass : ModTile
     {

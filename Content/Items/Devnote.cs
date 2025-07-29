@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Items
+namespace Mycology.Content.Items
 {
     public class Devnote : ModItem
     {

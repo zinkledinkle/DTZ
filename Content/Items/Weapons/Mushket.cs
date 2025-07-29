@@ -1,4 +1,4 @@
-﻿using DTZ.Systems;
+﻿using Mycology.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -13,7 +13,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Items.Weapons
+namespace Mycology.Content.Items.Weapons
 {
     public class Mushket : ModItem
     {
@@ -53,8 +53,13 @@ namespace DTZ.Content.Items.Weapons
     public class MushketProj : ModProjectile
     {
         public override string Texture => ModContent.GetInstance<Mushket>().Texture;
-        Texture2D muzzleFlashTex;
-        public override void Load() { if (!Main.dedServ) muzzleFlashTex = ModContent.Request<Texture2D>("DTZ/Assets/Textures/MuzzleFlash").Value; }
+        private static Texture2D muzzleFlashTex;
+        public override void Load() {
+            if (!Main.dedServ)
+            {
+                muzzleFlashTex = ModContent.Request<Texture2D>("Mycology/Assets/Textures/MuzzleFlash", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+            }
+        }
         public override void SetDefaults()
         {
             Projectile.width = 66;
@@ -64,6 +69,7 @@ namespace DTZ.Content.Items.Weapons
             Projectile.timeLeft = 2;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
+            Projectile.netUpdate = true;
         }
         SpriteEffects flip = SpriteEffects.None;
         float muzzleFlashAlpha = 0f;
@@ -98,12 +104,18 @@ namespace DTZ.Content.Items.Weapons
 
                 if (Projectile.ai[0] == 0)
                 {
-                    Mushket mushket = ModContent.GetInstance<Mushket>();
-
                     plr.PickAmmo(item, out int projID, out float shootSpeed, out int damage, out float knockBack, out int AmmoItemID);
                     if (Main.rand.NextBool(20)) if (!plr.ConsumeItem(AmmoItemID)) return;
 
-                    Projectile.NewProjectile(plr.GetSource_FromThis(), Projectile.Center + offset * 22, 
+                    if (projID == ModContent.ProjectileType<ToadstoolShot>() && Main.rand.NextBool(1000000)) projID = ModContent.ProjectileType<GUNKstoolShot>();
+
+                    Vector2 spawnPos = Projectile.Center + offset * 22;
+                    if (!Collision.CanHitLine(plr.Center, 5, 5, spawnPos + offset * 10, 5, 5))
+                    {
+                        spawnPos = plr.Center;
+                    }
+
+                    Projectile.NewProjectile(plr.GetSource_FromThis(), spawnPos, 
                         offset * shootSpeed, projID, damage, knockBack, Projectile.owner);
                     muzzleFlashAlpha = 1;
                     recoil = 25;
@@ -113,15 +125,14 @@ namespace DTZ.Content.Items.Weapons
                 Projectile.ai[0] += Projectile.ai[0] <= maxTime ? 1 : -maxTime -1;
             }
             else Projectile.Kill();
+            Projectile.netUpdate = true;
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            muzzleFlashTex ??= ModContent.Request<Texture2D>("DTZ/Assets/Textures/MuzzleFlash").Value;
             Texture2D tex = TextureAssets.Projectile[Type].Value;
             Vector2 origin = tex.Size() / 2;
             Vector2 drawpos = Projectile.Center - Main.screenPosition;
             Main.spriteBatch.Draw(tex, drawpos, null, lightColor, Projectile.rotation, origin, Projectile.scale, flip, 1f);
-
             Vector2 muzzleFlashOrigin = muzzleFlashTex.Size() / 2;
             Vector2 muzzleFlashDrawpos = (Projectile.Center + offset * 26) - Main.screenPosition;
 
@@ -153,6 +164,7 @@ namespace DTZ.Content.Items.Weapons
         }
         public override void AI()
         {
+            Projectile.netUpdate = true;
             Projectile.velocity.Y += Weight;
             Projectile.velocity.X *= (1 - Weight / 10);
             Projectile.rotation += RotationSpeed;

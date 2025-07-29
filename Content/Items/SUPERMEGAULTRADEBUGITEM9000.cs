@@ -1,5 +1,5 @@
-﻿using DTZ.Systems;
-using DTZ.Systems.Drawing.Particles;
+﻿using Mycology.Systems;
+using Mycology.Systems.Drawing.Particles;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Items
+namespace Mycology.Content.Items
 {
     public class SUPERMEGAULTRADEBUGITEM9000 : ModItem
     {

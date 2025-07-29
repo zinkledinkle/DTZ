@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.ID;
 using Terraria;
 
-namespace DTZ.Systems.Drawing.Particles
+namespace Mycology.Systems.Drawing.Particles
 {
     public class SparkParticle(Vector2 position, Vector2 velocity, Color color, float rotation, float scale) : Particle(position, velocity, color, rotation, scale)
     {

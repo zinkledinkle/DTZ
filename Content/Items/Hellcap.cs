@@ -1,5 +1,5 @@
-﻿using DTZ.Content.Items.Weapons;
-using DTZ.Systems;
+﻿using Mycology.Content.Items.Weapons;
+using Mycology.Systems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Items
+namespace Mycology.Content.Items
 {
     public class Hellcap : ModItem
     {

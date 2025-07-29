@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Items.Accessories
+namespace Mycology.Content.Items.Accessories
 {
     public class GlowingSalve : ModItem
     {

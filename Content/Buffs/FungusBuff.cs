@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.Graphics.Effects;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Buffs
+namespace Mycology.Content.Buffs
 {
     public class FungusBuff : ModBuff
     {

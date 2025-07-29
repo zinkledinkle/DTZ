@@ -1,4 +1,4 @@
-﻿using DTZ.Content.Tiles;
+﻿using Mycology.Content.Tiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Systems
+namespace Mycology.Systems
 {
     public class ShroomGen : ModSystem
     {

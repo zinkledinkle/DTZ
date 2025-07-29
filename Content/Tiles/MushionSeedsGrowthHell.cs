@@ -1,4 +1,4 @@
-﻿using DTZ.Content.Projectiles;
+﻿using Mycology.Content.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -12,7 +12,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.ObjectData;
 
-namespace DTZ.Content.Tiles
+namespace Mycology.Content.Tiles
 {
     public class MushionSeedsGrowthHell : MushionSeedsGrowthBase
     {
@@ -33,7 +33,7 @@ namespace DTZ.Content.Tiles
     }
     public class MushionSeedsTileHell : MushionSeedsTileBase
     {
-        public override string Texture => "DTZ/Content/Tiles/MushionSeedsGrowthHell_sheet";
+        public override string Texture => "Mycology/Content/Tiles/MushionSeedsGrowthHell_sheet";
         protected override MushionSeedsGrowthBase GetTileEntityInstance() => ModContent.GetInstance<MushionSeedsGrowthHell>();
         public override bool CanPlace(int i, int j) => MushionSeedsGrowthBase.HasMud(i, j);
         public override void SetStaticDefaults()

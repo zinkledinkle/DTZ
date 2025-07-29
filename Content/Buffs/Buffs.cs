@@ -1,9 +1,9 @@
-﻿using DTZ.Content.Projectiles;
+﻿using Mycology.Content.Projectiles;
 using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Buffs
+namespace Mycology.Content.Buffs
 {
 
     // i could NOT be bothered to make 4 seperate .cs files when its lowkey like 8 lines of code per buff :broken heart:

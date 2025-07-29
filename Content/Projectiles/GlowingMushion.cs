@@ -1,5 +1,5 @@
 
-using DTZ.Content.Buffs;
+using Mycology.Content.Buffs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -13,7 +13,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Projectiles
+namespace Mycology.Content.Projectiles
 {
     public class GlowingMushion : ModProjectile
     {
@@ -117,7 +117,7 @@ namespace DTZ.Content.Projectiles
             {
                 Projectile.ai[5] = 0;
                 currentState = States.ability;
-                SoundEngine.PlaySound(new SoundStyle("DTZ/Assets/Sounds/GlowingMushion3") with { PitchVariance = .16f }, Projectile.Center);
+                SoundEngine.PlaySound(new SoundStyle("Mycology/Assets/Sounds/GlowingMushion3") with { PitchVariance = .16f }, Projectile.Center);
             }
 
             if (currentState == States.ability)
@@ -156,7 +156,7 @@ namespace DTZ.Content.Projectiles
                     if (Projectile.ai[4] == 0 && Projectile.ai[3] == 0)
                     {
                         Projectile.velocity.Y -= 5;
-                        SoundEngine.PlaySound(new SoundStyle("DTZ/Assets/Sounds/GlowingMushion2") with { PitchVariance = .16f }, Projectile.Center);
+                        SoundEngine.PlaySound(new SoundStyle("Mycology/Assets/Sounds/GlowingMushion2") with { PitchVariance = .16f }, Projectile.Center);
                     }
 
                     if (Projectile.ai[3]++ >= 8)
@@ -218,7 +218,7 @@ namespace DTZ.Content.Projectiles
                         else if (Main.rand.NextBool(200) && Projectile.ai[4] == 0)
                         {
                             Projectile.ai[4] = 1;
-                            SoundEngine.PlaySound(new SoundStyle("DTZ/Assets/Sounds/GlowingMushion1") with { PitchVariance = .16f }, Projectile.Center);
+                            SoundEngine.PlaySound(new SoundStyle("Mycology/Assets/Sounds/GlowingMushion1") with { PitchVariance = .16f }, Projectile.Center);
                         }
 
                         if (Projectile.ai[4] == 1 || Projectile.ai[4] == 2)
@@ -294,7 +294,7 @@ namespace DTZ.Content.Projectiles
 
         public override void OnKill(int timeLeft)
         {
-            SoundEngine.PlaySound(new SoundStyle("DTZ/Assets/Sounds/MushionPerish") with { PitchVariance = .16f }, Projectile.Center);
+            SoundEngine.PlaySound(new SoundStyle("Mycology/Assets/Sounds/MushionPerish") with { PitchVariance = .16f }, Projectile.Center);
 
             for (int i = 0; i < 8; i++)
             {

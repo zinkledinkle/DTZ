@@ -1,4 +1,4 @@
-﻿using DTZ.Content.Tiles;
+﻿using Mycology.Content.Tiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using Terraria.ID;
 using ReLogic.Graphics;
 using Terraria.GameInput;
 
-namespace DTZ.UI
+namespace Mycology.UI
 {
     public class GrowthBarUI : UIState
     {
@@ -20,7 +20,7 @@ namespace DTZ.UI
         private Vector2 Pos { get; set; } = Vector2.Zero;
         private float Progress { get; set; } = 0;
         private TileEntity lastTileEntity;
-        Texture2D tex;
+        private static Texture2D tex;
 
         private static readonly HashSet<ushort> MushionTileTypes = new()
         {
@@ -31,7 +31,7 @@ namespace DTZ.UI
         };
         public override void OnInitialize()
         {
-            tex = ModContent.Request<Texture2D>("DTZ/UI/GrowthBar").Value;
+            tex = ModContent.Request<Texture2D>("Mycology/UI/GrowthBar", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
         }
         public override void Update(GameTime gameTime)
         {

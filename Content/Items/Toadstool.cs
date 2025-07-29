@@ -1,4 +1,4 @@
-﻿using DTZ.Content.Items.Weapons;
+﻿using Mycology.Content.Items.Weapons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using DTZ.Systems;
+using Mycology.Systems;
 
-namespace DTZ.Content.Items
+namespace Mycology.Content.Items
 {
     public class Toadstool : ModItem
     {

@@ -1,5 +1,5 @@
-﻿using DTZ.Content.Items.Accessories;
-using DTZ.Content.Projectiles;
+﻿using Mycology.Content.Items.Accessories;
+using Mycology.Content.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
@@ -20,8 +20,9 @@ using Terraria.ModLoader.IO;
 using Terraria.ObjectData;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Net.WebRequestMethods;
+using ReLogic.Content;
 
-namespace DTZ.Content.Tiles
+namespace Mycology.Content.Tiles
 {
     public abstract class MushionSeedsGrowthBase : ModTileEntity
     {
@@ -137,6 +138,7 @@ namespace DTZ.Content.Tiles
             tag[nameof(growRate)] = growRate;
             tag[nameof(owner)] = owner;
             tag[nameof(ownerName)] = ownerName;
+            tag[nameof(grown)] = grown;
         }
         public override void LoadData(TagCompound tag)
         {
@@ -144,21 +146,23 @@ namespace DTZ.Content.Tiles
             growRate = tag.GetInt(nameof(growRate));
             owner = tag.GetInt(nameof(owner));
             ownerName = tag.GetString(nameof(ownerName));
+            grown = tag.GetBool(nameof(grown));
         }
         public override void NetSend(BinaryWriter writer) => writer.Write(growth);
         public override void NetReceive(BinaryReader reader) => growth = reader.ReadSingle();
     }
     public abstract class MushionSeedsTileBase : ModTile
     {
+        private static Texture2D glowTexture;
         public override void Load()
         {
-            On_Main.DrawTiles += DrawGlow;
+            //On_Main.DrawTiles += DrawGlow;
             On_Player.PlaceThing_Tiles_PlaceIt += StorePlayer;
-            TextureAssets.GlowMask[Type] = ModContent.Request<Texture2D>(Texture + "_glow");
+            glowTexture = ModContent.Request<Texture2D>(Texture + "_glow", AssetRequestMode.ImmediateLoad).Value;
         }
         public override void Unload()
         {
-            On_Main.DrawTiles -= DrawGlow;
+            //On_Main.DrawTiles -= DrawGlow;
             On_Player.PlaceThing_Tiles_PlaceIt -= StorePlayer;
         }
         protected string OwnerName;
@@ -233,8 +237,41 @@ namespace DTZ.Content.Tiles
         }
         public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
         {
+            Tile tile = Framing.GetTileSafely(i, j);
+            ModTile modTile = TileLoader.GetTile(tile.TileType);
+
+            int glowFrameX = tile.TileFrameX / 18;
+            glowFrameX *= 26;
+            int frameYint = tile.TileFrameY;
+            short glowFrameY = (short)((short)(frameYint / 18) * 26);
+
+            int phase = GetPhaseFromCoordinates(i, j);
+            GetFrameYOffset(ref glowFrameY, 42, phase);
+            Vector2 zero = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
+            Vector2 drawPos = new Vector2(i * 16, j * 16) - Main.screenPosition + zero;
+            drawPos.Y += 4;
+
+            Vector2 glowPos = drawPos;
+
+            Rectangle glowSource = new(glowFrameX, glowFrameY, 26, 26);
+            if (glowFrameX == 0) glowPos.X -= 8;
+            if (tile.TileFrameY == 0) glowPos.Y -= 8;
+
+            glowColor.A *= 0;
+            spriteBatch.Draw(glowTexture, glowPos, glowSource, glowColor, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
+
+            int frameX = tile.TileFrameX;
+            short frameY = tile.TileFrameY;
+            GetFrameYOffset(ref frameY, 34, phase);
+            Rectangle source = new(frameX, frameY, 16, 16);
+            Color color = Lighting.GetColor(i, j);
+            color.MultiplyRGB(new Color(2, 2, 2));
+
+            Texture2D tex = TextureAssets.Tile[tile.TileType].Value;
+            spriteBatch.Draw(tex, drawPos, source, color, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
             return true;
         }
+        /*
         private void DrawGlow(On_Main.orig_DrawTiles orig, Main self, bool solidLayer, bool forRenderTargets, bool intoRenderTargets, int waterStyleOverride)
         {
             Main.spriteBatch.End();
@@ -308,6 +345,7 @@ namespace DTZ.Content.Tiles
             }
             orig(self, solidLayer, forRenderTargets, intoRenderTargets, waterStyleOverride);
         }
+        */
         #endregion
     }
     public class MushionColony(int id)
@@ -345,7 +383,7 @@ namespace DTZ.Content.Tiles
         Texture2D tileGlow;
         public override void Load()
         {
-            tileGlow = ModContent.Request<Texture2D>("DTZ/Assets/Textures/glowTile").Value;
+            tileGlow = ModContent.Request<Texture2D>("Mycology/Assets/Textures/glowTile").Value;
             On_Main.DrawTiles += GlowMud;
         }
 

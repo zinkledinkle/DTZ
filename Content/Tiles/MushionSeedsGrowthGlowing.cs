@@ -5,9 +5,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria;
-using DTZ.Content.Projectiles;
+using Mycology.Content.Projectiles;
 
-namespace DTZ.Content.Tiles
+namespace Mycology.Content.Tiles
 {
     public class MushionSeedsGrowthGlowing : MushionSeedsGrowthBase
     {
@@ -28,7 +28,7 @@ namespace DTZ.Content.Tiles
     }
     public class MushionSeedsTileGlowing : MushionSeedsTileBase
     {
-        public override string Texture => "DTZ/Content/Tiles/MushionSeedsGrowth_sheet";
+        public override string Texture => "Mycology/Content/Tiles/MushionSeedsGrowth_sheet";
         protected override MushionSeedsGrowthBase GetTileEntityInstance() => ModContent.GetInstance<MushionSeedsGrowthGlowing>();
         public override bool CanPlace(int i, int j) => MushionSeedsGrowthBase.HasMud(i, j);
         public override void SetStaticDefaults()

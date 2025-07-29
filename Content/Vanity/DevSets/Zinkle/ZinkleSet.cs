@@ -1,11 +1,11 @@
-﻿using DTZ.Systems.Drawing.Particles;
+﻿using Mycology.Systems.Drawing.Particles;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Vanity.DevSets.Zinkle
+namespace Mycology.Content.Vanity.DevSets.Zinkle
 {
     [AutoloadEquip(EquipType.Body)]
     public class ZinkleBody : ModItem

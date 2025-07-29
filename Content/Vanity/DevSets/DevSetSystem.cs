@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Vanity.DevSets
+namespace Mycology.Content.Vanity.DevSets
 {
     public class DevSetSystem : ModSystem
     {
@@ -87,7 +87,7 @@ namespace DTZ.Content.Vanity.DevSets
             }
             catch (Exception e)
             {
-                ModContent.GetInstance<DTZ>().Logger.Error($"Error in IL_Player.TryGettingDevArmor: {e}");
+                ModContent.GetInstance<Mycology>().Logger.Error($"Error in IL_Player.TryGettingDevArmor: {e}");
                 MonoModHooks.DumpIL(Mod, il);
             }
         }

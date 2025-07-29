@@ -11,7 +11,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Systems
+namespace Mycology.Systems
 {
     public class TileData
     {
@@ -283,7 +283,7 @@ namespace DTZ.Systems
 
         private static StructureData LoadStructure(string name)
         {
-            byte[] fileBytes = ModContent.GetFileBytes("DTZ/" + name + ".json");
+            byte[] fileBytes = ModContent.GetFileBytes("Mycology/" + name + ".json");
             if (fileBytes == null) return null;
             string json = Encoding.UTF8.GetString(fileBytes);
             return JsonSerializer.Deserialize<StructureData>(json);

@@ -9,14 +9,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Fishing
+namespace Mycology.Content.Fishing
 {
     public class MycoRod : ModItem
     {
         private static Texture2D inventoryTexture;
         public override void Load()
         {
-            if (!Main.dedServ) inventoryTexture = ModContent.Request<Texture2D>(Texture + "_inventory").Value;
+            if (!Main.dedServ) inventoryTexture = ModContent.Request<Texture2D>(Texture + "_inventory", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
         }
         public override void SetDefaults()
         {
@@ -43,7 +43,6 @@ namespace DTZ.Content.Fishing
         }
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            inventoryTexture ??= ModContent.Request<Texture2D>(Texture + "_inventory").Value;
             spriteBatch.Draw(inventoryTexture, position, null, drawColor, 0, inventoryTexture.Size()/2, scale, SpriteEffects.None, 1f);
             return false;
         }

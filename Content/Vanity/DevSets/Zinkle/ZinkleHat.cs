@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Mycology.Content.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Vanity.DevSets.Zinkle
+namespace Mycology.Content.Vanity.DevSets.Zinkle
 {
     [AutoloadEquip(EquipType.Wings)]
     public class ZinkleHat : ModItem
@@ -130,24 +131,20 @@ namespace DTZ.Content.Vanity.DevSets.Zinkle
         {
             if (!HasVanityWings(drawInfo.drawPlayer)) PlayerDrawLayers.Wings.Hide();
 
-            /*if (Texture == null || Texture.Width <= 1)
-            {
-                Texture = ModContent.Request<Texture2D>(ModContent.GetInstance<ZinkleHat>().Texture + "_Wings").Value; //why does it do this.
-            }*/
-
             Vector2 position = (drawInfo.Center + new Vector2(-4, -19)) - Main.screenPosition;
+
+            position.Y += (drawInfo.drawPlayer.GetModPlayer<WeirdshroomPlayer>().stretch.Y * Player.defaultHeight) / 4;
+
             if (drawInfo.drawPlayer.direction == -1) position.X += 8;
             position = new Vector2((int)position.X, (int)position.Y);
             int frame = drawInfo.drawPlayer.GetModPlayer<ZinkleHatPlayer>().frame * 32;
             Rectangle source = new(0, frame, 52, 32);
 
-            Color color = Color.White;
-
             drawInfo.DrawDataCache.Add(new DrawData(
                 Texture,
                 position,
                 source,
-                color,
+                Color.White,
                 0,
                 new Vector2(26, 16),
                 1f,

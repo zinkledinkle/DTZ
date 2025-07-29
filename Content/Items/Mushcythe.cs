@@ -1,5 +1,5 @@
-﻿using DTZ.Content.Tiles;
-using DTZ.Systems;
+﻿using Mycology.Content.Tiles;
+using Mycology.Systems;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Items
+namespace Mycology.Content.Items
 {
     public class Mushcythe : ModItem
     {

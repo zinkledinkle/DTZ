@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Projectiles
+namespace Mycology.Content.Projectiles
 {
     public class ToadMushionProj : MushionProj { }
 }

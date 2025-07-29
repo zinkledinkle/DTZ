@@ -1,4 +1,4 @@
-﻿using DTZ.Content.Items;
+﻿using Mycology.Content.Items;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using Terraria.ObjectData;
 using Terraria;
 using Microsoft.Xna.Framework;
 
-namespace DTZ.Content.Tiles
+namespace Mycology.Content.Tiles
 {
     public class IceliumTile : ModTile
     {

@@ -6,7 +6,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace DTZ.Content.Fishing
+namespace Mycology.Content.Fishing
 {
     public class MushroomCrate : ModItem
     {

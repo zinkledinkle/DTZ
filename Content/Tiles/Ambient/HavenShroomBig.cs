@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace DTZ.Content.Tiles.Ambient
+namespace Mycology.Content.Tiles.Ambient
 {
     public class HavenShroomBig : ModTile
     {
