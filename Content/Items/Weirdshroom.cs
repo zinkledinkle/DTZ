@@ -1,13 +1,10 @@
-﻿using System.Reflection;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Mycology.Content.Buffs;
 using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using MonoMod.Cil;
-using Mono.Cecil.Cil;
 
 namespace Mycology.Content.Items
 {

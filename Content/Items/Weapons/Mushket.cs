@@ -2,10 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -104,7 +100,7 @@ namespace Mycology.Content.Items.Weapons
 
                 if (Projectile.ai[0] == 0)
                 {
-                    plr.PickAmmo(item, out int projID, out float shootSpeed, out int damage, out float knockBack, out int AmmoItemID);
+                    if (!plr.PickAmmo(item, out int projID, out float shootSpeed, out int damage, out float knockBack, out int AmmoItemID)) Projectile.Kill();
                     if (Main.rand.NextBool(20)) if (!plr.ConsumeItem(AmmoItemID)) return;
 
                     if (projID == ModContent.ProjectileType<ToadstoolShot>() && Main.rand.NextBool(1000000)) projID = ModContent.ProjectileType<GUNKstoolShot>();

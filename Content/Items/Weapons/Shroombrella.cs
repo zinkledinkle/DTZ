@@ -9,6 +9,7 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
+using Mycology.Assets.Sounds;
 
 namespace Mycology.Content.Items.Weapons
 {
@@ -137,7 +138,7 @@ namespace Mycology.Content.Items.Weapons
             Projectile.height = 52;
             Projectile.friendly = true;
             Projectile.DamageType = ModContent.GetInstance<ShroomyMelee>();
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 10000; //theres a reason for this I promise
             Projectile.tileCollide = false;
             Projectile.timeLeft = (int)Projectile.ai[0];
         }
@@ -216,6 +217,10 @@ namespace Mycology.Content.Items.Weapons
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            if (Projectile.penetrate > 9999)
+            {
+                SoundEngine.PlaySound(MiscellaneousSoundStore.MushroomHit1, Projectile.Center); //this is the reason
+            }
             for (int i = 0; i < Main.rand.Next(2,4); i++)
             {
                 Projectile.NewProjectile(Projectile.GetSource_FromAI(), target.Center, Main.rand.NextVector2CircularEdge(10, 10), ModContent.ProjectileType<ShroombrellaSpore>(), damageDone / 2, 0, Projectile.owner);

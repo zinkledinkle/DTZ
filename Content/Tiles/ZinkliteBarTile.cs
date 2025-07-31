@@ -8,9 +8,9 @@ using Terraria.DataStructures;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using DTZ.Content.Items;
+using Mycology.Content.Items;
 
-namespace DTZ.Content.Tiles
+namespace Mycology.Content.Tiles
 {
     public class ZinkliteBarTile : ModTile
     {

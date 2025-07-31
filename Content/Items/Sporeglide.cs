@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -42,6 +43,12 @@ namespace Mycology.Content.Items
     {
         private static Texture2D glow;
         public override string Texture => ModContent.GetInstance<Sporeglide>().Texture;
+        private static SoundStyle woosh = new("Mycology/Assets/Sounds/Items/Sporeglide_Launch", SoundType.Sound)
+        {
+            MaxInstances = 0,
+            Volume = 1.1f,
+            PitchVariance = 0.1f
+        };
         public override void Load()
         {
             if (!Main.dedServ)
@@ -98,10 +105,12 @@ namespace Mycology.Content.Items
 
             squash = MathHelper.Lerp(squash, player.controlDown ? 0.6f : 1, 0.25f);
 
-            Projectile.Center = player.Center + new Vector2(0, -28);
+            Vector2 offset = new Vector2(0, -28).RotatedBy(Projectile.rotation, new Vector2(0, -10));
+            Projectile.Center = player.Center + offset;
             Projectile.Center += new Vector2(0, (1 - squash) * 52 / 2);
             if (Projectile.ai[0] == 0)
             {
+                SoundEngine.PlaySound(woosh, Projectile.Center);
                 for (int i = 0; i < 30; i++)
                 {
                     if (Main.rand.NextBool(3))

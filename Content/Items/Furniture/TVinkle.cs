@@ -8,7 +8,7 @@ using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
-namespace DTZ.Content.Items.Furniture
+namespace Mycology.Content.Items.Furniture
 {
     public class TVinkle : ModItem
     {
