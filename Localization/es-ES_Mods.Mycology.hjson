@@ -151,8 +151,7 @@ Items: {
 			'Great for impersonating [c/989898:(Mycology)] devs!'
 			''' */
 	}
-
-	GUNKstool: {
+		GUNKstool: {
 		// DisplayName: GUNKstool
 		// Tooltip: who up gunkin it rn
 	}
@@ -171,6 +170,32 @@ Items: {
 		// DisplayName: Truff
 		// Tooltip: "'Mushroom-rooted stone'"
 	}
+
+	TVinkle: {
+		// DisplayName: TVinkle
+		// Tooltip: "'My Zinkle TV is defective, all it does is eat rocks'"
+	}
+
+	ZinkliteBar: {
+		// DisplayName: Zinklite Bar
+		// Tooltip: "'Refined silly'"
+	}
+
+	SoulofSpite: {
+		// DisplayName: Soul of Spite
+		// Tooltip: "'The embodiment of pure spite, in a hypercritical state'"
+	}
+
+	ZinkliteOre: {
+		// DisplayName: Zinklite Ore
+		// Tooltip: "'How did you get this?'"
+	}
+
+	Weirdshroom: {
+		// DisplayName: Weirdshroom
+		// Tooltip: ""
+	}
+}
 
 	TVinkle: {
 		// DisplayName: TVinkle
@@ -259,6 +284,11 @@ Buffs: {
 	NormieBuff: {
 		// DisplayName: Normie Buff
 		// Description: Mods.Mycology.Buffs.NormieBuff.Description
+	}
+
+	WeirdshroomBuff: {
+		// DisplayName: Weirdshroom Buff
+		// Description: Mods.Mycology.Buffs.WeirdshroomBuff.Description
 	}
 
 	WeirdshroomBuff: {
