@@ -201,6 +201,23 @@ Items: {
 		// DisplayName: Zinklite Plate
 		// Tooltip: "'Polished by an Evil Pink Demon'"
 	}
+
+	MycelialParasite: {
+		// DisplayName: Mycelial Parasite
+		/* Tooltip:
+			'''
+			Uses you as a host.
+			You gain the following:
+			    +20% accelleration
+			    +50% jump height
+			    increased fall speed
+			Life regen is completely disabled
+			Defense is reduced by 30%
+			Upon using a weapon, you will spawn Parasitic Tentacles
+			The Tentacles will stick themselves into the nearest enemy, or the one closest to your cursor
+			The Tentacles will damage and sap the life out of your enemies, granting you extra health
+			''' */
+	}
 }
 
 Projectiles: {
@@ -228,6 +245,7 @@ Projectiles: {
 	// GUNKstoolShot.DisplayName: G U N Kstool Shot
 	// ShroombrellaProj.DisplayName: Shroombrella Proj
 	// SporeglideProj.DisplayName: Sporeglide Proj
+	// MycelialParasiteTentacle.DisplayName: Mycelial Parasite Tenctacle
 }
 
 Buffs: {

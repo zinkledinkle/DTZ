@@ -2,10 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Mycology.Content.Items;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -133,7 +129,7 @@ namespace Mycology.Content.Vanity.DevSets.Zinkle
 
             Vector2 position = (drawInfo.Center + new Vector2(-4, -19)) - Main.screenPosition;
 
-            position.Y += (drawInfo.drawPlayer.GetModPlayer<WeirdshroomPlayer>().stretch.Y * Player.defaultHeight) / 4;
+            position.Y += ((drawInfo.drawPlayer.GetModPlayer<WeirdshroomPlayer>().stretch.Y - 1) * Player.defaultHeight) / 2;
 
             if (drawInfo.drawPlayer.direction == -1) position.X += 8;
             position = new Vector2((int)position.X, (int)position.Y);
