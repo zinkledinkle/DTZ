@@ -166,6 +166,7 @@ Items: {
 			Using items will not interrupt the Sporeglide
 			'''
 	}
+
 	Truff_item: {
 		DisplayName: Truff
 		Tooltip: "'Mushroom-rooted stone'"
@@ -190,9 +191,15 @@ Items: {
 		DisplayName: Zinklite Ore
 		Tooltip: "'How did you get this?'"
 	}
-		Weirdshroom: {
+
+	Weirdshroom: {
 		DisplayName: Weirdshroom
-		Tooltip: ""
+		Tooltip: "'Hey Luigi, get a load of this!'"
+	}
+
+	ZinklitePlate_item: {
+		DisplayName: Zinklite Plate
+		Tooltip: "'Polished by an Evil Pink Demon'"
 	}
 }
 
@@ -257,11 +264,6 @@ Buffs: {
 	NormieBuff: {
 		DisplayName: Normie Buff
 		Description: Mods.Mycology.Buffs.NormieBuff.Description
-	}
-
-	WeirdshroomBuff: {
-		DisplayName: Weirdshroom Buff
-		Description: Mods.Mycology.Buffs.WeirdshroomBuff.Description
 	}
 
 	WeirdshroomBuff: {

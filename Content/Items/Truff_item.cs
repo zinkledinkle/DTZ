@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace Mycology.Content.Items
 {
-    public class Truff_Item : ModItem
+    public class Truff_item : ModItem
     {
         public override void SetDefaults()
         {

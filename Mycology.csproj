@@ -20,6 +20,7 @@
 	  <None Remove="Content\Items\Truff_Item.png" />
 	  <None Remove="Content\Items\ZinkliteBar.png" />
 	  <None Remove="Content\Items\ZinkliteOre.png" />
+	  <None Remove="Content\Items\ZinklitePlate_Item.png" />
 	  <None Remove="Content\NPCs\LoneMushion.png" />
 	  <None Remove="Content\Projectiles\HellcapMushion.png" />
 	  <None Remove="Content\Projectiles\HellcapMushionProj.png" />
@@ -33,6 +34,7 @@
 	  <None Remove="Content\Tiles\Truff.png" />
 	  <None Remove="Content\Tiles\TVinkleTile.png" />
 	  <None Remove="Content\Tiles\ZinkliteBarTile.png" />
+	  <None Remove="Content\Tiles\ZinklitePlate.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\ArctanYourTimeIsAlmostUp.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\ExslueterraAfterOneCenturyEgg.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\FeelingCuteToday.png" />
