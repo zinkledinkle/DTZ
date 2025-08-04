@@ -102,6 +102,7 @@ namespace Mycology.Content.Tiles
             }
             if (Main.MouseWorld.Distance(Position.ToWorldCoordinates(16, 16)) < 20 && Main.mouseRight && !clickDebounce)
             {
+                if (plr == null) return;
                 int Mushions = Main.projectile.Where(proj => proj.active && proj.owner == plr.whoAmI && MycologyPlayer.projectileTypes.Contains(proj.type)).Count();
 
                 int max = plr.GetModPlayer<MycologyPlayer>().MaxMushions;
@@ -156,13 +157,11 @@ namespace Mycology.Content.Tiles
         private static Texture2D glowTexture;
         public override void Load()
         {
-            //On_Main.DrawTiles += DrawGlow;
             On_Player.PlaceThing_Tiles_PlaceIt += StorePlayer;
             glowTexture = ModContent.Request<Texture2D>(Texture + "_glow", AssetRequestMode.ImmediateLoad).Value;
         }
         public override void Unload()
         {
-            //On_Main.DrawTiles -= DrawGlow;
             On_Player.PlaceThing_Tiles_PlaceIt -= StorePlayer;
         }
         protected string OwnerName;

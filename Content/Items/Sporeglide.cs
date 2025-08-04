@@ -22,7 +22,7 @@ namespace Mycology.Content.Items
     {
         public override void SetDefaults()
         {
-            Item.damage = 12;
+            Item.damage = 42;
             Item.width = 60;
             Item.height = 52;
             Item.DamageType = ModContent.GetInstance<PureShroomyDamage>();
@@ -105,7 +105,7 @@ namespace Mycology.Content.Items
 
             squash = MathHelper.Lerp(squash, player.controlDown ? 0.6f : 1, 0.25f);
 
-            Vector2 offset = new Vector2(0, -28).RotatedBy(Projectile.rotation, new Vector2(0, -10));
+            Vector2 offset = new Vector2(0, -28).RotatedBy(Projectile.rotation, new Vector2(0, -28));
             Projectile.Center = player.Center + offset;
             Projectile.Center += new Vector2(0, (1 - squash) * 52 / 2);
             if (Projectile.ai[0] == 0)
@@ -125,7 +125,7 @@ namespace Mycology.Content.Items
                 }
             }
 
-            if (Projectile.ai[0] % 15 == 0)
+            if (Projectile.ai[0] % 10 == 0)
             {
                 Vector2 position = Projectile.position;
                 position.Y += Projectile.height - 10;
