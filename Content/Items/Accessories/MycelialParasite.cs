@@ -127,7 +127,7 @@ namespace Mycology.Content.Items.Accessories
                 return Main.npc[Owner.MinionAttackTargetNPC];
             }
             List<NPC> orderedByDistance = [.. Main.npc
-                //.Where(npc => npc.CanBeChasedBy(this, false))
+                .Where(npc => npc.CanBeChasedBy(this, false))
                 .OrderBy(npc => npc.Distance(Main.MouseWorld))];
 
             NPC closest = orderedByDistance.FirstOrDefault();
