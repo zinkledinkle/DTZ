@@ -37,7 +37,7 @@ namespace Mycology.Content.Tiles
             Main.tileMerge[Type][ModContent.TileType<MushionGrass>()] = true;
             Main.tileMerge[ModContent.TileType<MushionGrass>()][Type] = true;
 
-            AddMapEntry(new Microsoft.Xna.Framework.Color(0.361f, 0.267f, 0.286f), Language.GetText("packedmudmapentry"));
+            AddMapEntry(new Microsoft.Xna.Framework.Color(150, 75, 0), Language.GetText("packedmudmapentry"));
         }
         public override IEnumerable<Item> GetItemDrops(int i, int j)
         {

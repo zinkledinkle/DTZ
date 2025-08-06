@@ -24,13 +24,13 @@ namespace Mycology.Content.Tiles
             Main.tileMerge[TileID.Mud][Type] = false;
             Main.tileMergeDirt[Type] = false;
             Main.tileBlockLight[Type] = true;
-            VanillaFallbackOnModDeletion = TileID.Stone;
+            VanillaFallbackOnModDeletion = TileID.IronBrick;
             MineResist = 2f;
             HitSound = SoundID.Dig;
 
             DustType = DustID.Stone;
 
-            AddMapEntry(new Color(314, 247, 271), Language.GetText("ZinklitePlate"));
+            AddMapEntry(new Color(255, 192, 203), Language.GetText("ZinklitePlate"));
         }
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
@@ -49,7 +49,7 @@ namespace Mycology.Content.Tiles
 
                 Vector2 dustPos = position + new Vector2(Main.rand.NextFloat(16), Main.rand.NextFloat(16));
 
-                int dustIndex = Dust.NewDust(dustPos, 0, 0, DustID.WhiteTorch, 0f, 0f, 150, Color.White, 0.6f);
+                int dustIndex = Dust.NewDust(dustPos, 0, 0, DustID.WhiteTorch, 0f, 0f, 150, Color.White, 0.8f);
                 Dust dust = Main.dust[dustIndex];
                 dust.noGravity = true;
                 dust.velocity *= 0.1f;

@@ -202,6 +202,11 @@ Items: {
 		// Tooltip: "'Polished by an Evil Pink Demon'"
 	}
 
+	Truff_Item: {
+		// DisplayName: Truff_ Item
+		// Tooltip: ""
+	}
+
 	MycelialParasite: {
 		// DisplayName: Mycelial Parasite
 		/* Tooltip:
@@ -217,6 +222,11 @@ Items: {
 			The Tentacles will stick themselves into the nearest enemy, or the one closest to your cursor
 			The Tentacles will damage and sap the life out of your enemies, granting you extra health
 			''' */
+	}
+
+	ShroomyEmblem: {
+		// DisplayName: Shroomy Emblem
+		// Tooltip: 15% increased shroomy damage
 	}
 }
 

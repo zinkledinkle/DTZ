@@ -223,6 +223,11 @@ Items: {
 			The Tentacles will damage and sap the life out of your enemies, granting you extra health
 			'''
 	}
+
+	ShroomyEmblem: {
+		DisplayName: Shroomy Emblem
+		Tooltip: 15% increased shroomy damage
+	}
 }
 
 Projectiles: {
