@@ -228,6 +228,11 @@ Items: {
 		// DisplayName: Shroomy Emblem
 		// Tooltip: 15% increased shroomy damage
 	}
+
+	JETTFINGER: {
+		// DisplayName: Jett's... Finger?
+		// Tooltip: "'It's kind of... sloppy...'"
+	}
 }
 
 Projectiles: {
@@ -256,6 +261,7 @@ Projectiles: {
 	// ShroombrellaProj.DisplayName: Shroombrella Proj
 	// SporeglideProj.DisplayName: Sporeglide Proj
 	// MycelialParasiteTentacle.DisplayName: Mycelial Parasite Tenctacle
+	// JETTFINGERPROJ.DisplayName: J E T T F I N G E R P R O J
 }
 
 Buffs: {
