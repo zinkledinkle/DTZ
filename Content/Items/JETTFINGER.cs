@@ -14,6 +14,7 @@ using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Mycology.Content.Projectiles;
+using Mycology.Content.Enemies;
 
 namespace Mycology.Content.Items
 {
@@ -93,6 +94,21 @@ namespace Mycology.Content.Items
         {
             JUNK.JUNKLE(); //MAHAHAHAHAHAHAHHAHAHAHAHAHAHAHA
             player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " shouldn't have done that."), 9999, 0);
+            if (Main.myPlayer == player.whoAmI)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    float offsetX = Main.rand.NextFloat(-100f, 100f);
+                    float offsetY = Main.rand.NextFloat(-50f, 50f);
+
+                    NPC.NewNPC(
+                        player.GetSource_ItemUse(Item),
+                        (int)(player.Center.X + offsetX),
+                        (int)(player.Center.Y + offsetY),
+                        ModContent.NPCType<Oppsgother>()
+                    );
+                }
+            }
         }
         public class MyAnimLayer : PlayerDrawLayer
         {

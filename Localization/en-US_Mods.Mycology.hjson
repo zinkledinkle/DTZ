@@ -225,7 +225,7 @@ Items: {
 	}
 
 	ShroomyEmblem: {
-		DisplayName: Shroomy Emblem
+		DisplayName: Decomposer Emblem
 		Tooltip: 15% increased shroomy damage
 	}
 
@@ -262,6 +262,7 @@ Projectiles: {
 	SporeglideProj.DisplayName: Sporeglide Proj
 	MycelialParasiteTentacle.DisplayName: Mycelial Parasite Tenctacle
 	JETTFINGERPROJ.DisplayName: J E T T F I N G E R P R O J
+	Oppsgothim.DisplayName: Oppsgothim
 }
 
 Buffs: {
@@ -304,10 +305,19 @@ Buffs: {
 		DisplayName: Weirdshroom Buff
 		Description: Mods.Mycology.Buffs.WeirdshroomBuff.Description
 	}
+
+	OppsgothimBuff: {
+		Description: Mods.Mycology.Buffs.OppsgothimBuff.Description
+		DisplayName: Oppsgothim Buff
+	}
 }
 
 Biomes.Haven.TownNPCDialogueName: the Mushion Haven
-NPCs.LoneMushion.DisplayName: Lone Mushion
+
+NPCs: {
+	LoneMushion.DisplayName: Lone Mushion
+	Oppsgother.DisplayName: Oppsgother
+}
 
 DamageClasses: {
 	ShroomyMagic.DisplayName: Shroomy Magic Damage
