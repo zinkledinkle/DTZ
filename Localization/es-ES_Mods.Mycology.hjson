@@ -263,6 +263,7 @@ Projectiles: {
 	// MycelialParasiteTentacle.DisplayName: Mycelial Parasite Tenctacle
 	// JETTFINGERPROJ.DisplayName: J E T T F I N G E R P R O J
 	// Oppsgothim.DisplayName: Oppsgothim
+	// CryingToadMushion.DisplayName: Crying Toad Mushion
 }
 
 Buffs: {
@@ -309,6 +310,11 @@ Buffs: {
 	OppsgothimBuff: {
 		// Description: You feel [c/ff3311:horrible]!
 		// DisplayName: YIKES!
+	}
+
+	CryingToadBuff: {
+		// Description: What have [c/ffc0cb:you] done to our [c/ff3311:poor] baby...
+		// DisplayName: Crying Familiar
 	}
 }
 

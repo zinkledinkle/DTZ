@@ -31,6 +31,7 @@ namespace Mycology
             ModContent.ProjectileType<ToadMushion>(),
             ModContent.ProjectileType<NormieMushion>(),
             ModContent.ProjectileType<Oppsgothim>(),
+            ModContent.ProjectileType<CryingToadMushion>(),
         };
         public override void PreUpdate()
         {
