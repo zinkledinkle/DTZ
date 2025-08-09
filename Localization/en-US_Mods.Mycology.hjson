@@ -288,7 +288,7 @@ Buffs: {
 
 	FungusBuff: {
 		DisplayName: Fungus Buff
-		Description: Mods.Mycology.Buffs.FungusBuff.Description
+		Description: Major bunkage bro...
 	}
 
 	Frozen: {
@@ -297,18 +297,18 @@ Buffs: {
 	}
 
 	NormieBuff: {
-		DisplayName: Normie Buff
-		Description: Mods.Mycology.Buffs.NormieBuff.Description
+		DisplayName: Normie Familiar
+		Description: You feel increased vitality!
 	}
 
 	WeirdshroomBuff: {
 		DisplayName: Weirdshroom Buff
-		Description: Mods.Mycology.Buffs.WeirdshroomBuff.Description
+		Description: Your tummy hurts...
 	}
 
 	OppsgothimBuff: {
-		Description: Mods.Mycology.Buffs.OppsgothimBuff.Description
-		DisplayName: Oppsgothim Buff
+		Description: You feel [c/ff3311:horrible]!
+		DisplayName: YIKES!
 	}
 }
 
@@ -316,7 +316,7 @@ Biomes.Haven.TownNPCDialogueName: the Mushion Haven
 
 NPCs: {
 	LoneMushion.DisplayName: Lone Mushion
-	Oppsgother.DisplayName: Oppsgother
+	Oppsgother.DisplayName: Zinklet
 }
 
 DamageClasses: {

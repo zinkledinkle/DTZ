@@ -7,6 +7,13 @@ using Mycology.Content;
 using Terraria.GameContent.ItemDropRules;
 using Mycology.Content.Items;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Mycology.Systems;
+using Terraria.Localization;
+using Terraria.Audio;
 
 namespace Mycology.Content.Enemies
 {
@@ -52,6 +59,12 @@ namespace Mycology.Content.Enemies
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SoulofSpite>(), 1, 1, 2));
+        }
+        public override void OnKill()
+        {
+            SoundStyle myDeathSound = new SoundStyle("Mycology/Assets/Sounds/Oppsgotherscream");
+            SoundEngine.PlaySound(myDeathSound, NPC.position);
+
         }
     }
 }
