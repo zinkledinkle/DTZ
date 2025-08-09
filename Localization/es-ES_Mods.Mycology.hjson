@@ -313,7 +313,7 @@ Buffs: {
 	}
 
 	CryingToadBuff: {
-		// Description: What have [c/ffc0cb:you] done to our [c/ff3311:poor] baby...
+		// Description: What have [c/ff69b4:you] done to our [c/ff3311:poor] baby...
 		// DisplayName: Crying Familiar
 	}
 }
