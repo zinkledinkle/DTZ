@@ -29,6 +29,9 @@ namespace Mycology
             ModContent.ProjectileType<IceliumMushion>(),
             ModContent.ProjectileType<HellcapMushion>(),
             ModContent.ProjectileType<ToadMushion>(),
+            ModContent.ProjectileType<NormieMushion>(),
+            ModContent.ProjectileType<Oppsgothim>(),
+            ModContent.ProjectileType<CryingToadMushion>(),
         };
         public override void PreUpdate()
         {

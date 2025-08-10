@@ -12,7 +12,7 @@ namespace Mycology.Content.Tiles
     public class MushionSeedsGrowthToad : MushionSeedsGrowthBase
     {
         protected override Color DefaultBaseColor => Color.GreenYellow;
-        protected override int ProjectileID => ModContent.ProjectileType<ToadMushion>();
+        protected override int ProjectileID => Main.LocalPlayer.name == "Zinkle" ? ModContent.ProjectileType<CryingToadMushion>() : ModContent.ProjectileType<ToadMushion>();
         public MushionSeedsGrowthToad()
         {
             growRate = Main.rand.Next(3000, 4200);

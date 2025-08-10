@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Mycology.Content.Items;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -23,7 +24,7 @@ namespace Mycology.Content.Tiles
 
             DustType = DustID.Stone;
 
-            AddMapEntry(new Color(314, 247, 271), Language.GetText("Truff"));
+            AddMapEntry(new Color(128, 128, 128), Language.GetText("Truff"));
         }
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
@@ -31,7 +32,7 @@ namespace Mycology.Content.Tiles
         }
         public override IEnumerable<Item> GetItemDrops(int i, int j)
         {
-            yield return new Item(ItemID.StoneBlock, 1);
+            yield return new Item(ModContent.ItemType<Truff_item>());
         }
     }
 }

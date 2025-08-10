@@ -12,7 +12,7 @@ namespace Mycology.Content.Tiles
     public class MushionSeedsGrowthGlowing : MushionSeedsGrowthBase
     {
         protected override Color DefaultBaseColor => Color.LightSkyBlue;
-        protected override int ProjectileID => ModContent.ProjectileType<GlowingMushion>();
+        protected override int ProjectileID => Main.LocalPlayer.name == "Oppsgothim" ? ModContent.ProjectileType<Oppsgothim>() : ModContent.ProjectileType<GlowingMushion>();
         public MushionSeedsGrowthGlowing()
         {
             growRate = Main.rand.Next(3000, 4200);

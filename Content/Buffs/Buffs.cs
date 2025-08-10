@@ -63,5 +63,24 @@ namespace Mycology.Content.Buffs
         }
         protected override int ProjectileType => ModContent.ProjectileType<NormieMushion>();
     }
+    public class OppsgothimBuff : MushionBuff
+    {
+        public override void Update(Player player, ref int buffIndex)
+        {
+            base.Update(player, ref buffIndex);
+            player.statLifeMax2 = 1;
+        }
+        protected override int ProjectileType => ModContent.ProjectileType<Oppsgothim>();
+    }
+    public class CryingToadBuff : MushionBuff
+    {
+        public override void Update(Player player, ref int buffIndex)
+        {
+            base.Update(player, ref buffIndex);
+            player.moveSpeed += 3f * player.ownedProjectileCounts[ProjectileType];
+            player.jumpSpeedBoost += 10 * player.ownedProjectileCounts[ProjectileType];
+        }
+        protected override int ProjectileType => ModContent.ProjectileType<CryingToadMushion>();
+    }
 
 }

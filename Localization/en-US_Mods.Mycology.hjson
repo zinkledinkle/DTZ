@@ -194,7 +194,12 @@ Items: {
 
 	Weirdshroom: {
 		DisplayName: Weirdshroom
-		Tooltip: ""
+		Tooltip: "'Hey Luigi, get a load of this!'"
+	}
+
+	ZinklitePlate_item: {
+		DisplayName: Zinklite Plate
+		Tooltip: "'Polished by an Evil Pink Demon'"
 	}
 
 	Truff_Item: {
@@ -217,6 +222,16 @@ Items: {
 			The Tentacles will stick themselves into the nearest enemy, or the one closest to your cursor
 			The Tentacles will damage and sap the life out of your enemies, granting you extra health
 			'''
+	}
+
+	ShroomyEmblem: {
+		DisplayName: Decomposer Emblem
+		Tooltip: 15% increased shroomy damage
+	}
+
+	JETTFINGER: {
+		DisplayName: Jett's... Finger?
+		Tooltip: "'It's kind of... sloppy...'"
 	}
 }
 
@@ -246,6 +261,9 @@ Projectiles: {
 	ShroombrellaProj.DisplayName: Shroombrella Proj
 	SporeglideProj.DisplayName: Sporeglide Proj
 	MycelialParasiteTentacle.DisplayName: Mycelial Parasite Tenctacle
+	JETTFINGERPROJ.DisplayName: J E T T F I N G E R P R O J
+	Oppsgothim.DisplayName: Oppsgothim
+	CryingToadMushion.DisplayName: Crying Toad Mushion
 }
 
 Buffs: {
@@ -271,7 +289,7 @@ Buffs: {
 
 	FungusBuff: {
 		DisplayName: Fungus Buff
-		Description: Mods.Mycology.Buffs.FungusBuff.Description
+		Description: Major bunkage bro...
 	}
 
 	Frozen: {
@@ -280,18 +298,32 @@ Buffs: {
 	}
 
 	NormieBuff: {
-		DisplayName: Normie Buff
-		Description: Mods.Mycology.Buffs.NormieBuff.Description
+		DisplayName: Normie Familiar
+		Description: You feel increased vitality!
 	}
 
 	WeirdshroomBuff: {
 		DisplayName: Weirdshroom Buff
-		Description: Mods.Mycology.Buffs.WeirdshroomBuff.Description
+		Description: Your tummy hurts...
+	}
+
+	OppsgothimBuff: {
+		Description: You feel [c/ff3311:horrible]!
+		DisplayName: YIKES!
+	}
+
+	CryingToadBuff: {
+		Description: What have [c/ff69b4:you] done to our [c/ff3311:poor] baby...
+		DisplayName: Crying Familiar
 	}
 }
 
 Biomes.Haven.TownNPCDialogueName: the Mushion Haven
-NPCs.LoneMushion.DisplayName: Lone Mushion
+
+NPCs: {
+	LoneMushion.DisplayName: Lone Mushion
+	Oppsgother.DisplayName: Zinklet
+}
 
 DamageClasses: {
 	ShroomyMagic.DisplayName: Shroomy Magic Damage

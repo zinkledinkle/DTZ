@@ -10,21 +10,30 @@
 
 	<!-- References -->
 	<ItemGroup>
+	  <None Remove="Assets\Textures\JETTFINGERANIM.png" />
+	  <None Remove="Content\Buffs\CryingToadBuff.png" />
 	  <None Remove="Content\Buffs\GlowingBuff.png" />
 	  <None Remove="Content\Buffs\HellcapBuff.png" />
 	  <None Remove="Content\Buffs\IceliumBuff.png" />
 	  <None Remove="Content\Buffs\NormieBuff.png" />
+	  <None Remove="Content\Buffs\OppsgothimBuff.png" />
 	  <None Remove="Content\Buffs\ToadBuff.png" />
+	  <None Remove="Content\Enemies\Oppsgother.png" />
+	  <None Remove="Content\Items\Accessories\ShroomyEmblem.png" />
 	  <None Remove="Content\Items\Furniture\TVinkle.png" />
+	  <None Remove="Content\Items\jettfinger.png" />
 	  <None Remove="Content\Items\SoulofSpite.png" />
 	  <None Remove="Content\Items\Truff_Item.png" />
 	  <None Remove="Content\Items\ZinkliteBar.png" />
 	  <None Remove="Content\Items\ZinkliteOre.png" />
+	  <None Remove="Content\Items\ZinklitePlate_Item.png" />
 	  <None Remove="Content\NPCs\LoneMushion.png" />
+	  <None Remove="Content\Projectiles\CryingToadMushion.png" />
 	  <None Remove="Content\Projectiles\HellcapMushion.png" />
 	  <None Remove="Content\Projectiles\HellcapMushionProj.png" />
 	  <None Remove="Content\Projectiles\IceliumMushion.png" />
 	  <None Remove="Content\Projectiles\IceliumMushionProj.png" />
+	  <None Remove="Content\Projectiles\JETTFINGERPROJ.png" />
 	  <None Remove="Content\Projectiles\NormieMushion.png" />
 	  <None Remove="Content\Projectiles\NormieMushionProj.png" />
 	  <None Remove="Content\Projectiles\ToadMushion.png" />
@@ -33,6 +42,7 @@
 	  <None Remove="Content\Tiles\Truff.png" />
 	  <None Remove="Content\Tiles\TVinkleTile.png" />
 	  <None Remove="Content\Tiles\ZinkliteBarTile.png" />
+	  <None Remove="Content\Tiles\ZinklitePlate.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\ArctanYourTimeIsAlmostUp.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\ExslueterraAfterOneCenturyEgg.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\FeelingCuteToday.png" />
@@ -42,6 +52,7 @@
 	  <None Remove="HeySiriTurnOnTheFilter\Spudlet.png" />
 	  <None Remove="HeySiriTurnOnTheFilter\WhenSomeoneTellsMeToStopShovingMightybeansUpMyTurdCutter.png" />
 	  <None Remove="icon_small.png" />
+	  <None Remove="Systems\NoItsYOURFaultZinks.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Assets\Effects\Basic\" />

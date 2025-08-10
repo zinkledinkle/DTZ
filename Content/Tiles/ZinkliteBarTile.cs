@@ -26,7 +26,7 @@ namespace Mycology.Content.Tiles
             TileObjectData.newTile.LavaDeath = false;
             TileObjectData.addTile(Type);
 
-            AddMapEntry(new Color(200, 200, 200), Language.GetText("MapObject.ZinkliteBar"));
+            AddMapEntry(new Color(255, 192, 203), Language.GetText("MapObject.ZinkliteBar"));
         }
 
         public override IEnumerable<Item> GetItemDrops(int i, int j)
