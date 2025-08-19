@@ -41,6 +41,11 @@
 	  <None Remove="Content\Projectiles\NormieMushionProj.png" />
 	  <None Remove="Content\Projectiles\ToadMushion.png" />
 	  <None Remove="Content\Projectiles\ToadMushionProj.png" />
+	  <None Remove="Content\Tiles\Ambient\HavenAmbientTile1.png" />
+	  <None Remove="Content\Tiles\Ambient\HavenAmbientTile2.png" />
+	  <None Remove="Content\Tiles\Ambient\HavenAmbientTile3.png" />
+	  <None Remove="Content\Tiles\Ambient\HavenAmbientTile4.png" />
+	  <None Remove="Content\Tiles\Ambient\HavenAmbientTile5.png" />
 	  <None Remove="Content\Tiles\HavenBoxTile.png" />
 	  <None Remove="Content\Tiles\HavenBoxTile_Highlight.png" />
 	  <None Remove="Content\Tiles\InvasionBoxTile.png" />
