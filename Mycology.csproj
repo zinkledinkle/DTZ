@@ -20,6 +20,9 @@
 	  <None Remove="Content\Buffs\ToadBuff.png" />
 	  <None Remove="Content\Enemies\Oppsgother.png" />
 	  <None Remove="Content\Items\Accessories\ShroomyEmblem.png" />
+	  <None Remove="Content\Items\Furniture\HavenBox.png" />
+	  <None Remove="Content\Items\Furniture\InvasionBox.png" />
+	  <None Remove="Content\Items\Furniture\PerilBox.png" />
 	  <None Remove="Content\Items\Furniture\TVinkle.png" />
 	  <None Remove="Content\Items\jettfinger.png" />
 	  <None Remove="Content\Items\SoulofSpite.png" />
@@ -38,7 +41,13 @@
 	  <None Remove="Content\Projectiles\NormieMushionProj.png" />
 	  <None Remove="Content\Projectiles\ToadMushion.png" />
 	  <None Remove="Content\Projectiles\ToadMushionProj.png" />
+	  <None Remove="Content\Tiles\HavenBoxTile.png" />
+	  <None Remove="Content\Tiles\HavenBoxTile_Highlight.png" />
+	  <None Remove="Content\Tiles\InvasionBoxTile.png" />
+	  <None Remove="Content\Tiles\InvasionBoxTile_Highlight.png" />
 	  <None Remove="Content\Tiles\PackedMud.png" />
+	  <None Remove="Content\Tiles\PerilBoxTile.png" />
+	  <None Remove="Content\Tiles\PerilBoxTile_Highlight.png" />
 	  <None Remove="Content\Tiles\Truff.png" />
 	  <None Remove="Content\Tiles\TVinkleTile.png" />
 	  <None Remove="Content\Tiles\ZinkliteBarTile.png" />

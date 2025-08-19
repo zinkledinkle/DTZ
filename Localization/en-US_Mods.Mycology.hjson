@@ -207,6 +207,21 @@ Items: {
 		Tooltip: ""
 	}
 
+	HavenBox: {
+		DisplayName: Music Box (Haven)
+		Tooltip: Composed by Exslueterra
+	}
+
+	PerilBox: {
+		DisplayName: Music Box (Peril)
+		Tooltip: Composed by Exslueterra
+	}
+
+	InvasionBox: {
+		DisplayName: Music Box (Invasion)
+		Tooltip: Composed by Exslueterra
+	}
+
 	MycelialParasite: {
 		DisplayName: Mycelial Parasite
 		Tooltip:
