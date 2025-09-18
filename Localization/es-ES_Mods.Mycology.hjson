@@ -248,6 +248,11 @@ Items: {
 		// DisplayName: Jett's... Finger?
 		// Tooltip: "'It's kind of... sloppy...'"
 	}
+
+	GreenGrapes: {
+		// DisplayName: Green Grapes
+		// Tooltip: "'Mmm mmm mmm!'"
+	}
 }
 
 Projectiles: {
@@ -331,13 +336,19 @@ Buffs: {
 		// Description: What have [c/ff69b4:you] done to our [c/ff3311:poor] baby...
 		// DisplayName: Crying Familiar
 	}
+
+	GREEN: {
+		// Description: "[c/a8e4a0:You feel different...]"
+		// DisplayName: GEEN.
+	}
 }
 
 // Biomes.Haven.TownNPCDialogueName: the Mushion Haven
 
 NPCs: {
 	// LoneMushion.DisplayName: Lone Mushion
-	// Oppsgother.DisplayName: Zinklet
+	// Oppsgother.DisplayName: Oppsgother
+	// Zinklet.DisplayName: Zinklet
 }
 
 DamageClasses: {
