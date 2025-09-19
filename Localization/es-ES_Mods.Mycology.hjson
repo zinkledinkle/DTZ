@@ -253,6 +253,11 @@ Items: {
 		// DisplayName: Green Grapes
 		// Tooltip: "'Mmm mmm mmm!'"
 	}
+
+	Batteries: {
+		// Tooltip: "'You should PROBABLY use these if you're low...'"
+		// DisplayName: Zinkle's Batteries
+	}
 }
 
 Projectiles: {
@@ -284,6 +289,9 @@ Projectiles: {
 	// JETTFINGERPROJ.DisplayName: J E T T F I N G E R P R O J
 	// Oppsgothim.DisplayName: Oppsgothim
 	// CryingToadMushion.DisplayName: Crying Toad Mushion
+	// UhBubble.DisplayName: Uh Bubble
+	// LowBatteryProjectile.DisplayName: Low Battery Projectile
+	// BatteryProjectile.DisplayName: Battery Projectile
 }
 
 Buffs: {
@@ -340,6 +348,11 @@ Buffs: {
 	GREEN: {
 		// Description: "[c/a8e4a0:You feel different...]"
 		// DisplayName: GEEN.
+	}
+
+	LowBatteryDebuff: {
+		// Description: "[c/ff3311:LOW POWER. IMPLOSION IMMINENT.]"
+		// DisplayName: Battery Saver
 	}
 }
 

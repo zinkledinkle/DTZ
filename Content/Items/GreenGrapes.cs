@@ -23,11 +23,11 @@ namespace Mycology.Content.Items
             Item.useTurn = true;
             Item.UseSound = SoundID.Item2;
             Item.consumable = true;
-            Item.maxStack = 30;
+            Item.maxStack = 99;
             Item.value = Item.buyPrice(0, 0, 50, 0);
-            Item.rare = ItemRarityID.Blue;
+            Item.rare = ItemRarityID.Green;
             Item.buffType = ModContent.BuffType<Buffs.GREEN>();
-            Item.buffTime = 60 * 10;
+            Item.buffTime = 6000 * 10;
         }
         public override bool? UseItem(Player player)
         {

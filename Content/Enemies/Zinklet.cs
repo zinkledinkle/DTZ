@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using System;
 using Terraria.GameContent.ItemDropRules;
+using Mycology.Content.Projectiles;
+using Mycology.Content.Buffs;
 
 
 namespace Mycology.Content.Enemies
@@ -45,11 +47,25 @@ namespace Mycology.Content.Enemies
                 NPC.ai[0]--;
                 if (NPC.ai[0] <= 0)
                 {
-                    NPC.velocity.Y = -4;
-                    NPC.ai[0] = 40;
+                    NPC.velocity.Y = -2;
+                    NPC.ai[0] = 20;
 
                     SoundEngine.PlaySound(new SoundStyle("Mycology/Assets/Sounds/ZinkletJump"), NPC.position);
                 }
+            }
+
+            if (Main.rand.NextBool(180))
+            {
+                Projectile.NewProjectile(
+                    NPC.GetSource_FromAI(),
+                    NPC.Center,
+                    Vector2.Zero,
+                    ModContent.ProjectileType<UhBubble>(),
+                    0,
+                    0,
+                    Main.myPlayer,
+                    NPC.whoAmI
+                );
             }
         }
 
@@ -61,6 +77,10 @@ namespace Mycology.Content.Enemies
                 NPC.frameCounter = 0;
             }
             NPC.frame.Y = (int)NPC.frameCounter / 4 * frameHeight;
+        }
+        public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
+        {
+            target.AddBuff(ModContent.BuffType<LowBatteryDebuff>(), 900);
         }
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
