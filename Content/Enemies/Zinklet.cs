@@ -72,7 +72,7 @@ namespace Mycology.Content.Enemies
         public override void FindFrame(int frameHeight)
         {
             NPC.frameCounter++;
-            if (NPC.frameCounter >= 12)
+            if (NPC.frameCounter >= 8)
             {
                 NPC.frameCounter = 0;
             }
