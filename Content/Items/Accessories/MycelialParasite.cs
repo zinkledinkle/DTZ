@@ -8,8 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent;
+using Terraria.GameContent.UI.ResourceSets;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Mycology.Content.Items.Accessories
@@ -44,6 +47,7 @@ namespace Mycology.Content.Items.Accessories
         public static float Radius = 300;
         private static int Max = 5;
         public float ProjectileCount = 0;
+        private int HealthDrain = 0;
         public override void PreUpdate()
         {
             ProjectileCount = Player.ownedProjectileCounts[ModContent.ProjectileType<MycelialParasiteTentacle>()];
@@ -56,6 +60,24 @@ namespace Mycology.Content.Items.Accessories
             int projectileType = ModContent.ProjectileType<MycelialParasiteTentacle>();
             if (Active)
             {
+                if (HealthDrain > 0)
+                {
+                    int drainAmount = HealthDrain / 100;
+                    Main.NewText(drainAmount);
+
+                    Player.statLife -= drainAmount;
+                    if (Player.statLife <= 0)
+                    {
+                        Player.KillMe(
+                            PlayerDeathReason.ByCustomReason(NetworkText.FromLiteral(
+                            Language.GetOrRegister("ParasiteHealthDrainDeathText", () => "{PLAYER} was drained.").Value.Replace("{PLAYER}", Player.name))),
+                            0,
+                            0
+                        );
+                    }
+                    HealthDrain -= drainAmount;
+                }
+
                 if (AttackTime == 0 && Player.controlUseItem && Player.HeldItem.damage > 0 &&
                     ProjectileCount < Max) //while attacking
                 {
@@ -78,6 +100,15 @@ namespace Mycology.Content.Items.Accessories
 
             Active = false;
         }
+        public override void ModifyHurt(ref Player.HurtModifiers modifiers)
+        {
+
+        }
+        public override void OnHurt(Player.HurtInfo info)
+        {
+            Player.statLife += info.Damage;
+            if (Active) HealthDrain += info.Damage;
+        }
     }
     public class MycelialParasiteTentacle : ModProjectile
     {
@@ -95,6 +126,7 @@ namespace Mycology.Content.Items.Accessories
             Projectile.timeLeft = 600;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
+            Projectile.ArmorPenetration = 99999999;
         }
         private Player Owner => Main.player[Projectile.owner];
         private int Timer
@@ -116,9 +148,8 @@ namespace Mycology.Content.Items.Accessories
         private NPC stuckNPC = null;
         private Vector2 StuckOffset = Vector2.Zero;
         private float initialStuckRotation = 0f;
-        private Vector2 AttackPosition = Vector2.Zero;
         private Vector2 ChillPosition = Vector2.Zero;
-        private float Radius => MycelialParasitePlayer.Radius;
+        private static float Radius => MycelialParasitePlayer.Radius;
         private bool Retracting = false;
         private NPC GetTarget()
         {
@@ -161,8 +192,17 @@ namespace Mycology.Content.Items.Accessories
 
             float angleIncrement = MathHelper.TwoPi / (float)Owner.ownedProjectileCounts[Type];
             float angle = angleIncrement * index;
-            float restDistance = Owner.name == "GUNK" ? 300 : 100;
+            float restDistance = 100;
             float attackDistance = restDistance * 1.5f;
+            int healInterval = 45;
+            int maxStickTime = 300;
+
+            if (Owner.name == "GUNK")
+            {
+                restDistance = 300;
+                healInterval = 5;
+                maxStickTime = 2000;
+            }
 
             Projectile.timeLeft = 2;
             Projectile.friendly = DoingAttack;
@@ -194,17 +234,18 @@ namespace Mycology.Content.Items.Accessories
                 Projectile.rotation = rotatedStuckOffset.ToRotation() - MathHelper.PiOver2;
                 Projectile.velocity = Vector2.Zero;
                 HealTimer++;
-                if (HealTimer % (Owner.name == "GUNK" ? 5 : 90) == 0)
+                if (HealTimer % healInterval == 0)
                 {
                     bool crit = Main.rand.NextBool((int)Owner.GetCritChance(DamageClass.Generic), 100);
                     NPC.HitInfo hitInfo = stuckNPC.CalculateHitInfo(Projectile.damage, 0, crit, 0, ModContent.GetInstance<PureShroomyDamage>(), true);
+                    hitInfo.Damage += Math.Min(stuckNPC.defense, 100); //ignore defense below 100
                     Owner.StrikeNPCDirect(stuckNPC, hitInfo);
                     int damage = hitInfo.Damage;
                     int heal = (int)((float)damage * 0.1f);
                     if (heal > 0) Owner.Heal(heal);
                     SuckBulgeThingHaha = 0;
                 }
-                if (HealTimer > (Owner.name == "GUNK" ? 2000 : 270) || !stuckNPC.active || Projectile.Distance(Owner.Center) > Radius * 1.3f)
+                if (HealTimer > maxStickTime || !stuckNPC.active || Projectile.Distance(Owner.Center) > Radius * 1.3f)
                 {
                     Retracting = true;
                     Timer = 0;

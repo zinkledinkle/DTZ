@@ -111,8 +111,9 @@ namespace Mycology.Content.Items.Weapons
                         spawnPos = plr.Center;
                     }
 
-                    Projectile.NewProjectile(plr.GetSource_FromThis(), spawnPos, 
+                    Projectile p = Projectile.NewProjectileDirect(plr.GetSource_FromThis(), spawnPos,
                         offset * shootSpeed, projID, damage, knockBack, Projectile.owner);
+                    p.extraUpdates += 2;
                     muzzleFlashAlpha = 1;
                     recoil = 25;
                     SoundEngine.PlaySound(SoundID.Item61, Projectile.Center);
@@ -235,6 +236,8 @@ namespace Mycology.Content.Items.Weapons
                 Projectile.friendly = true;
                 Projectile.penetrate = 2;
                 Projectile.scale = 0.5f;
+                Projectile.usesLocalNPCImmunity = true;
+                Projectile.localNPCHitCooldown = 10;
             }
             public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
             {

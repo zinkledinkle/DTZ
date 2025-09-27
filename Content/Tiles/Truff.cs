@@ -32,7 +32,7 @@ namespace Mycology.Content.Tiles
         }
         public override IEnumerable<Item> GetItemDrops(int i, int j)
         {
-            yield return new Item(ModContent.ItemType<Truff_item>());
+            yield return new Item(ModContent.ItemType<Truff_Item>());
         }
     }
 }
