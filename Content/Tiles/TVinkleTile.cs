@@ -21,14 +21,14 @@ namespace Mycology.Content.Tiles
             TileID.Sets.IgnoredByNpcStepUp[Type] = true;
 
             // DustType = ModContent.DustType<Dusts.Sparkle>();
-            AdjTiles = new int[] { TileID.Tables };
+            AdjTiles = new int[] { TileID.Tables }; //no tis this
 
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
             TileObjectData.addTile(Type);
 
-            AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
+            AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable); //maybe the issue?
 
             // ModTranslation name = CreateMapEntryName();
             // name.SetDefault("Table");

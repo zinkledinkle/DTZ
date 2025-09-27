@@ -28,7 +28,7 @@ namespace Mycology.Content.Items
             Item.useAnimation = 20;
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.value = 10000;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Pink;
             Item.noMelee = true;
             Item.UseSound = SoundID.Item4;
         }

@@ -207,6 +207,21 @@ Items: {
 		Tooltip: ""
 	}
 
+	HavenBox: {
+		DisplayName: Music Box (Haven)
+		Tooltip: Composed by Exslueterra
+	}
+
+	PerilBox: {
+		DisplayName: Music Box (Peril)
+		Tooltip: Composed by Exslueterra
+	}
+
+	InvasionBox: {
+		DisplayName: Music Box (Invasion)
+		Tooltip: Composed by Exslueterra
+	}
+
 	MycelialParasite: {
 		DisplayName: Mycelial Parasite
 		Tooltip:
@@ -232,6 +247,16 @@ Items: {
 	JETTFINGER: {
 		DisplayName: Jett's... Finger?
 		Tooltip: "'It's kind of... sloppy...'"
+	}
+
+	GreenGrapes: {
+		DisplayName: Green Grapes
+		Tooltip: "'Mmm mmm mmm!'"
+	}
+
+	Batteries: {
+		Tooltip: "'You should PROBABLY use these if you're low...'"
+		DisplayName: Zinkle's Batteries
 	}
 }
 
@@ -264,6 +289,9 @@ Projectiles: {
 	JETTFINGERPROJ.DisplayName: J E T T F I N G E R P R O J
 	Oppsgothim.DisplayName: Oppsgothim
 	CryingToadMushion.DisplayName: Crying Toad Mushion
+	UhBubble.DisplayName: Uh Bubble
+	LowBatteryProjectile.DisplayName: Low Battery Projectile
+	BatteryProjectile.DisplayName: Battery Projectile
 }
 
 Buffs: {
@@ -316,13 +344,24 @@ Buffs: {
 		Description: What have [c/ff69b4:you] done to our [c/ff3311:poor] baby...
 		DisplayName: Crying Familiar
 	}
+
+	GREEN: {
+		Description: "[c/a8e4a0:You feel different...]"
+		DisplayName: GEEN.
+	}
+
+	LowBatteryDebuff: {
+		Description: "[c/ff3311:LOW POWER. IMPLOSION IMMINENT.]"
+		DisplayName: Battery Saver
+	}
 }
 
 Biomes.Haven.TownNPCDialogueName: the Mushion Haven
 
 NPCs: {
 	LoneMushion.DisplayName: Lone Mushion
-	Oppsgother.DisplayName: Zinklet
+	Oppsgother.DisplayName: Oppsgother
+	Zinklet.DisplayName: Zinklet
 }
 
 DamageClasses: {
