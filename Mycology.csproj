@@ -20,13 +20,16 @@
 	  <None Remove="Content\Buffs\NormieBuff.png" />
 	  <None Remove="Content\Buffs\OppsgothimBuff.png" />
 	  <None Remove="Content\Buffs\ToadBuff.png" />
+	  <None Remove="Content\Buffs\ZinklebotPetBuff.png" />
 	  <None Remove="Content\Enemies\Oppsgother.png" />
 	  <None Remove="Content\Enemies\Zinklet.png" />
 	  <None Remove="Content\Items\Accessories\ShroomyEmblem.png" />
 	  <None Remove="Content\Items\Batteries.png" />
+	  <None Remove="Content\Items\fairydust.png" />
 	  <None Remove="Content\Items\Furniture\HavenBox.png" />
 	  <None Remove="Content\Items\Furniture\InvasionBox.png" />
 	  <None Remove="Content\Items\Furniture\PerilBox.png" />
+	  <None Remove="Content\Items\Furniture\RetreatBox.png" />
 	  <None Remove="Content\Items\Furniture\TVinkle.png" />
 	  <None Remove="Content\Items\GreenGrapes.png" />
 	  <None Remove="Content\Items\jettfinger.png" />
@@ -38,6 +41,7 @@
 	  <None Remove="Content\NPCs\LoneMushion.png" />
 	  <None Remove="Content\Projectiles\BatteryProjectile.png" />
 	  <None Remove="Content\Projectiles\CryingToadMushion.png" />
+	  <None Remove="Content\Projectiles\GlowingMushion.png" />
 	  <None Remove="Content\Projectiles\HellcapMushion.png" />
 	  <None Remove="Content\Projectiles\HellcapMushionProj.png" />
 	  <None Remove="Content\Projectiles\IceliumMushion.png" />
@@ -49,6 +53,7 @@
 	  <None Remove="Content\Projectiles\ToadMushion.png" />
 	  <None Remove="Content\Projectiles\ToadMushionProj.png" />
 	  <None Remove="Content\Projectiles\Uhbubble.png" />
+	  <None Remove="Content\Projectiles\ZinklebotPet.png" />
 	  <None Remove="Content\Tiles\Ambient\HavenAmbientTile1.png" />
 	  <None Remove="Content\Tiles\Ambient\HavenAmbientTile2.png" />
 	  <None Remove="Content\Tiles\Ambient\HavenAmbientTile3.png" />
@@ -61,6 +66,8 @@
 	  <None Remove="Content\Tiles\PackedMud.png" />
 	  <None Remove="Content\Tiles\PerilBoxTile.png" />
 	  <None Remove="Content\Tiles\PerilBoxTile_Highlight.png" />
+	  <None Remove="Content\Tiles\RetreatBoxTile.png" />
+	  <None Remove="Content\Tiles\RetreatBoxTile_Highlight.png" />
 	  <None Remove="Content\Tiles\Truff.png" />
 	  <None Remove="Content\Tiles\TVinkleTile.png" />
 	  <None Remove="Content\Tiles\ZinkliteBarTile.png" />

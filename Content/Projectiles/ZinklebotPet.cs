@@ -1,30 +1,31 @@
-
-using Mycology.Content.Buffs;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.Audio;
+using Mycology.Content.Buffs;
+using System.Diagnostics;
+using Terraria.DataStructures;
+using Terraria.GameContent;
 
 namespace Mycology.Content.Projectiles
 {
-    public class GlowingMushion : ModProjectile
+    public class ZinklebotPet : ModProjectile
     {
         public override void SetDefaults()
         {
-            Projectile.height = 32;
+            Projectile.height = 44;
             Projectile.width = 32;
             Projectile.friendly = true;
-            Projectile.timeLeft = 60 * 60 * 5; // 5 minutes
             Projectile.aiStyle = ProjAIStyleID.Pet;
             Projectile.tileCollide = true;
+            Projectile.timeLeft = 4;
 
             AIType = ProjectileID.CavelingGardener;
 
@@ -43,7 +44,6 @@ namespace Mycology.Content.Projectiles
         {
             base.OnSpawn(source);
 
-            //For testing purposes. When we get these things spawning from the tiles this wont be neccessary
             owner = Main.player[Projectile.owner];
             if (owner == null)
             {
@@ -64,8 +64,7 @@ namespace Mycology.Content.Projectiles
             idle,
             run,
             taunt,
-            hide,
-            ability
+            fly,
         }
 
         public States currentState;
@@ -74,10 +73,9 @@ namespace Mycology.Content.Projectiles
         public Dictionary<States, int> animLengths = new()
         {
             {States.idle, 4},
-            {States.run, 8},
-            {States.taunt, 8},
-            {States.hide, 7},
-            {States.ability, 4},
+            {States.run, 11},
+            {States.taunt, 17},
+            {States.fly, 27},
 
         };
 
@@ -90,8 +88,7 @@ namespace Mycology.Content.Projectiles
         public override void AI()
         {
             base.AI();
-
-            owner.AddBuff(ModContent.BuffType<GlowingBuff>(), 2);
+            if (Main.player[Projectile.owner].HasBuff<ZinklebotPetBuff>()) Projectile.timeLeft = 2;
 
             //Main.NewText($"AI0: {Projectile.ai[0]} AI1: {Projectile.ai[3]} AI2: {Projectile.ai[4]}");
             /* Vanilla uses of projectile.AI[] || our use
@@ -113,53 +110,17 @@ namespace Mycology.Content.Projectiles
                 Projectile.ai[2] = 0;
             }
 
-            if (Projectile.ai[5]++ >= 60 * 20 && currentState != States.ability)
-            {
-                Projectile.ai[5] = 0;
-                currentState = States.ability;
-                SoundEngine.PlaySound(new SoundStyle("Mycology/Assets/Sounds/GlowingMushion3") with { PitchVariance = .16f }, Projectile.Center);
-            }
-
-            if (currentState == States.ability)
-            {
-                Projectile.ai[0] = 0;
-                Projectile.ai[1] = 0;
-                Projectile.velocity *= 0;
-
-                if (Projectile.ai[3]++ >= 8)
-                {
-                    Projectile.ai[4]++;
-                    Projectile.ai[3] = 0;
-
-                    if (Projectile.ai[4] >= animLengths[currentState])
-                    {
-                        Projectile.ai[4] = 0;
-                        Projectile.ai[3] = 0;
-                        currentState = States.idle;
-                    }
-                }
-
-                for (int i = 0; i < 5; i++)
-                {
-                    if (Main.rand.NextBool(10))
-                    {
-                        Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.MagicMirror);
-                    }
-                }
-
-                Projectile.rotation = 0;
-            }
-            else if (Projectile.ai[0] == 0)
+            if (Projectile.ai[0] == 0)
             {
                 if (currentState == States.taunt)
                 {
                     if (Projectile.ai[4] == 0 && Projectile.ai[3] == 0)
                     {
-                        Projectile.velocity.Y -= 5;
-                        SoundEngine.PlaySound(new SoundStyle("Mycology/Assets/Sounds/GlowingMushion2") with { PitchVariance = .16f }, Projectile.Center);
+
+                        SoundEngine.PlaySound(new SoundStyle("Mycology/Assets/Sounds/ToadMushion2") with { PitchVariance = .16f }, Projectile.Center);
                     }
 
-                    if (Projectile.ai[3]++ >= 8)
+                    if (Projectile.ai[3]++ >= 6)
                     {
                         Projectile.ai[4]++;
                         Projectile.ai[3] = 0;
@@ -170,7 +131,7 @@ namespace Mycology.Content.Projectiles
                             Projectile.ai[3] = 0;
                             Projectile.ai[6]++;
 
-                            if (Projectile.ai[6] >= 3)
+                            if (Projectile.ai[6] >= 1)
                             {
                                 currentState = States.idle;
                                 Projectile.ai[6] = 0;
@@ -212,16 +173,15 @@ namespace Mycology.Content.Projectiles
                             {
                                 currentState = States.taunt;
                                 Projectile.ai[6] = 0;
-
                             }
                         }
                         else if (Main.rand.NextBool(200) && Projectile.ai[4] == 0)
                         {
                             Projectile.ai[4] = 1;
-                            SoundEngine.PlaySound(new SoundStyle("Mycology/Assets/Sounds/GlowingMushion1") with { PitchVariance = .16f }, Projectile.Center);
+                            SoundEngine.PlaySound(new SoundStyle("Mycology/Assets/Sounds/ToadMushion1") with { PitchVariance = .16f }, Projectile.Center);
                         }
 
-                        if (Projectile.ai[4] == 1 || Projectile.ai[4] == 2)
+                        if (Projectile.ai[4] == 1 || Projectile.ai[4] == 2 || Projectile.ai[4] == 3 || Projectile.ai[4] == 4)
                         {
                             if (Projectile.ai[3]++ >= 8)
                             {
@@ -257,28 +217,23 @@ namespace Mycology.Content.Projectiles
             }
             else
             {
-                currentState = States.hide;
+                currentState = States.fly;
 
-                if (Projectile.ai[3]++ >= 5)
+                if (Projectile.ai[3]++ >= 1)
                 {
                     Projectile.ai[4]++;
                     Projectile.ai[3] = 0;
 
                     if (Projectile.ai[4] >= animLengths[currentState])
                     {
-                        Projectile.ai[4] = animLengths[currentState] - 1;
+                        Projectile.ai[4] = 0;
                         Projectile.ai[3] = 0;
                     }
                 }
 
-                Projectile.ai[2] += MathHelper.ToRadians(MathF.Sign(Projectile.velocity.X) * 10f);
-
-                Projectile.rotation = Projectile.ai[2];
-            }
-
-            if (Projectile.ai[5] == (60 * 20) - 2)
-            {
-                Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GlowingMushionProj>(), 0, 0, 0, ai2: owner.whoAmI);
+                Projectile.ai[2] = MathHelper.SmoothStep(Projectile.ai[2], Math.Sign(Projectile.velocity.X), 0.15f);
+                Projectile.rotation = (Projectile.ai[2] * Math.Abs(Projectile.ai[2])) * MathHelper.ToRadians(20);
+                //Projectile.ai[2] += MathHelper.ToRadians(MathF.Sign(Projectile.velocity.X) * 10f);
             }
 
             previousState = currentState;
@@ -287,8 +242,8 @@ namespace Mycology.Content.Projectiles
         public override bool PreDraw(ref Color lightColor)
         {
             var tex = TextureAssets.Projectile[Type].Value;
-            var frame = new Rectangle(32 * (int)Projectile.ai[4], 32 * (int)currentState, 32, 32);
-            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, frame, lightColor, Projectile.rotation, new Vector2(16, 16), Projectile.scale, Projectile.direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+            var frame = new Rectangle(32 * (int)Projectile.ai[4], 44 * (int)currentState, 32, 44);
+            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, frame, lightColor, Projectile.rotation, new Vector2(16, 22), Projectile.scale, Projectile.direction != 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
             return false;
         }
 
@@ -302,7 +257,7 @@ namespace Mycology.Content.Projectiles
             }
             for (int i = 0; i < 8; i++)
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GlowingMushroom);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RuneWizard);
             }
 
             for (int i = 0; i < 3; i++)

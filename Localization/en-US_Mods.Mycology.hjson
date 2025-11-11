@@ -222,6 +222,11 @@ Items: {
 		Tooltip: Composed by Exslueterra
 	}
 
+	RetreatBox: {
+		DisplayName: Music Box (Retreat)
+		Tooltip: Composed by Exslueterra
+	}
+
 	MycelialParasite: {
 		DisplayName: Mycelial Parasite
 		Tooltip:
@@ -258,6 +263,11 @@ Items: {
 		Tooltip: "'You should PROBABLY use these if you're low...'"
 		DisplayName: Zinkle's Batteries
 	}
+
+	FairyDust: {
+		DisplayName: Fairy Dust
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -292,6 +302,7 @@ Projectiles: {
 	UhBubble.DisplayName: Uh Bubble
 	LowBatteryProjectile.DisplayName: Low Battery Projectile
 	BatteryProjectile.DisplayName: Battery Projectile
+	ZinklebotPet.DisplayName: Zinklebot Pet
 }
 
 Buffs: {
@@ -353,6 +364,11 @@ Buffs: {
 	LowBatteryDebuff: {
 		Description: "[c/ff3311:LOW POWER. IMPLOSION IMMINENT.]"
 		DisplayName: Battery Saver
+	}
+
+	ZinklebotPetBuff: {
+		DisplayName: Zinklebot Pet Buff
+		Description: Mods.Mycology.Buffs.ZinklebotPetBuff.Description
 	}
 }
 
